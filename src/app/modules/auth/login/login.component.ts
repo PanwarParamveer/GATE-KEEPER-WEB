@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import { AuthServiceService } from '../auth-service.service';
 
 declare var $;
 
@@ -9,8 +10,17 @@ declare var $;
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  constructor() {
+
+  authError: any;
+
+  constructor(private auth: AuthServiceService) { }
+
+  login(frm) {
+    this.auth.login(frm.value.email, frm.value.password);
   }
+
+
+
 
   ngOnInit() {
     $('body').addClass('hold-transition login-page');
@@ -21,6 +31,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         increaseArea: '20%' /* optional */
       });
     });
+
+    this.auth.eventAuthError$.subscribe( data => {
+      this.authError = data;
+    });
+
   }
 
   ngOnDestroy(): void {

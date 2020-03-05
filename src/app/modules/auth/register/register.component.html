@@ -12,21 +12,21 @@
       </div>
     </div>
 
-    <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)" method="post">
+    <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
       <div class="form-group has-feedback">
-        <input ngModel #fullname="ngModel" class="form-control" placeholder="Full name" type="text">
+        <input ngModel #fullname="ngModel" name="fullname" id="fullname" class="form-control" placeholder="Full name" type="text">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input ngModel  #email="ngModel" class="form-control" placeholder="Email" type="text">
+        <input ngModel  #email="ngModel" name="email" id="email" class="form-control" placeholder="Email" type="text">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input  ngModel #password="ngModel" class="form-control" placeholder="Password" type="password">
+        <input  ngModel #password="ngModel" name="password" id="password" class="form-control" placeholder="Password" type="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Retype password" type="password">
+        <input class="form-control" ngModel #repassword="ngModel" id="repassword" name="repassword"  placeholder="Retype password" type="password">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="row">

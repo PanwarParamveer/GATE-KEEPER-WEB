@@ -24,6 +24,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
         increaseArea: '20%' /* optional */
       });
     });
+
+    this.auth.eventAuthError$.subscribe( data => {
+      this.authError = data;
+    });
   }
 
   ngOnDestroy(): void {

@@ -32,14 +32,13 @@ export class AuthServiceService {
       })
       .then(userCredential => {
         if   (userCredential) {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/members']);
         }
       });
   }
 
   createUser(user) {
-    console.log('Login');
-    console.log(user);
+
     this.afAuth.auth.createUserWithEmailAndPassword( user.email, user.password)
       .then( userCredential => {
         this.newUser = user;
@@ -50,7 +49,7 @@ export class AuthServiceService {
 
         this.insertUserData(userCredential)
           .then(() => {
-            this.router.navigate(['/member']);
+            this.router.navigate(['/members']);
           });
       })
       .catch( error => {
@@ -60,10 +59,7 @@ export class AuthServiceService {
 
   insertUserData(userCredential: firebase.auth.UserCredential) {
     return this.db.doc('USERS/${userCredential.user.uid}').set({
-      email: this.newUser.email,
-      firstname: this.newUser.firstName,
-      lastname: this.newUser.lastName,
-      role: 'network user'
+      email: this.newUser.email
     });
   }
 
