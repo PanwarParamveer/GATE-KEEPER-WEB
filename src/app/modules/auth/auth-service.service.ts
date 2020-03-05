@@ -38,6 +38,7 @@ export class AuthServiceService {
   }
 
   createUser(user) {
+    console.log('Login');
     console.log(user);
     this.afAuth.auth.createUserWithEmailAndPassword( user.email, user.password)
       .then( userCredential => {
