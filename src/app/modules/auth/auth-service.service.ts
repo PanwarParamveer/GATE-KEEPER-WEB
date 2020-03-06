@@ -38,29 +38,13 @@ export class AuthServiceService {
   }
 
   createUser(user) {
-
     this.afAuth.auth.createUserWithEmailAndPassword( user.email, user.password)
       .then( userCredential => {
-        this.newUser = user;
-        console.log(userCredential);
-        userCredential.user.updateProfile( {
-          displayName: user.fullname
-        });
-
-        this.insertUserData(userCredential)
-          .then(() => {
-            this.router.navigate(['/members']);
-          });
+          this.router.navigate(['/members']);
       })
       .catch( error => {
         this.eventAuthError.next(error);
       });
-  }
-
-  insertUserData(userCredential: firebase.auth.UserCredential) {
-    return this.db.doc('USERS/${userCredential.user.uid}').set({
-      email: this.newUser.email
-    });
   }
 
   logout() {
