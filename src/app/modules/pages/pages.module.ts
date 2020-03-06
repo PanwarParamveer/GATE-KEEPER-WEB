@@ -5,10 +5,11 @@ import {PagesRoutingModule} from './pages-routing.module';
 import {PagesComponent} from './pages/pages.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
 import {LayoutModule} from '../layout/layout.module';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
