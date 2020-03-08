@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import {PagesRoutingModule} from './pages-routing.module';
 import {PagesComponent} from './pages/pages.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
@@ -14,7 +14,8 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
   imports: [
     CommonModule,
     PagesRoutingModule,
-    LayoutModule
+    LayoutModule,
+    FormsModule
   ]
 })
 export class PagesModule {

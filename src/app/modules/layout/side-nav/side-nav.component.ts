@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { AuthServiceService } from '../../auth/auth-service.service';
+import { CompanyService } from '../../services/company.service';
 
 declare var $;
 
@@ -10,14 +11,16 @@ declare var $;
 })
 export class SideNavComponent implements OnInit {
 
-  constructor(private auth: AuthServiceService) {
+   public   cDetails: any;
+
+  constructor(private companyService: CompanyService) {
   }
 
   ngOnInit() {
     $(document).ready(() => {
       $('.sidebar-menu').tree();
     });
-
+    this.cDetails = this.companyService.getCompanyDetails();
   }
 
 }

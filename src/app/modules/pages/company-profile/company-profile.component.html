@@ -1,20 +1,22 @@
   <!-- Main content -->
   <section class="content">
   
+    <form #companyDetail="ngForm" novalidate action="">
+
+
+
     <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">Company Profile</h3>
         </div>
         <div class="box-body">
-         
-
-           
+                   
 
         <div class="row">
 
           <div class="col col-sm-12 col-lg-4">
             <div class="widget-user-image text-center">
-                <img class="img-circle" src="assets/dist/img/user2-160x160.jpg" alt="User Avatar">
+                <img class="img-circle" src={{cDetails.logo}} alt="User Avatar">
               </div>
         </div>
 
@@ -23,34 +25,46 @@
 <div class="row">
                     <div class="col col-sm-12 col-lg-12">
                         <div class="form-group">
-                            <label>Company ID</label>
+                            <label>  Company Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-shopping-cart"></i>
                                 </div>
-                                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <input disabled="!editMode" id="name" name="name" [(ngModel)]="cDetails.name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                             </div>
                             <!-- /.input group -->
                         </div>
                     </div>
                     
-                    <div class="col col-sm-12 col-lg-12">
+                    <div class="col col-sm-12 col-lg-6">
                         <div class="form-group">
-                            <label>Company Name</label>
+                            <label>Company ID</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-shopping-cart"></i>
                                 </div>
-                                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <input disabled name="id"  [(ngModel)]="cDetails.id" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                             </div>
                             <!-- /.input group -->
                         </div>
                     </div>
+                    <div class="col col-sm-12 col-lg-6">
+                      <div class="form-group">
+                          <label>Company Short Name</label>
+                          <div class="input-group">
+                              <div class="input-group-addon">
+                                  <i class="fa fa-shopping-cart"></i>
+                              </div>
+                              <input disabled="!editMode" name="short_name"  [(ngModel)]="cDetails.short_name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                          </div>
+                          <!-- /.input group -->
+                      </div>
+                  </div>
                   </div>
         </div>
         </div>
 
-        <div class="row">
+        <div class="row"> 
 
           <div class="col col-sm-12 col-lg-4">
             <div class="form-group">
@@ -59,7 +73,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input disabled="!editMode" name="email"  [(ngModel)]="cDetails.email"   type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -72,7 +86,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input disabled="!editMode" name="primary_contact"  [(ngModel)]="cDetails.primary_contact" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -85,7 +99,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input disabled="!editMode" name="secondary_contact"  [(ngModel)]="cDetails.secondary_contact" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -99,7 +113,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-shopping-cart"></i>
                 </div>
-                <input type="text"  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input disabled="!editMode" name="address"  [(ngModel)]="cDetails.address" type="text"  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -111,7 +125,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input disabled="!editMode" name="city"  [(ngModel)]="cDetails.city"  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -123,7 +137,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input disabled="!editMode" name="state"  [(ngModel)]="cDetails.state" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -135,7 +149,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input disabled="!editMode" name="zipcode"  [(ngModel)]="cDetails.zipcode"  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -150,11 +164,11 @@
           <!-- /input-group -->
         </div>
 
-        <div class="box-footer">
+        <div class="box-footer text-center">
         
        
-          <button type="submit"  class="btn btn-success">Update Order Details</button>
-          <button type="submit"  class="btn btn-danger pull-right">Delete</button>
+          <button disabled="!editMode" type="submit"  class="btn btn-success">Update Details</button>
+          <button (click)="editMode_click()" type="button"  class="btn btn-danger">Edit</button>
    
         </div>
 
@@ -163,7 +177,7 @@
 
         <!-- /.box-body -->
       </div>
-  
+    </form>
   </section>
   <!-- /.content -->
   
