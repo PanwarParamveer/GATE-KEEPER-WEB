@@ -12,6 +12,7 @@ export class CompanyProfileComponent implements OnInit {
    constructor(private companyService: CompanyService) { }
 
   ngOnInit() {
+    
     this.cDetails = this.companyService.getCompanyDetails();
     console.log(this.cDetails);
   }
