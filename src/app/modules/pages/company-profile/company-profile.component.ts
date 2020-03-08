@@ -13,6 +13,7 @@ export class CompanyProfileComponent implements OnInit {
 
   ngOnInit() {
     this.cDetails = this.companyService.getCompanyDetails();
+    console.log(this.cDetails);
   }
 
   editMode_click() {

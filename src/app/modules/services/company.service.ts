@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
 
-  constructor() {
+  constructor(private http :HttpClient) {
 
      }
 
      getCompanyDetails() {
-       //return this.http.get('http://localhost:5001/userloginaccessmanagementdev/us-central1/companyApi/company/companyInfo');
+
+       return  this.http.get(environment.serviceUrl+ '/companyApi/company/companyInfo');
 
        return {
        name: 'params automation',
