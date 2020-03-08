@@ -16,7 +16,15 @@ export class CompanyProfileComponent implements OnInit {
   }
 
   editMode_click() {
+    
     this.editMode = true;
+  }
+
+
+  
+  cancel_click() {
+    
+    this.editMode = false;
   }
 
 }

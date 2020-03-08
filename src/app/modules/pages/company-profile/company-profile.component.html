@@ -5,6 +5,9 @@
 
 
 
+
+      
+
     <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">Company Profile</h3>
@@ -30,7 +33,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-shopping-cart"></i>
                                 </div>
-                                <input disabled="!editMode" id="name" name="name" [(ngModel)]="cDetails.name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <input [disabled]="!editMode" id="name" name="name" [(ngModel)]="cDetails.name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -43,7 +46,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-shopping-cart"></i>
                                 </div>
-                                <input disabled name="id"  [(ngModel)]="cDetails.id" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <input [disabled]="!editMode" name="id"  [(ngModel)]="cDetails.id" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -55,7 +58,7 @@
                               <div class="input-group-addon">
                                   <i class="fa fa-shopping-cart"></i>
                               </div>
-                              <input disabled="!editMode" name="short_name"  [(ngModel)]="cDetails.short_name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                              <input [disabled]="!editMode" name="short_name"  [(ngModel)]="cDetails.short_name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                           </div>
                           <!-- /.input group -->
                       </div>
@@ -73,7 +76,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input disabled="!editMode" name="email"  [(ngModel)]="cDetails.email"   type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" name="email"  [(ngModel)]="cDetails.email"   type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -86,7 +89,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input disabled="!editMode" name="primary_contact"  [(ngModel)]="cDetails.primary_contact" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" name="primary_contact"  [(ngModel)]="cDetails.primary_contact" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -99,7 +102,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input disabled="!editMode" name="secondary_contact"  [(ngModel)]="cDetails.secondary_contact" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" name="secondary_contact"  [(ngModel)]="cDetails.secondary_contact" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -113,7 +116,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-shopping-cart"></i>
                 </div>
-                <input disabled="!editMode" name="address"  [(ngModel)]="cDetails.address" type="text"  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" name="address"  [(ngModel)]="cDetails.address" type="text"  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -125,7 +128,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input disabled="!editMode" name="city"  [(ngModel)]="cDetails.city"  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" name="city"  [(ngModel)]="cDetails.city"  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -137,7 +140,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input disabled="!editMode" name="state"  [(ngModel)]="cDetails.state" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" name="state"  [(ngModel)]="cDetails.state" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -149,7 +152,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
                 </div>
-                <input disabled="!editMode" name="zipcode"  [(ngModel)]="cDetails.zipcode"  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" name="zipcode"  [(ngModel)]="cDetails.zipcode"  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -167,8 +170,10 @@
         <div class="box-footer text-center">
         
        
-          <button disabled="!editMode" type="submit"  class="btn btn-success">Update Details</button>
-          <button (click)="editMode_click()" type="button"  class="btn btn-danger">Edit</button>
+          <button *ngIf="editMode" [disabled]="!editMode" type="submit"  class="btn btn-success">Update Details</button>
+          <button *ngIf="!editMode" (click)="editMode_click()" type="button"  class="btn btn-danger">Edit Details</button>
+          
+          <button *ngIf="editMode" (click)="cancel_click()"  type="button"  class="btn btn-danger">Cancel Edit</button>
    
         </div>
 
