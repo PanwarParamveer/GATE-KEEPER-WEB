@@ -7,30 +7,28 @@ import { environment } from 'src/environments/environment';
 })
 export class CompanyService {
 
-  constructor(private http :HttpClient) {
+  constructor(private http: HttpClient) {
 
      }
 
       getCompanyDetails() {
 
-       return this.http.get(environment.serviceUrl+"/company/companyInfo").subscribe(data => {
-      
-        console.log(data);
-      });
+        const url =   'http://localhost:5001/userloginaccessmanagementdev/us-central1/companyApi/company/companyInfo';
+        return this.http.get(url);
 
-       return {
-       name: 'params automation',
-       logo: 'assets/dist/img/avatar.png',
-       short_name: 'param',
-       id: ' ID',
-       email: ' email',
-       primary_contact: ' contact',
-       secondary_contact: ' contact2',
-       address: ' address',
-       city: 'city',
-       state: 'state',
-       zipcode : '123456'
-      };
+      //  return {
+      //  name: 'params automation',
+      //  logo: 'assets/dist/img/avatar.png',
+      //  short_name: 'param',
+      //  id: ' ID',
+      //  email: ' email',
+      //  primary_contact: ' contact',
+      //  secondary_contact: ' contact2',
+      //  address: ' address',
+      //  city: 'city',
+      //  state: 'state',
+      //  zipcode : '123456'
+      // };
 
     }
 }

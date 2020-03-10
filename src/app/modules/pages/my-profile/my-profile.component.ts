@@ -8,13 +8,12 @@ import { UserServiceService } from '../../services/user-service.service';
 })
 export class MyProfileComponent implements OnInit {
 
-  constructor(public userDtl :UserServiceService) { }
+  constructor(public userDtl: UserServiceService) { }
 
 public myDtl: any;
 
   ngOnInit() {
 
-   this.myDtl=this.userDtl.getUserDetails();
 
   }
 
