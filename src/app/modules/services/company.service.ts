@@ -7,13 +7,17 @@ import { environment } from 'src/environments/environment';
 })
 export class CompanyService {
 
-  constructor(public http :HttpClient) {
+  constructor(private http :HttpClient) {
 
      }
 
-     public getCompanyDetails() {
+      getCompanyDetails() {
 
-       
+       return this.http.get(environment.serviceUrl+"/company/companyInfo").subscribe(data => {
+      
+        console.log(data);
+      });
+
        return {
        name: 'params automation',
        logo: 'assets/dist/img/avatar.png',

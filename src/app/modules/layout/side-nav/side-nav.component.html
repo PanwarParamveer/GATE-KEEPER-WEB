@@ -37,12 +37,12 @@
             </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-          <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          <li><a [routerLink]="'/members/profile'" ><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+          <li><a [routerLink]="'/members/profile'"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul>
       </li>
      
-      <li><a><i class="fa fa-book"></i> <span>
+      <li><a [routerLink]="'/members/attendance'"><i class="fa fa-book"></i> <span>
         Attendance Report
       </span></a></li>
      
@@ -55,8 +55,8 @@
             </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i>Employees</a></li>
-          <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i>Add Employee</a></li>         
+          <li><a [routerLink]="'/members/employeeList'"><i class="fa fa-circle-o"></i>Employees</a></li>
+          <li><a [routerLink]="'/members/employeeEdit'"><i class="fa fa-circle-o"></i>Add Employee</a></li>         
         </ul>
       </li>
 

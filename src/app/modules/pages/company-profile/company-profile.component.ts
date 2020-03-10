@@ -20,6 +20,8 @@ export class CompanyProfileComponent implements OnInit {
   editMode_click() {
     
     this.editMode = true;
+
+    
   }
 
 

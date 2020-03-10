@@ -7,10 +7,13 @@ import {DashBoardComponent} from './dash-board/dash-board.component';
 import {LayoutModule} from '../layout/layout.module';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+import { AttendaceComponent } from './attendace/attendace.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, EmployeeEditComponent, AttendaceComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
