@@ -4,10 +4,13 @@
   </div>
 
   <div class="register-box-body">
-    <p class="login-box-msg">Register a new membership</p>
-
+    <div style="text-align: center;">
+      <img width="30%" src="/assets/dist/img/logo.png">
+    </div>
+    <h4 style="margin-top:10px ;" class="login-box-msg">Register a new membership</h4>
+     
     <div class="row" *ngIf="authError">
-      <div class="col-12 alert" style="color: red;">
+      <div class="col-12" style="color: red;margin-bottom: 15px; text-align: center; ">
         {{ authError?.message }}
       </div>
     </div>

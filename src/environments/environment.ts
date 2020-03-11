@@ -4,17 +4,17 @@
 
 export const environment = {
   production: false,
-  firebase :{
-    apiKey: "AIzaSyCrcsT8yLIx5CoQ1Lq5vaK6DwfJZZYPaxk",
-  authDomain: "userloginaccessmanagementdev.firebaseapp.com",
-  databaseURL: "https://userloginaccessmanagementdev.firebaseio.com",
-  projectId: "userloginaccessmanagementdev",
-  storageBucket: "userloginaccessmanagementdev.appspot.com",
-  messagingSenderId: "1854329387",
-  appId: "1:1854329387:web:045dc8672bc049dce9906e",
-  measurementId: "G-8KLH7F2QN0"
+  firebase : {
+    apiKey: 'AIzaSyCrcsT8yLIx5CoQ1Lq5vaK6DwfJZZYPaxk',
+  authDomain: 'userloginaccessmanagementdev.firebaseapp.com',
+  databaseURL: 'https://userloginaccessmanagementdev.firebaseio.com',
+  projectId: 'userloginaccessmanagementdev',
+  storageBucket: 'userloginaccessmanagementdev.appspot.com',
+  messagingSenderId: '1854329387',
+  appId: '1:1854329387:web:045dc8672bc049dce9906e',
+  measurementId: 'G-8KLH7F2QN0'
   },
-  serviceUrl:"http://localhost:5001/userloginaccessmanagementdev/us-central1"
+  serviceUrl: 'http://localhost:5001/userloginaccessmanagementdev/us-central1'
 };
 
 /*
@@ -25,4 +25,5 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
- // serviceUrl:"http://localhost:5001/userloginaccessmanagementdev/us-central1"
+ // serviceUrl:http://localhost:5001/userloginaccessmanagementdev/us-central1
+ //serviceUrl: 'https://us-central1-userloginaccessmanagementdev.cloudfunctions.net'

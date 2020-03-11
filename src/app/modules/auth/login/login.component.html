@@ -2,17 +2,17 @@
   <div class="login-logo">
     <a href="#"><b>Params</b>Automation</a>
   </div>
-
-
-
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Login</p>
-
-   <form #loginForm="ngForm" novalidate action="" (ngSubmit)="login(loginForm)">
-
+    
+    
+    <form #loginForm="ngForm" novalidate action="" (ngSubmit)="login(loginForm)">
+      <div style="text-align: center;">
+        <img width="30%" src="/assets/dist/img/logo.png">
+      </div>
+      <h3 style="margin-top:10px ;" class="login-box-msg">Login</h3>
       <div class="row" *ngIf="authError">
-        <div style="color: red;" class="col-12 alert">{{ authError?.message }}</div>
+        <div style="color: red;margin-bottom: 15px; text-align: center; " class="col-12">{{ authError?.message }}</div>
       </div>
 
       <div class="form-group has-feedback">
@@ -20,7 +20,8 @@
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input ngModel #password="ngModel" id="password" name="password" class="form-control" placeholder="Password" type="password">
+        <input ngModel #password="ngModel" id="password" name="password" class="form-control" placeholder="Password"
+          type="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -33,23 +34,23 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button  type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
 
 
-    <!-- <div class="social-auth-links text-center">
+      <!-- <div class="social-auth-links text-center">
       <p>- OR -</p>
       <a class="btn btn-block btn-social btn-facebook btn-flat" href="#"><i class="fa fa-facebook"></i> Sign in using
         Facebook</a>
       <a class="btn btn-block btn-social btn-google btn-flat" href="#"><i class="fa fa-google-plus"></i> Sign in using
         Google+</a>
     </div> -->
-    <!-- /.social-auth-links -->
+      <!-- /.social-auth-links -->
 
-    <a href="#">I forgot my password</a><br>
-    <a [routerLink]="'/login/register'" class="text-center">Register a new membership</a>
+      <a href="#">I forgot my password</a><br>
+      <a [routerLink]="'/login/register'" class="text-center">Register a new membership</a>
 
     </form>
   </div>

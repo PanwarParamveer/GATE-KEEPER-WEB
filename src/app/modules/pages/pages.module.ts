@@ -11,7 +11,6 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import { AttendaceComponent } from './attendace/attendace.component';
 
-
 @NgModule({
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, EmployeeEditComponent, AttendaceComponent],
   imports: [

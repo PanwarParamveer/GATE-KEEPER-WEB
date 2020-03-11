@@ -20,7 +20,10 @@ export class SideNavComponent implements OnInit {
     $(document).ready(() => {
       $('.sidebar-menu').tree();
     });
-    this.cDetails = this.companyService.getCompanyDetails();
+
+    this.cDetails =  this.companyService.getCompanyDetails().subscribe((retDATa) => {
+      this.cDetails = retDATa;
+    });
   }
 
 }

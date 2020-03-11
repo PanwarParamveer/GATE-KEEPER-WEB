@@ -10,22 +10,31 @@ import { AttendaceComponent } from './attendace/attendace.component';
 import { AngularFireAuthGuard, hasCustomClaim, loggedIn, redirectUnauthorizedTo, redirectLoggedInTo  } from "@angular/fire/auth-guard";
 
 // const adminOnly = () => hasCustomClaim('admin');
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 // const redirectLoggedInToItems = () => redirectLoggedInTo(['items']);
 // const belongsToAccount = (next) => hasCustomClaim(`account-${next.params.id}`);
 
 const routes: Routes = [
   {
     path: '', component: PagesComponent, children: [
-      {path: '', component: DashBoardComponent, canActivateChild: [AngularFireAuthGuard]},
+      {path: '', component: DashBoardComponent, canActivate: [AngularFireAuthGuard],
+       data: { authGuardPipe: redirectUnauthorizedToLogin }},
 
-      {path: 'myProfile', component: MyProfileComponent, canActivateChild: [AngularFireAuthGuard],
+      {path: 'myProfile', component: MyProfileComponent, canActivate: [AngularFireAuthGuard],
       data: { authGuardPipe: redirectUnauthorizedToLogin }},
 
-      {path: 'profile', component: CompanyProfileComponent, canActivateChild: [AngularFireAuthGuard]},
-      {path: 'employeeList', component: EmployeeListComponent, canActivateChild: [AngularFireAuthGuard] },
-      {path: 'employeeEdit', component: EmployeeEditComponent, canActivateChild: [AngularFireAuthGuard]},
-      {path: 'attendance', component: AttendaceComponent, canActivateChild: [AngularFireAuthGuard]}
+      {path: 'profile', component: CompanyProfileComponent, canActivate: [AngularFireAuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToLogin }
+    },
+      {path: 'employeeList', component: EmployeeListComponent, canActivate: [AngularFireAuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToLogin }
+    },
+      {path: 'employeeEdit', component: EmployeeEditComponent, canActivate: [AngularFireAuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToLogin }
+    },
+      {path: 'attendance', component: AttendaceComponent, canActivate: [AngularFireAuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToLogin }
+    }
     ]
   }
 ];
