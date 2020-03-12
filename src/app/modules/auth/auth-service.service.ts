@@ -51,4 +51,21 @@ export class AuthServiceService {
     this.afAuth.auth.signOut();
     this.router.navigate(['/login']);
   }
+
+  getTokenHeader() {
+    return this.afAuth.auth.currentUser.getIdToken()
+      .then(token => {
+        console.log(token);
+        let tokenHeader = new Headers({
+          'Authorization': token
+        });
+        tokenHeader.append('Content-Type', 'application/json');
+        let tokenOptions = new RequestOptions({
+          headers: tokenHeader
+        });
+        return tokenOptions;
+      });
+  }
+
+
 }
