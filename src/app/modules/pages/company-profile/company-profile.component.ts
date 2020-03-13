@@ -12,9 +12,10 @@ export class CompanyProfileComponent implements OnInit {
    constructor(private companyService: CompanyService) { }
 
   ngOnInit() {
-    this.cDetails = this.companyService.getCompanyDetails().subscribe((retDATa) => {
-      this.cDetails = retDATa;
-    });
+    this.cDetails = this.companyService.getCompanyDetails();
+    // .subscribe((retDATa) => {
+    //   this.cDetails = retDATa;
+    // });
   }
 
   editMode_click() {

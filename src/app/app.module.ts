@@ -12,6 +12,7 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireFunctions,ORIGIN  } from '@angular/fire/functions';
 
 
 @NgModule({
@@ -25,8 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FormsModule, HttpClientModule  ],
-  providers: [ AngularFireAuthGuard],
+    FormsModule, HttpClientModule,AngularFireFunctions  ],
+  providers: [ AngularFireAuthGuard,   { provide: ORIGIN, useValue: 'http://localhost:5001' }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

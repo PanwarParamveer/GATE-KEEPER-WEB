@@ -2,22 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { FirebaseAuth } from '@angular/fire';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
   private tokenHeader;
-  constructor(private firebaseAuth: FirebaseAuth ,  private http: HttpClient) {
+  constructor(private firebaseAuth: FirebaseAuth ,  private http: HttpClient,private fun : AngularFireFunctions) {
     
      }
 
       getCompanyDetails() {
 
-
+const call =this.fun.httpsCallable("companyApi/company/companyInfo");
+   alert(call({}));
         
-        const url =   'http://localhost:5001/userloginaccessmanagementdev/us-central1/companyApi/company/companyInfo';
-        return this.http.get(url,this.firebaseAuth.currentUser;
+        // const url =   'http://localhost:5001/userloginaccessmanagementdev/us-central1/companyApi/company/companyInfo ';
+        // return this.http.get(url,this.firebaseAuth.currentUser;
 
       //  return {
       //  name: 'params automation',
