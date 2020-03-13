@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../../services/company.service';
 
+
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
@@ -12,17 +13,15 @@ export class CompanyProfileComponent implements OnInit {
    constructor(private companyService: CompanyService) { }
 
   ngOnInit() {
-    this.cDetails = this.companyService.getCompanyDetails();
-    // .subscribe((retDATa) => {
-    //   this.cDetails = retDATa;
-    // });
+    this.cDetails = this.companyService.getCompanyDetails()
+    .subscribe((retDATa) => {
+      this.cDetails = retDATa;
+    });
   }
 
   editMode_click() {
     this.editMode = true;
   }
-
-
   cancel_click() {
 
     this.editMode = false;

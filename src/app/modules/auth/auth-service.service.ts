@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { ThrowStmt } from '@angular/compiler';
 import { BehaviorSubject } from 'rxjs';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,20 +52,17 @@ export class AuthServiceService {
     this.router.navigate(['/login']);
   }
 
-  // getTokenHeader() {
-  //   return this.afAuth.auth.currentUser.getIdToken()
-  //     .then(token => {
-  //       console.log(token);
-  //       let tokenHeader = new Headers({
-  //         'Authorization': token
-  //       });
-  //       tokenHeader.append('Content-Type', 'application/json');
-  //       let tokenOptions = new RequestOptions({
-  //         headers: tokenHeader
-  //       });
-  //       return tokenOptions;
-  //     });
-  // }
+
+
+
+  getToken() {
+    return this.afAuth.auth.currentUser.getIdToken()
+      .then(token => {
+        return token.toString();
+      }).catch((e) => {
+        return '';
+      });
+  }
 
 
 }
