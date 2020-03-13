@@ -55,14 +55,6 @@ export class AuthServiceService {
 
 
 
-  getToken() {
-    return this.afAuth.auth.currentUser.getIdToken()
-      .then(token => {
-        return token.toString();
-      }).catch((e) => {
-        return '';
-      });
-  }
 
 
 }

@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { AuthServiceService } from '../auth/auth-service.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({ 
   providedIn: 'root'
 })
 export class CompanyService {
-  private token: any;
+  private token: string;
+   
+  constructor(private fauth: AngularFireAuth , private http: HttpClient) {
+     this.fauth.auth.currentUser.getIdToken()
+    .then(token => {
+      this.token= token.toString();
+     
+    }).catch((e) => {
+      return '';
+    });
 
-  constructor(private fauth: AuthServiceService, private http: HttpClient) {
-   this.token = fauth.getTokenHeader();
+
+
   }
 
 
   getCompanyDetails() {
 
-    alert(this.token);
     const httpOptions = {
  headers: new HttpHeaders({
    'Content-Type':  'application/json',
