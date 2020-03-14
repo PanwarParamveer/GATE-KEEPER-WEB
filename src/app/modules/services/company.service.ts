@@ -14,11 +14,11 @@ export class CompanyService {
       }
 
 
-  async getCompanyDetails() {
+   getCompanyDetails() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        authorization: 'Bearer ' + await this.fauth.getToken()
+        authorization: 'Bearer ' +  this.fauth.getToken()
       })
     };
     const data = { name: 'Dale Nguyen' };
