@@ -12,7 +12,7 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,11 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FormsModule, HttpClientModule  ],
+    FormsModule, 
+    HttpClientModule ,
+    NgxUiLoaderModule,
+    NgxUiLoaderRouterModule
+  ],
   providers: [ AngularFireAuthGuard
 ],
   bootstrap: [AppComponent]
