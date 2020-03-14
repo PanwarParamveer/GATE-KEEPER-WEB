@@ -43,6 +43,27 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   createUser(frm) {
+
+    if(frm.value.email==''){
+    
+      this.authError = {message:'Invalid email' } ;
+      return;
+    }
+
+if(frm.value.organization_name==''){
+
+  this.authError = {message:'Please enter organization name' } ;
+  return;
+}
+if(frm.value.organization_type==''){
+  this.authError ={message:'Please select valid organization type' } ;
+  return;
+}
+if(frm.value.password==''){    
+  this.authError = {message:'Enter Password' } ;
+  return;
+}
+
     this.auth.createUser(frm.value);
   }
 

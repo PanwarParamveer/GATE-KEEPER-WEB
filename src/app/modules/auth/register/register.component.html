@@ -7,7 +7,7 @@
     <div style="text-align: center;">
       <img width="30%" src="/assets/dist/img/logo.png">
     </div>
-    <h4 style="margin-top:10px ;" class="login-box-msg">Register a new membership</h4>
+    <h4 style="margin-top:10px ;" class="login-box-msg">Create Account</h4>
      
     <div class="row" *ngIf="authError">
       <div class="col-12" style="color: red;margin-bottom: 15px; text-align: center; ">
@@ -17,26 +17,24 @@
 
     <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
       <div class="form-group has-feedback">
-        <input ngModel  #email="ngModel" name="email" id="email" class="form-control" placeholder="Email" type="text">
+        <input ngModel  #email="ngModel" name="email" required id="email" class="form-control" placeholder="Email" type="text">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input ngModel  #organization_name="ngModel" name="organization_name" id="organization_name" class="form-control" placeholder="organization name" type="text">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input ngModel  #organization_name="ngModel" name="organization_name" required id="organization_name" class="form-control" placeholder="Organization name" type="text">
+        <span class="fa fa-bank form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-        <option *ngFor="let type of Otype">{{type}}</option>        
+        <select  ngModel  #organization_type="ngModel" name="organization_type" required id="organization_type"   class="form-control select2 select2-hidden-accessible"  required style="width: 100%;"  tabindex="-1" aria-hidden="true">
+          <option></option>
+          <option *ngFor="let type of Otype">{{type}}</option>        
         </select>
       </div>
       <div class="form-group has-feedback">
-        <input  ngModel #password="ngModel" name="password" id="password" class="form-control" placeholder="Password" type="password">
+        <input  ngModel #password="ngModel" required name="password" id="password" class="form-control" placeholder="Password" type="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
-        <input class="form-control" ngModel #repassword="ngModel" id="repassword" name="repassword"  placeholder="Retype password" type="password">
-        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-      </div>
+      
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
@@ -47,7 +45,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button class="btn btn-primary btn-block btn-flat" type="submit">Create Account</button>
+          <button class="btn btn-primary btn-block btn-flat" type="submit">Create</button>
         </div>
         <!-- /.col -->
       </div>
