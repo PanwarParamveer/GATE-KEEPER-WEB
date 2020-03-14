@@ -52,6 +52,14 @@ export class AuthServiceService {
     this.router.navigate(['/login']);
   }
 
+  getToken() {
+    this.afAuth.auth.currentUser.getIdToken()
+      .then(token => {
+       return token.toString();
+      }).catch((e) => {
+        this.router.navigate(['/login']);
+      });
+  }
 
 
 

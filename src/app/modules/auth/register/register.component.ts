@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
+import { CompanyService } from '../../services/company.service';
 
 declare var $;
 
@@ -11,8 +12,8 @@ declare var $;
 export class RegisterComponent implements OnInit, OnDestroy {
 
   authError: any;
-
-  constructor(private auth: AuthServiceService  ) {
+  public Otype: any;
+  constructor(private auth: AuthServiceService , private cService: CompanyService  ) {
   }
 
   ngOnInit() {
@@ -28,6 +29,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.auth.eventAuthError$.subscribe( data => {
       this.authError = data;
     });
+
+    this.cService.getOrganizationType().
+    subscribe((data) => {
+       this.Otype = data;
+    });
+
+
   }
 
   ngOnDestroy(): void {
@@ -37,5 +45,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   createUser(frm) {
     this.auth.createUser(frm.value);
   }
+
+
 
 }
