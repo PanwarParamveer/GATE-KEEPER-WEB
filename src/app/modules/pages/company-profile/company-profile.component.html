@@ -1,16 +1,13 @@
   <!-- Main content -->
   <section class="content">
   
-    <form #companyDetail="ngForm" novalidate action="">
+    <form #OrgForm="ngForm" (ngSubmit)="update(OrgForm)">
 
 
-
-
-      
 
     <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Company Profile</h3>
+          <h3 class="box-title">Organization Profile</h3>
         </div>
         <div class="box-body">
                    
@@ -28,12 +25,12 @@
 <div class="row">
                     <div class="col col-sm-12 col-lg-12">
                         <div class="form-group">
-                            <label>  Company Name</label>
+                            <label>  Organizaion Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-shopping-cart"></i>
                                 </div>
-                                <input [disabled]="!editMode" id="name" name="name" [(ngModel)]="cDetails.name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <input [disabled]="!editMode" id="organization_name" name="organization_name" [(ngModel)]="cDetails.organization_name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -41,19 +38,19 @@
                     
                     <div class="col col-sm-12 col-lg-6">
                         <div class="form-group">
-                            <label>Company ID</label>
+                            <label>Organizaion Type</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-shopping-cart"></i>
                                 </div>
-                                <input disabled name="id"  [(ngModel)]="cDetails.id" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <input disabled name="organization_type"  [(ngModel)]="cDetails.organization_type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                             </div>
                             <!-- /.input group -->
                         </div>
                     </div>
                     <div class="col col-sm-12 col-lg-6">
                       <div class="form-group">
-                          <label>Company Short Name</label>
+                          <label>Organizaion Short Name</label>
                           <div class="input-group">
                               <div class="input-group-addon">
                                   <i class="fa fa-shopping-cart"></i>
@@ -71,7 +68,7 @@
 
           <div class="col col-sm-12 col-lg-4">
             <div class="form-group">
-              <label>Company Email</label>
+              <label> Email</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
@@ -84,7 +81,7 @@
 
           <div class="col col-sm-12 col-lg-4">
             <div class="form-group">
-              <label>Company Primary Contact</label>
+              <label> Primary Contact</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>
@@ -97,7 +94,7 @@
 
           <div class="col col-sm-12 col-lg-4">
             <div class="form-group">
-              <label>Company Secondary Contact</label>
+              <label> Secondary Contact</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-user"></i>

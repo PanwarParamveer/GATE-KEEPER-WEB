@@ -20,6 +20,15 @@ export class CompanyService {
   }
 
 
+
+  upate(dtl) {    
+    // tslint:disable-next-line:variable-name
+    const url_ = environment.serviceUrl + '/companyApi/company/update';
+    return this.http.post(url_, dtl, this.fauth.getHeaders());
+  }
+
+
+
   getOrganizationType() {
     // tslint:disable-next-line:variable-name
     const url_ = environment.serviceUrl + '/publicApi/public/typeOfOrganization';

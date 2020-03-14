@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    alert('logout');
     this.auth.logout();
   }
 
