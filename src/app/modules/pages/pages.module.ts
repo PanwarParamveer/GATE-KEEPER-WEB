@@ -8,12 +8,12 @@ import {LayoutModule} from '../layout/layout.module';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+
 import { AttendaceComponent } from './attendace/attendace.component';
 import { UserViewComponent } from './user-view/user-view.component';
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, EmployeeEditComponent, AttendaceComponent, UserViewComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

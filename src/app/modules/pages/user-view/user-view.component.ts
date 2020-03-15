@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-view.component.scss']
 })
 export class UserViewComponent implements OnInit {
-public cDetails :any 
+public cDetails :any={} 
 
   constructor() { }
+
+
 
   ngOnInit() {
   }

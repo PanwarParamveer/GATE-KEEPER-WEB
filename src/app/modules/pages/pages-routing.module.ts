@@ -5,9 +5,10 @@ import {DashBoardComponent} from './dash-board/dash-board.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+
 import { AttendaceComponent } from './attendace/attendace.component';
 import { AngularFireAuthGuard, hasCustomClaim, loggedIn, redirectUnauthorizedTo, redirectLoggedInTo  } from "@angular/fire/auth-guard";
+import { UserViewComponent } from './user-view/user-view.component';
 
 // const adminOnly = () => hasCustomClaim('admin');
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -29,7 +30,7 @@ const routes: Routes = [
       {path: 'employeeList', component: EmployeeListComponent, canActivate: [AngularFireAuthGuard],
       data: { authGuardPipe: redirectUnauthorizedToLogin }
     },
-      {path: 'employeeEdit', component: EmployeeEditComponent, canActivate: [AngularFireAuthGuard],
+      {path: 'userView', component: UserViewComponent, canActivate: [AngularFireAuthGuard],
       data: { authGuardPipe: redirectUnauthorizedToLogin }
     },
       {path: 'attendance', component: AttendaceComponent, canActivate: [AngularFireAuthGuard],
