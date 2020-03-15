@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
+import { FooterComponent } from './modules/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
     FormsModule, 
     HttpClientModule ,
     NgxUiLoaderModule,
-    NgxUiLoaderRouterModule
+    NgxUiLoaderRouterModule,FooterComponent
   ],
   providers: [ AngularFireAuthGuard
 ],

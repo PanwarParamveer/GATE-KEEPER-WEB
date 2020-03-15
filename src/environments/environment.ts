@@ -14,7 +14,7 @@ export const environment = {
   appId: '1:1854329387:web:045dc8672bc049dce9906e',
   measurementId: 'G-8KLH7F2QN0'
   },
-  serviceUrl: 'http://localhost:5001/userloginaccessmanagementdev/us-central1'
+  serviceUrl: 'https://us-central1-userloginaccessmanagementdev.cloudfunctions.net'
 };
 
 /*
