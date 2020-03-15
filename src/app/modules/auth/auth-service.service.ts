@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ThrowStmt } from '@angular/compiler';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CompanyService } from '../services/company.service';
 import { environment } from 'src/environments/environment';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Injectable({
@@ -30,7 +29,7 @@ export class AuthServiceService {
 
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        user.getIdToken(true).then(token => {
+        user.getIdToken().then(token => {
           localStorage.setItem('token', token.toString());
         }).catch((e) => {
           this.router.navigate(['/login']);
@@ -54,7 +53,17 @@ export class AuthServiceService {
        
         this.ngxService.stop();
         if (userCredential) {
-          this.router.navigate(['/members']);
+
+
+          userCredential.user.getIdToken(true).then(token => {
+            localStorage.setItem('token', token.toString());
+            this.router.navigate(['/members']);
+          }).catch((e) => {
+            this.router.navigate(['/login']);
+          });
+
+
+         
         }
       });
   }
@@ -76,7 +85,7 @@ export class AuthServiceService {
           this.http.post(environment.serviceUrl + '/companyApi/company/createAccount',user, httpOptions)
           .subscribe(res => {
             this.ngxService.stop();
-           this.router.navigate(['/members']);
+            this.afAuth.auth.signOut();
           });
 
         }).catch(error => {
@@ -97,6 +106,8 @@ export class AuthServiceService {
 
 
   getHeaders() {
+
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

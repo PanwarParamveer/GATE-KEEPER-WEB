@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -8,7 +7,7 @@ import { CompanyService } from '../../services/company.service';
 })
 export class MyProfileComponent implements OnInit {
 
-  constructor(public cService: CompanyService) { }
+  constructor() { }
 
 public myDtl: any;
 

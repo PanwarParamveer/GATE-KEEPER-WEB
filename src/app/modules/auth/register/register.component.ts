@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
-import { CompanyService } from '../../services/company.service';
+
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   authError: any;
   public Otype: any;
   constructor(private auth: AuthServiceService , 
-    private cService: CompanyService  ,
+      
     private http: HttpClient
     ) {
   }
