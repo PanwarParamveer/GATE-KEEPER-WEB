@@ -10,9 +10,10 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import { AttendaceComponent } from './attendace/attendace.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, EmployeeEditComponent, AttendaceComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, EmployeeEditComponent, AttendaceComponent, UserViewComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
