@@ -26,9 +26,11 @@ export class AuthServiceService {
     private ngxService: NgxUiLoaderService
     ) {
 
+
+
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        user.getIdToken().then(token => {
+        user.getIdToken(true).then(token => {
           localStorage.setItem('token', token.toString());
         }).catch((e) => {
           this.router.navigate(['/login']);
@@ -41,14 +43,6 @@ export class AuthServiceService {
 
   }
 
-
-
-
-
-  getUserState() {
-    return this.afAuth.authState;
-  }
-
   login(email: string, password: string) {
     this.ngxService.start();
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
@@ -57,6 +51,7 @@ export class AuthServiceService {
         this.eventAuthError.next(error);
       })
       .then(userCredential => {
+       
         this.ngxService.stop();
         if (userCredential) {
           this.router.navigate(['/members']);
@@ -65,13 +60,12 @@ export class AuthServiceService {
   }
 
   createUser(user) {
+    this.ngxService.start();
     this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(userCredential => {
-        this.ngxService.start(); // start foreground spinner of the master loader with 'default' taskId
-        // Stop the foreground loading after 5s
-       
 
         userCredential.user.getIdToken().then(token=>{
+
           const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type': 'application/json',
@@ -79,14 +73,7 @@ export class AuthServiceService {
             })
           };
 
-          const url_ = environment.serviceUrl + '/companyApi/company/createAccount';
-        
-
-          this.http.post(url_, 
-            {'organization_name':user.organization_name,
-            'organization_type':user.organization_type,
-            'email':user.email,
-          }, httpOptions)
+          this.http.post(environment.serviceUrl + '/companyApi/company/createAccount',user, httpOptions)
           .subscribe(res => {
             this.ngxService.stop();
            this.router.navigate(['/members']);
@@ -97,11 +84,6 @@ export class AuthServiceService {
           this.eventAuthError.next(error);
         });
        
-        
-        
-        // this.companyService.createCompany(user);
-
-        // this.router.navigate(['/members']);
       })
       .catch(error => {
         this.ngxService.stop();

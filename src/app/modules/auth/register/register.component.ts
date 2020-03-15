@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { CompanyService } from '../../services/company.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 declare var $;
 
@@ -13,7 +15,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   authError: any;
   public Otype: any;
-  constructor(private auth: AuthServiceService , private cService: CompanyService  ) {
+  constructor(private auth: AuthServiceService , 
+    private cService: CompanyService  ,
+    private http: HttpClient
+    ) {
   }
 
   ngOnInit() {
@@ -30,11 +35,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.authError = data;
     });
 
-    this.cService.getOrganizationType().
-    subscribe((data) => {
-       this.Otype = data;
-    });
-
+  
+    
+      // tslint:disable-next-line:variable-name
+      const url_ = environment.serviceUrl + '/publicApi/public/typeOfOrganization';
+       this.http.get(url_).subscribe(data=>{
+        this.Otype = data;
+       });
+    
 
   }
 

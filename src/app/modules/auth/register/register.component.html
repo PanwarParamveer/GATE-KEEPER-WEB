@@ -16,10 +16,26 @@
     </div>
 
     <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
+
+      <div class="form-group has-feedback">
+        <input ngModel  #first_name="ngModel" name="first_name" required id="first_name" class="form-control" placeholder="first name" type="text">
+        <span class="fa fa-bank form-control-feedback"></span>
+      </div>
+
+      <div class="form-group has-feedback">
+        <input ngModel  #last_name="ngModel" name="last_name" required id="last_name" class="form-control" placeholder="last name" type="text">
+        <span class="fa fa-bank form-control-feedback"></span>
+      </div>
+
+
       <div class="form-group has-feedback">
         <input ngModel  #email="ngModel" name="email" required id="email" class="form-control" placeholder="Email" type="text">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
+
+    
+      
+
       <div class="form-group has-feedback">
         <input ngModel  #organization_name="ngModel" name="organization_name" required id="organization_name" class="form-control" placeholder="Organization name" type="text">
         <span class="fa fa-bank form-control-feedback"></span>

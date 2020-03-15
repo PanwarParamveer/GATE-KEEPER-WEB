@@ -1,6 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../../auth/auth-service.service';
-import { CompanyService } from '../../services/company.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 
 declare var $;
 
@@ -11,18 +14,26 @@ declare var $;
 })
 export class SideNavComponent implements OnInit {
 
-   public   cDetails: any;
+  cDetails: any = {};
 
-  constructor(private companyService: CompanyService) {
+  constructor(private http: HttpClient, private fauth: AuthServiceService, private loader: NgxUiLoaderService) {
+
   }
 
   ngOnInit() {
     $(document).ready(() => {
       $('.sidebar-menu').tree();
     });
+    this.getCompanyDetails();
+  }
 
-    this.cDetails =  this.companyService.getCompanyDetails().subscribe((retDATa) => {
-      this.cDetails = retDATa;
+
+  getCompanyDetails() {
+    this.loader.start();
+    const url_ = environment.serviceUrl + '/companyApi/company/companyInfo';
+    this.http.post(url_, {}, this.fauth.getHeaders()).subscribe((data) => {
+      this.cDetails = data;
+      this.loader.stop();
     });
   }
 

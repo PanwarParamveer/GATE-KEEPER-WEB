@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { UserServiceService } from '../../services/user-service.service';
-import { AuthServiceService } from '../../auth/auth-service.service';
+
+
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +10,37 @@ import { AuthServiceService } from '../../auth/auth-service.service';
 })
 export class HeaderComponent implements OnInit {
 
-   public UserDetails: any;
-  constructor(public uDetails: UserServiceService, private auth: AuthServiceService) {
+   public display_name: string;
+   public photo: string;
+   public lastLogin:string;
+   public email: string;
+   public myRole: any;
+   
+  constructor( private authS: AngularFireAuth) {
   }
 
   ngOnInit() {
-    this.UserDetails = this.uDetails.getUserDetails();
+    this.display_name = this.authS.auth.currentUser.displayName;
+    this.photo = this.authS.auth.currentUser.photoURL;
+    this.email = this.authS.auth.currentUser.email;
+    this.lastLogin = this.authS.auth.currentUser.metadata.lastSignInTime;
+
+    this.authS.auth.currentUser.getIdTokenResult().then(
+       (t)=> {  
+        this.myRole = t.claims.role;
+      }
+    );
+
   }
 
   logout() {
-    this.auth.logout();
+    this.authS.auth.signOut();
   }
+
+
+  
+  
+ 
+  
 
 }

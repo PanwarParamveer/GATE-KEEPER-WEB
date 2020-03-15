@@ -25,31 +25,29 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <img alt="User Image" class="user-image" src={{UserDetails.photo}}>
-            <span class="hidden-xs">{{UserDetails.first_name}} {{UserDetails.last_name}}</span>
+            <img alt="User Image" class="user-image" src="{{photo}}" >
+            <span class="hidden-xs">{{display_name}}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img alt="User Image" class="img-circle" src={{UserDetails.photo}}>
+              <img alt="User Image" class="img-circle" src="{{photo}}" >
 
-              <p>
-                {{UserDetails.first_name}} {{UserDetails.last_name}} - {{UserDetails.role}} 
-                <small>Member since Nov. 2012</small>
+              <p> 
+                {{display_name}}  ({{myRole}})
+                <small>{{email}}</small>
               </p>
             </li>
             <!-- Menu Body -->
             <li class="user-body">
               <div class="row">
-                <div class="col-xs-4 text-center">
-                  <a href="#">Followers</a>
+          
+                
+             
+                <div class="col-12 text-center">
+                  Last Login : {{lastLogin}}
                 </div>
-                <div class="col-xs-4 text-center">
-                  <a href="#">Sales</a>
-                </div>
-                <div class="col-xs-4 text-center">
-                  <a href="#">Friends</a>
-                </div>
+                
               </div>
               <!-- /.row -->
             </li>

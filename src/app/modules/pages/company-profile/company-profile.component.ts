@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../../services/company.service';
+
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { environment } from 'src/environments/environment';
+import { AuthServiceService } from '../../auth/auth-service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-company-profile',
@@ -8,33 +11,38 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   styleUrls: ['./company-profile.component.scss']
 })
 export class CompanyProfileComponent implements OnInit {
-  public   cDetails: any;
+  public cDetails: any = {};
   public editMode = false;
-   constructor(private companyService: CompanyService, private loader :NgxUiLoaderService) { }
+  constructor(
+    private fauth: AuthServiceService,
+    private http: HttpClient, private loader: NgxUiLoaderService) { }
 
   ngOnInit() {
-    this.cDetails = this.companyService.getCompanyDetails()
-    .subscribe((retDATa) => {
-      this.cDetails = retDATa;
-    });
+    this.getCompanyDetails();    
   }
+
+  getCompanyDetails() {
+  
+    const url_ = environment.serviceUrl + '/companyApi/company/companyInfo';
+      this.http.post(url_,{}, this.fauth.getHeaders()).subscribe((data)=>{
+        this.cDetails =data;             
+      this.loader.stop();
+      });
+}
 
   editMode_click() {
     this.editMode = true;
   }
   cancel_click() {
-
     this.editMode = false;
   }
 
-update(frm){
-  this.loader.start();
-this.companyService.upate(frm.value).subscribe((retDATa) => {
-  
-  this.loader.stop();  
-    this.editMode = false;
-});
-}
-
-
+  update(frm) {
+    this.loader.start();
+    const url_ = environment.serviceUrl + '/companyApi/company/update';
+    this.http.post(url_, frm.value, this.fauth.getHeaders()).subscribe(data => {
+      this.loader.stop();
+      this.editMode = false;
+    });
+  }
 }
