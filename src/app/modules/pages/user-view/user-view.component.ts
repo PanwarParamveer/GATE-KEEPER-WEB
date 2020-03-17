@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-view',
@@ -8,11 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class UserViewComponent implements OnInit {
 public cDetails :any={} 
 
-  constructor() { }
+  constructor(private routerParams: ActivatedRoute) { }
 
-
+   userId :any;
 
   ngOnInit() {
+    this.userId  = this.routerParams.data.pipe(map(d => d.id));
+alert(  this.userId );
   }
 
 }

@@ -27,10 +27,10 @@ const routes: Routes = [
       {path: 'profile', component: CompanyProfileComponent, canActivate: [AngularFireAuthGuard],
       data: { authGuardPipe: redirectUnauthorizedToLogin }
     },
-      {path: 'employeeList', component: EmployeeListComponent, canActivate: [AngularFireAuthGuard],
+      {path: 'users', component: EmployeeListComponent, canActivate: [AngularFireAuthGuard],
       data: { authGuardPipe: redirectUnauthorizedToLogin }
     },
-      {path: 'userView', component: UserViewComponent, canActivate: [AngularFireAuthGuard],
+      {path: 'userView/:id', component: UserViewComponent, canActivate: [AngularFireAuthGuard],
       data: { authGuardPipe: redirectUnauthorizedToLogin }
     },
       {path: 'attendance', component: AttendaceComponent, canActivate: [AngularFireAuthGuard],

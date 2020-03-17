@@ -5,12 +5,14 @@
     </h1>   
 
 
-    <ol class="breadcrumb">
-      <a style="border-radius: 30px; " class="btn btn-block btn-social btn-dropbox">
+  <span style="margin-top: -25px;" class="pull-right">
+      <a style="border-radius: 30px; " [routerLink]="['/members/userView','add']"  
+     
+       class="btn btn-block btn-social btn-dropbox">
         <i class="fa fa-plus"></i> Add New User
       </a>
-    </ol>
    
+    </span>
 
   </section>
   
@@ -41,31 +43,31 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th>User id</th>
+                <th class="hidden-xs hidden-sm">User id</th>
                 <th>Full Name</th>
-                <th>Department</th>
-                <th>Status</th>
+                <th class="hidden-xs hidden-sm">Department</th>
+                <th class="hidden-xs hidden-sm">Status</th>
                 <th>View/Edit</th>
               </tr>
               </thead>
               <tbody>
     
     <tr role="row" *ngFor="let user of usersList">
-      <td class="sorting_1">{{user.id}}</td>
-      <td>{{user.first_name}} {{user.last_name}}</td>
-      <td>{{user.department}}</td>
-      <td>{{user.status}}</td>
-      <td><button CLASS="btn btn-sm btn-success">View</button></td>
+      <td class=" hidden-xs hidden-sm">{{user.id}}</td>
+      <td class="sorting_1">{{user.first_name}} {{user.last_name}}</td>
+      <td class="hidden-xs hidden-sm">{{user.department}}</td>
+      <td class="hidden-xs hidden-sm">{{user.status}}</td>
+      <td style="text-align: center;"><button style="width: 80%;border-radius: 25px;" CLASS="btn btn-sm btn-primary">View</button></td>
     </tr> 
              
              
               </tbody>
               <tfoot>
                 <tr>
-                  <th>User id</th>
+                  <th class="hidden-xs hidden-sm">User id</th>
                   <th>Full Name</th>
-                  <th>Department</th>
-                  <th>Status</th>
+                  <th class="hidden-xs hidden-sm">Department</th>
+                  <th class="hidden-xs hidden-sm">Status</th>
                   <th>View/Edit</th>
                 </tr>
               </tfoot>
