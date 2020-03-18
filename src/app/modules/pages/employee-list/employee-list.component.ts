@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AuthServiceService } from '../../auth/auth-service.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { HttpClient } from '@angular/common/http';
+
 declare var $;
 
 @Component({
@@ -13,7 +14,7 @@ declare var $;
   styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent implements OnInit {
-  public usersList : any;
+  public usersList: any;
   constructor(private fauth: AuthServiceService,
     private http: HttpClient, private loader: NgxUiLoaderService) { }
 
@@ -23,12 +24,17 @@ export class EmployeeListComponent implements OnInit {
     this.http.post(url_, {}, this.fauth.getHeaders()).subscribe((data) => {
       this.usersList = data;
       this.loader.stop();
+
+
+      setTimeout(function () {
+        $("#example1").DataTable({
+          "responsive": true,
+          "autoWidth": false,
+        });
+      }, 1000)
+
     });
-    
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
+
 
 
 

@@ -57,20 +57,13 @@
       <td class="sorting_1">{{user.first_name}} {{user.last_name}}</td>
       <td class="hidden-xs hidden-sm">{{user.department}}</td>
       <td class="hidden-xs hidden-sm">{{user.status}}</td>
-      <td style="text-align: center;"><button style="width: 80%;border-radius: 25px;" CLASS="btn btn-sm btn-primary">View</button></td>
+      <td style="text-align: center;"><button [routerLink]="['/members/userView','add']"   style="width: 80%;border-radius: 25px;"
+         CLASS="btn btn-sm btn-primary">View</button></td>
     </tr> 
              
              
               </tbody>
-              <tfoot>
-                <tr>
-                  <th class="hidden-xs hidden-sm">User id</th>
-                  <th>Full Name</th>
-                  <th class="hidden-xs hidden-sm">Department</th>
-                  <th class="hidden-xs hidden-sm">Status</th>
-                  <th>View/Edit</th>
-                </tr>
-              </tfoot>
+              
             </table>
           </div>
           <!-- /.card-body -->
