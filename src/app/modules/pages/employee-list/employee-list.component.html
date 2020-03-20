@@ -57,7 +57,7 @@
       <td class="sorting_1">{{user.first_name}} {{user.last_name}}</td>
       <td class="hidden-xs hidden-sm">{{user.department}}</td>
       <td class="hidden-xs hidden-sm">{{user.status}}</td>
-      <td style="text-align: center;"><button [routerLink]="['/members/userView','add']"   style="width: 80%;border-radius: 25px;"
+      <td style="text-align: center;"><button [routerLink]="['/members/userView',user.id]"   style="width: 80%;border-radius: 25px;"
          CLASS="btn btn-sm btn-primary">View</button></td>
     </tr> 
              

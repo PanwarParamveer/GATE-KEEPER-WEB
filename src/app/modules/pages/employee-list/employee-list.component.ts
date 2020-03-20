@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AuthServiceService } from '../../auth/auth-service.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../../services/userService/user.service';
 
 declare var $;
 
@@ -15,28 +16,27 @@ declare var $;
 })
 export class EmployeeListComponent implements OnInit {
   public usersList: any;
-  constructor(private fauth: AuthServiceService,
-    private http: HttpClient, private loader: NgxUiLoaderService) { }
+  constructor(private userService: UserService, private loader: NgxUiLoaderService) { }
 
   ngOnInit() {
-    const url_ = environment.serviceUrl + '/companyApi/company/getListofUsers';
+
     this.loader.start();
-    this.http.post(url_, {}, this.fauth.getHeaders()).subscribe((data) => {
+    this.userService.getListOfUsers().subscribe(data => {
       this.usersList = data;
       this.loader.stop();
-
+    }, error => {
+      alert(error.message);
+    }, () => {
 
       setTimeout(function () {
         $("#example1").DataTable({
           "responsive": true,
           "autoWidth": false,
         });
-      }, 1000)
+      }, 300)
+      this.loader.stop();
 
     });
-
-
-
 
 
   }
