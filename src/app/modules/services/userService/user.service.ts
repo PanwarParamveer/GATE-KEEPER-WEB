@@ -7,23 +7,27 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Injectable({
   providedIn: 'root'
 })
+
+
+ 
+
 export class UserService {
-  
 
-
+  // tslint:disable-next-line:variable-name
   private getListofUsers_api = environment.serviceUrl + '/companyApi/company/getListofUsers';
+  // tslint:disable-next-line:variable-name
   private getUserDetailsById_api = environment.serviceUrl + '/companyApi/company/getUserDetailsById';
 
   constructor(private fauth: AuthServiceService,
-    private http: HttpClient, private loader: NgxUiLoaderService) { }
+              private http: HttpClient, private loader: NgxUiLoaderService) { }
 
   getListOfUsers() {
    return this.http.post(this.getListofUsers_api, {}, this.fauth.getHeaders());
   }
 
 
-  getUserById(id:string) {
-    return this.http.post(this.getUserDetailsById_api, {userId:id}, this.fauth.getHeaders());
+  getUserById(id: string) {
+    return this.http.post(this.getUserDetailsById_api, {userId: id}, this.fauth.getHeaders());
   }
 
 }
