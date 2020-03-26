@@ -19,7 +19,10 @@ export class UserViewComponent implements OnInit {
 
   public editMode: any;
   public disableInputs = false;
-  constructor(private routerParams: ActivatedRoute, private userService: UserService, private loader: NgxUiLoaderService) { }
+  constructor(private router: Router,
+              private routerParams: ActivatedRoute,
+              private userService: UserService,
+              private loader: NgxUiLoaderService) { }
 
   public userId: any;
   public userDetails: any = {};
@@ -59,17 +62,31 @@ export class UserViewComponent implements OnInit {
     this.editMode = false;
   }
 
-  update(frm) {
-    // tslint:disable-next-line:no-debugger
+
+
+  userFromSubmit(frm) {
     debugger;
     this.loader.start();
-    frm.value.user_sys_id = this.userId;
-    this.userService.updateUserDetails(frm.value).subscribe((d) => {
-      this.loader.stop();
 
-    }, (e) => {
-      alert(e.message);
-    });
+    if (this.userId === 'add') {
+      this.userService.createNewUser(frm.value).subscribe((d) => {
+        alert(d);
+        this.router.navigate(['/members/users']);
+        this.loader.stop();
+      }, (e) => {
+        alert(e.message);
+        this.loader.stop();
+      });
+    } else {
+      frm.value.user_sys_id = this.userId;
+      this.userService.updateUserDetails(frm.value).subscribe((d) => {
+        alert(d);
+        this.loader.stop();
+      }, (e) => {
+        alert(e.message);
+        this.loader.stop();
+      });
+    }
   }
 
 }

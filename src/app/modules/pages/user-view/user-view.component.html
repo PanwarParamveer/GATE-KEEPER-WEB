@@ -19,7 +19,7 @@
 <!-- Main content -->
 <section class="content">
 
-  <form #userForm="ngForm" (ngSubmit)="update(userForm)">
+  <form #userForm="ngForm" (ngSubmit)="userFromSubmit(userForm)">
 
 
     <div class="box box-primary">
@@ -259,7 +259,7 @@
       </div>
 
       <div class="box-footer text-center">
-        <button *ngIf="userId=='add'"  type="submit" class="btn btn-success buttonStyle">Add New User</button>
+        <button *ngIf="userId=='add'"  type="submit"  class="btn btn-success buttonStyle">Add New User</button>
         <button *ngIf="userId!='add' && editMode==true" type="submit" class="btn btn-success buttonStyle">Update Details</button>     
         <button *ngIf="userId!='add' && editMode!=true" (click)="editMode_click()" type="button" class="btn btn-danger buttonStyle">Edit Details</button>
         <button *ngIf="userId!='add'  && editMode==true" (click)="cancel_click()" type="button" class="btn btn-danger buttonStyle">Cancel Edit</button>

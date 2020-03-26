@@ -21,9 +21,9 @@ export class AuthServiceService {
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
-    private router: Router,private http : HttpClient,
+    private router: Router, private http: HttpClient,
     private ngxService: NgxUiLoaderService
-    ) {
+  ) {
 
 
 
@@ -50,7 +50,6 @@ export class AuthServiceService {
         this.eventAuthError.next(error);
       })
       .then(userCredential => {
-       
         this.ngxService.stop();
         if (userCredential) {
 
@@ -63,7 +62,7 @@ export class AuthServiceService {
           });
 
 
-         
+
         }
       });
   }
@@ -73,7 +72,7 @@ export class AuthServiceService {
     this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(userCredential => {
 
-        userCredential.user.getIdToken().then(token=>{
+        userCredential.user.getIdToken().then(token => {
 
           const httpOptions = {
             headers: new HttpHeaders({
@@ -82,17 +81,17 @@ export class AuthServiceService {
             })
           };
 
-          this.http.post(environment.serviceUrl + '/companyApi/company/createAccount',user, httpOptions)
-          .subscribe(res => {
-            this.ngxService.stop();
-            this.afAuth.auth.signOut();
-          });
+          this.http.post(environment.serviceUrl + '/companyApi/company/createAccount', user, httpOptions)
+            .subscribe(res => {
+              this.ngxService.stop();
+              this.afAuth.auth.signOut();
+            });
 
         }).catch(error => {
           this.ngxService.stop();
           this.eventAuthError.next(error);
         });
-       
+
       })
       .catch(error => {
         this.ngxService.stop();

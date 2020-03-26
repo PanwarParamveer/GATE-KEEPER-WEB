@@ -19,6 +19,7 @@ export class UserService {
   // tslint:disable-next-line:variable-name
   private updateUserDetails_api = environment.serviceUrl + '/userApi/user/updateUserDtl';
 
+  private addNewUserApi = environment.serviceUrl + '/userApi/user/addUser';
   constructor(private fauth: AuthServiceService,
               private http: HttpClient, private loader: NgxUiLoaderService) { }
 
@@ -36,5 +37,8 @@ export class UserService {
     return this.http.post<IUser>(this.updateUserDetails_api, details, this.fauth.getHeaders());
   }
 
+  createNewUser(details: any): Observable<IUser> {
+    return this.http.post<IUser>(this.addNewUserApi, details, this.fauth.getHeaders());
+  }
 
 }
