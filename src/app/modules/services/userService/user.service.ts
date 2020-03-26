@@ -3,31 +3,38 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthServiceService } from '../../auth/auth-service.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { IUser } from '../../myInterface/Iuser';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
-
- 
-
 export class UserService {
 
   // tslint:disable-next-line:variable-name
-  private getListofUsers_api = environment.serviceUrl + '/companyApi/company/getListofUsers';
+  private getListofUsers_api = environment.serviceUrl + '/userApi/user/getListofUsers';
   // tslint:disable-next-line:variable-name
-  private getUserDetailsById_api = environment.serviceUrl + '/companyApi/company/getUserDetailsById';
+  private getUserDetailsById_api = environment.serviceUrl + '/userApi/user/getUserDetailsById';
+  // tslint:disable-next-line:variable-name
+  private updateUserDetails_api = environment.serviceUrl + '/userApi/user/updateUserDtl';
 
   constructor(private fauth: AuthServiceService,
               private http: HttpClient, private loader: NgxUiLoaderService) { }
 
-  getListOfUsers() {
-   return this.http.post(this.getListofUsers_api, {}, this.fauth.getHeaders());
+  getListOfUsers(): Observable<IUser[]> {
+   return this.http.post<IUser[]> (this.getListofUsers_api, {}, this.fauth.getHeaders() );
   }
 
 
-  getUserById(id: string) {
-    return this.http.post(this.getUserDetailsById_api, {userId: id}, this.fauth.getHeaders());
+  getUserById(id: string): Observable<IUser> {
+    return this.http.post<IUser>(this.getUserDetailsById_api, {userId: id}, this.fauth.getHeaders());
   }
+
+
+  updateUserDetails(details: any): Observable<IUser> {
+    return this.http.post<IUser>(this.updateUserDetails_api, details, this.fauth.getHeaders());
+  }
+
 
 }

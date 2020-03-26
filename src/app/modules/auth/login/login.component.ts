@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.authError= '';
+    this.authError = '';
     $('body').addClass('hold-transition login-page');
     $(() => {
       $('input').iCheck({
