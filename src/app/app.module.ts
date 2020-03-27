@@ -34,13 +34,12 @@ import { ToastrModule } from 'ngx-toastr';
     NgxUiLoaderRouterModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(
-
       {
         timeOut: 5000,
-        positionClass: 'toast-top-center',
-        progressBar: true,
-        progressAnimation: 'increasing',  
+        positionClass: 'toast-top-center',        
+        enableHtml: true,      
         preventDuplicates: true,
+        closeButton: true
       }
     )
   ],

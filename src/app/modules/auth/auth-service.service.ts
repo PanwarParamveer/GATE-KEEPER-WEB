@@ -58,7 +58,7 @@ export class AuthServiceService {
 
           userCredential.user.getIdToken(true).then(token => {
             localStorage.setItem('token', token.toString());
-            this.toastr.success('Welcome ' + this.afAuth.auth.currentUser.displayName, 'Welcome');
+            this.toastr.info('Welcome ' + this.afAuth.auth.currentUser.displayName, 'Welcome');
             this.router.navigate(['/members']);
           }).catch((e) => {
             this.router.navigate(['/login']);

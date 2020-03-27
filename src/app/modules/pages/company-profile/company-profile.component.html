@@ -1,4 +1,14 @@
   <!-- Main content -->
+  <style>
+    .buttonStyle {
+        box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
+        border-radius: 25px;
+       margin-left: 15px;
+       margin-right: 15px;
+    }
+    
+    </style>
+  
   <section class="content">
   
     <form #OrgForm="ngForm" (ngSubmit)="update(OrgForm)">
@@ -167,10 +177,10 @@
         <div class="box-footer text-center">
         
        
-          <button *ngIf="editMode" [disabled]="!editMode" type="submit"  class="btn btn-success">Update Details</button>
-          <button *ngIf="!editMode" (click)="editMode_click()" type="button"  class="btn btn-danger">Edit Details</button>
+          <button *ngIf="editMode" [disabled]="!editMode" type="submit"  class="btn btn-success buttonStyle">Update Details</button>
+          <button *ngIf="!editMode" (click)="editMode_click()" type="button"  class="btn btn-danger buttonStyle">Edit Details</button>
           
-          <button *ngIf="editMode" (click)="cancel_click()"  type="button"  class="btn btn-danger">Cancel Edit</button>
+          <button *ngIf="editMode" (click)="cancel_click()"  type="button"  class="btn btn-danger buttonStyle">Cancel Edit</button>
    
         </div>
 
