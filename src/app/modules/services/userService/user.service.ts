@@ -33,12 +33,12 @@ export class UserService {
   }
 
 
-  updateUserDetails(details: any): Observable<IUser> {
-    return this.http.post<IUser>(this.updateUserDetails_api, details, this.fauth.getHeaders());
+  updateUserDetails(details: any) {
+    return this.http.post<string>(this.updateUserDetails_api, details, this.fauth.getHeaders());
   }
 
-  createNewUser(details: any): Observable<IUser> {
-    return this.http.post<IUser>(this.addNewUserApi, details, this.fauth.getHeaders());
+  createNewUser(details: any) {
+    return this.http.post<string>(this.addNewUserApi, details, this.fauth.getHeaders());
   }
 
 }

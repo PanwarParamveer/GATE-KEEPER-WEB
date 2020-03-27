@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {LayoutModule} from './modules/layout/layout.module';
+import { LayoutModule } from './modules/layout/layout.module';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,24 @@ import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FormsModule, 
-    HttpClientModule ,
+    FormsModule,
+    HttpClientModule,
     NgxUiLoaderModule,
-    NgxUiLoaderRouterModule
+    NgxUiLoaderRouterModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+
+      {
+        timeOut: 5000,
+        positionClass: 'toast-top-center',
+        progressBar: true,
+        progressAnimation: 'increasing',  
+        preventDuplicates: true,
+      }
+    )
   ],
-  providers: [ AngularFireAuthGuard
-],
+  providers: [AngularFireAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import { UserService } from '../../services/userService/user.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { IUser } from '../../myInterface/Iuser';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-view',
@@ -20,9 +21,11 @@ export class UserViewComponent implements OnInit {
   public editMode: any;
   public disableInputs = false;
   constructor(private router: Router,
-              private routerParams: ActivatedRoute,
-              private userService: UserService,
-              private loader: NgxUiLoaderService) { }
+    private routerParams: ActivatedRoute,
+    private userService: UserService,
+    private loader: NgxUiLoaderService,
+    private toastr: ToastrService
+  ) { }
 
   public userId: any;
   public userDetails: any = {};
@@ -65,25 +68,25 @@ export class UserViewComponent implements OnInit {
 
 
   userFromSubmit(frm) {
-    debugger;
+
     this.loader.start();
 
     if (this.userId === 'add') {
       this.userService.createNewUser(frm.value).subscribe((d) => {
-        alert(d);
+        this.toastr.success(d, 'Success');
         this.router.navigate(['/members/users']);
         this.loader.stop();
       }, (e) => {
-        alert(e.message);
+        this.toastr.error(e.message, 'Error');
         this.loader.stop();
       });
     } else {
       frm.value.user_sys_id = this.userId;
       this.userService.updateUserDetails(frm.value).subscribe((d) => {
-        alert(d);
+        this.toastr.success(d, 'Success');
         this.loader.stop();
       }, (e) => {
-        alert(e.message);
+        this.toastr.error(e.message, 'Error');
         this.loader.stop();
       });
     }

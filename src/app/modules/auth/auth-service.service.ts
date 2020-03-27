@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +23,8 @@ export class AuthServiceService {
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
     private router: Router, private http: HttpClient,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private toastr: ToastrService
   ) {
 
 
@@ -56,6 +58,7 @@ export class AuthServiceService {
 
           userCredential.user.getIdToken(true).then(token => {
             localStorage.setItem('token', token.toString());
+            this.toastr.success('Welcome ' + this.afAuth.auth.currentUser.displayName, 'Welcome');
             this.router.navigate(['/members']);
           }).catch((e) => {
             this.router.navigate(['/login']);
