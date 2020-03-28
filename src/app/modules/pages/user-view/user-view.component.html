@@ -9,7 +9,7 @@
 <!-- Main content -->
 <section class="content">
 
-  <form #userForm="ngForm" (ngSubmit)="userFromSubmit(userForm)">
+  <form #userForm="ngForm" name="form" (ngSubmit)="userForm.form.valid && onSubmit()" novalidate> 
 
 
     <div class="box box-primary">
@@ -40,70 +40,99 @@
           <div class="col col-sm-12 col-lg-8">
             <div class="row">
 
-
               <div class="col col-sm-12 col-lg-4">
-                <div class="form-group">
+                <div class="form-group"   [ngClass]="{ 'has-error': userForm.submitted && first_name.invalid }">
                   <label>First Name</label>
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-user"></i>
                     </div>
-                    <input [disabled]="disableInputs" name="first_name" [(ngModel)]="userDetails.first_name" type="text"
-                      class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                    <input [disabled]="disableInputs" #first_name="ngModel" 
+                    name="first_name" [(ngModel)]="userDetails.first_name" 
+                    type="text"
+                      class="form-control"
+               
+                      [ngClass]="{ 'is-invalid': userForm.submitted && first_name.invalid }" required
+                      >
+                     
                   </div>
+                  <span *ngIf="userForm.submitted && first_name.invalid" class="invalid-feedback">
+                    <span class="text-danger" *ngIf="first_name.errors.required">First Name required</span>
+                  </span>
                   <!-- /.input group -->
                 </div>
               </div>
 
 
               <div class="col col-sm-12 col-lg-4">
-                <div class="form-group">
+                <div class="form-group"   [ngClass]="{ 'has-error': userForm.submitted && middle_name.invalid }">
                   <label>Middle Name</label>
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-user"></i>
                     </div>
-                    <input [disabled]="disableInputs" name="middle_name" [(ngModel)]="userDetails.middle_name"
-                      type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                    <input [disabled]="disableInputs" #middle_name="ngModel" 
+                    name="middle_name" [(ngModel)]="userDetails.middle_name" 
+                    type="text"
+                      class="form-control"               
+                      [ngClass]="{ 'is-invalid': userForm.submitted && middle_name.invalid }" required>                     
                   </div>
+                  <span *ngIf="userForm.submitted && middle_name.invalid" class="invalid-feedback">
+                    <span class="text-danger" *ngIf="middle_name.errors.required">Middle Name required</span>
+                </span>
                   <!-- /.input group -->
                 </div>
               </div>
 
+             
               <div class="col col-sm-12 col-lg-4">
-                <div class="form-group">
+                <div class="form-group"   [ngClass]="{ 'has-error': userForm.submitted && last_name.invalid }">
                   <label>Last Name</label>
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-user"></i>
                     </div>
-                    <input [disabled]="disableInputs" name="last_name" [(ngModel)]="userDetails.last_name" type="text"
-                      class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                    <input [disabled]="disableInputs" #last_name="ngModel" 
+                    name="last_name" [(ngModel)]="userDetails.last_name" 
+                    type="text"
+                      class="form-control"
+               
+                      [ngClass]="{ 'is-invalid': userForm.submitted && last_name.invalid }" required>
+                     
                   </div>
+                  <span *ngIf="userForm.submitted && last_name.invalid" class="invalid-feedback">
+                    <span class="text-danger" *ngIf="last_name.errors.required">Last Name required</span>
+                </span>
                   <!-- /.input group -->
                 </div>
               </div>
-
-
+            </div>
+             
+            <div class="row">
               <div class="col col-sm-4 col-lg-4">
-                <div class="form-group">
+                <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && dob.invalid }">
                   <label>DOB</label>
 
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-calendar" aria-hidden="true"></i>
                     </div>
-                    <input [disabled]="disableInputs" type="date" ngModel #dob="ngModel" name="dob"
-                      [(ngModel)]="userDetails.dob" required id="dob" class="form-control"
-                      ng-model="userDetails.dob | date:'dd/MMM/yyyy'">
+                    <input [disabled]="disableInputs" type="date"  #dob="ngModel" name="dob"
+                      [(ngModel)]="userDetails.dob"  id="dob" class="form-control"
+                      ng-model="userDetails.dob | date:'dd/MMM/yyyy'"
+                      [ngClass]="{ 'is-invalid': userForm.submitted && dob.invalid }" required date
+                      >
                   </div>
+                  <div *ngIf="userForm.submitted && dob.invalid" class="invalid-feedback">
+                    <div class="text-danger" *ngIf="dob.errors.required" >Date of birth required</div>
+                </div>
                   <!-- /.input group -->
                 </div>
               </div>
 
 
               <div class="col col-sm-4 col-lg-4">
-                <div class="form-group">
+                <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && gender.invalid }" >
                   <label>Gender</label>
 
                   <div class="input-group">
@@ -112,34 +141,40 @@
                     </div>
                     <select [disabled]="disableInputs" ngModel #gender="ngModel" name="gender"
                       [(ngModel)]="userDetails.gender" required id="gender"
-                      class="form-control select2 select2-hidden-accessible" required style="width: 100%;" tabindex="-1"
+                      class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1"
                       aria-hidden="true">
                       <option>Male</option>
                       <option>Female</option>
                       <option>Other</option>
                     </select>
                   </div>
+                  <div *ngIf="userForm.submitted && gender.invalid" class="invalid-feedback">
+                    <div class="text-danger" *ngIf="gender.errors.required">Gender required</div>
+                </div>
                   <!-- /.input group -->
                 </div>
               </div>
 
 
               <div class="col col-sm-4 col-lg-4">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && status.invalid }">
                   <label>Status</label>
 
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-check-circle" aria-hidden="true"></i>
                     </div>
-                    <select [disabled]="disableInputs" ngModel #status="ngModel" [(ngModel)]="userDetails.status"
-                      name="status" required id="status" class="form-control select2 select2-hidden-accessible" required
+                    <select [disabled]="disableInputs"   #status="ngModel" [(ngModel)]="userDetails.status"
+                      name="status" required id="status" class="form-control select2 select2-hidden-accessible" 
                       style="width: 100%;" tabindex="-1" aria-hidden="true">
                       <option value="true">Active</option>
                       <option value="false">In-Active</option>
 
                     </select>
                   </div>
+                  <div *ngIf="userForm.submitted && status.invalid" class="invalid-feedback">
+                    <div class="text-danger" *ngIf="status.errors.required">Status required</div>
+                </div>
                   <!-- /.input group -->
                 </div>
               </div>
@@ -150,29 +185,41 @@
         <div class="row">
 
           <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && email.invalid }">
               <label> Email</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-envelope-o" aria-hidden="true"></i>
                 </div>
-                <input [disabled]="disableInputs" name="email" [(ngModel)]="userDetails.email" type="email"
+                <input [disabled]="disableInputs" required email #email="ngModel" name="email" 
+                [(ngModel)]="userDetails.email" 
                   class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
+              <div *ngIf="userForm.submitted && email.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="email.errors.required">Valid Eamil required</div>
+            </div>
+
               <!-- /.input group -->
             </div>
           </div>
 
           <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && primary_contact.invalid }">
               <label> Primary Contact</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-phone"></i>
                 </div>
-                <input [disabled]="disableInputs" name="primary_contact" [(ngModel)]="userDetails.primary_contact"
+                <input [disabled]="disableInputs" required number #primary_contact="ngModel"  name="primary_contact" 
+                [(ngModel)]="userDetails.primary_contact"
                   type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
+
+
+              <div *ngIf="userForm.submitted && primary_contact.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="primary_contact.errors.required">Primary Contact required</div>
+            </div>
+
               <!-- /.input group -->
             </div>
           </div>
@@ -184,7 +231,8 @@
                 <div class="input-group-addon">
                   <i class="fa fa-phone"></i>
                 </div>
-                <input [disabled]="disableInputs" name="secondary_contact" [(ngModel)]="userDetails.secondary_contact"
+                <input [disabled]="disableInputs" required number name="secondary_contact"
+                 [(ngModel)]="userDetails.secondary_contact"
                   type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
@@ -193,57 +241,85 @@
 
 
           <div class="col col-sm-12 col-lg-12">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && address.invalid }">
               <label>Address</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-address-book"></i>
                 </div>
-                <input [disabled]="disableInputs" name="address" [(ngModel)]="userDetails.address" type="text"
+                <input [disabled]="disableInputs" name="address" required #address="ngModel" [(ngModel)]="userDetails.address" type="text"
                   class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
+
+              <div *ngIf="userForm.submitted && address.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="address.errors.required">Address required</div>
+            </div>
+
               <!-- /.input group -->
             </div>
           </div>
+
+
           <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
+            <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && city.invalid }">
               <label>City</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-address-book"></i>
                 </div>
-                <input [disabled]="disableInputs" name="city" [(ngModel)]="userDetails.city" type="text"
+                <input [disabled]="disableInputs" required #city="ngModel" name="city" [(ngModel)]="userDetails.city" type="text"
                   class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
+
+              <div *ngIf="userForm.submitted && city.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="city.errors.required">City required</div>
+            </div>
               <!-- /.input group -->
             </div>
           </div>
+
+
           <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && state.invalid }">
               <label>State</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-address-book"></i>
                 </div>
-                <input [disabled]="disableInputs" name="state" [(ngModel)]="userDetails.state" type="text"
+                <input [disabled]="disableInputs" required #state="ngModel" name="state" [(ngModel)]="userDetails.state" type="text"
                   class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
+
+              <div *ngIf="userForm.submitted && state.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="state.errors.required">State required</div>
+            </div>
+
               <!-- /.input group -->
             </div>
           </div>
+
+
           <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
+            <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && zip_code.invalid }">
               <label>Zip Code</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-address-book"></i>
                 </div>
-                <input [disabled]="disableInputs" name="zip_code" [(ngModel)]="userDetails.zip_code" type="text"
+                <input [disabled]="disableInputs" required #zip_code="ngModel" name="zip_code"
+                 [(ngModel)]="userDetails.zip_code" type="text"
                   class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
+
+              <div *ngIf="userForm.submitted && zip_code.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="zip_code.errors.required">Zip code required</div>
+            </div>
+
               <!-- /.input group -->
             </div>
           </div>
+
+
         </div>
         <!-- /input-group -->
       </div>

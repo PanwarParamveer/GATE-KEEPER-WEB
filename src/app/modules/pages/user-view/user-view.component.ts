@@ -21,19 +21,19 @@ export class UserViewComponent implements OnInit {
   public editMode: any;
   public disableInputs = false;
   constructor(private router: Router,
-    private routerParams: ActivatedRoute,
-    private userService: UserService,
-    private loader: NgxUiLoaderService,
-    private toastr: ToastrService
+              private routerParams: ActivatedRoute,
+              private userService: UserService,
+              private loader: NgxUiLoaderService,
+              private toastr: ToastrService
   ) { }
 
   public userId: any;
-  public userDetails: any = {};
-
+  // public userDetails: any = {};
+  userDetails: any = {};
   ngOnInit() {
     // tslint:disable-next-line:no-unused-expression
     // tslint:disable-next-line:no-debugger
-    debugger;
+
     this.userId = this.routerParams.snapshot.paramMap.get('id');
 
     if (this.userId === 'add') {
@@ -55,7 +55,28 @@ export class UserViewComponent implements OnInit {
     }
   }
 
-
+  onSubmit() {
+    this.loader.start();
+    if (this.userId === 'add') {
+      this.userService.createNewUser(this.userDetails).subscribe((d) => {
+        this.toastr.success(d, 'Success');
+        this.router.navigate(['/members/users']);
+        this.loader.stop();
+      }, (e) => {
+        this.toastr.error(e.message, 'Error');
+        this.loader.stop();
+      });
+    } else {
+      this.userDetails.user_sys_id = this.userId;
+      this.userService.updateUserDetails(this.userDetails).subscribe((d) => {
+        this.toastr.success(d, 'Success');
+        this.loader.stop();
+      }, (e) => {
+        this.toastr.error(e.message, 'Error');
+        this.loader.stop();
+      });
+    }
+  }
   editMode_click() {
     this.disableInputs = false;
     this.editMode = true;
@@ -65,31 +86,5 @@ export class UserViewComponent implements OnInit {
     this.editMode = false;
   }
 
-
-
-  userFromSubmit(frm) {
-
-    this.loader.start();
-
-    if (this.userId === 'add') {
-      this.userService.createNewUser(frm.value).subscribe((d) => {
-        this.toastr.success(d, 'Success');
-        this.router.navigate(['/members/users']);
-        this.loader.stop();
-      }, (e) => {
-        this.toastr.error(e.message, 'Error');
-        this.loader.stop();
-      });
-    } else {
-      frm.value.user_sys_id = this.userId;
-      this.userService.updateUserDetails(frm.value).subscribe((d) => {
-        this.toastr.success(d, 'Success');
-        this.loader.stop();
-      }, (e) => {
-        this.toastr.error(e.message, 'Error');
-        this.loader.stop();
-      });
-    }
-  }
 
 }

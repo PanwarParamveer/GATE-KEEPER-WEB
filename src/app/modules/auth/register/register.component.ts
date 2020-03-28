@@ -54,6 +54,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   createUser(frm) {
 
+
     if (frm.value.first_name == '') {
       this.authError = { message: 'Enter your first name' };
       return;
