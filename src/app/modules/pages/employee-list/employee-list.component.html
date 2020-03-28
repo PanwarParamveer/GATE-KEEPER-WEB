@@ -8,7 +8,7 @@
   <span style="margin-top: -25px;" class="pull-right">
       <a style="border-radius: 30px; " [routerLink]="['/members/userView','add']"  
      
-       class="btn btn-block btn-social btn-dropbox">
+       class="btn btn-block btn-social btn-dropbox button_Style">
         <i class="fa fa-plus"></i> Add New User
       </a>
    
@@ -51,8 +51,8 @@
       <td class="sorting_1">{{user.first_name}} {{user.last_name}}</td>
       <td class="hidden-xs hidden-sm">{{user.department}}</td>
       <td class="hidden-xs hidden-sm">{{user.status}}</td>
-      <td style="text-align: center;"><button [routerLink]="['/members/userView',user.id]"   style="width: 80%;border-radius: 25px;"
-         CLASS="btn btn-sm btn-primary">View</button></td>
+      <td style="text-align: center;"><button [routerLink]="['/members/userView',user.id]"   style="width: 50%;border-radius: 25px;"
+         CLASS="btn btn-sm btn-primary button_Style">View</button></td>
     </tr> 
              
              

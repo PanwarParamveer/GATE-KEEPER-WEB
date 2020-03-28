@@ -9,8 +9,11 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
-  styleUrls: ['./company-profile.component.scss']
+  styleUrls: ['./company-profile.component.scss'],
+
 })
+
+
 export class CompanyProfileComponent implements OnInit {
   public cDetails: any = {};
   public editMode = false;
