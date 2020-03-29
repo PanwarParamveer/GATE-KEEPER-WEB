@@ -20,6 +20,12 @@ export class UserService {
   private updateUserDetails_api = environment.serviceUrl + '/userApi/user/updateUserDtl';
 
   private addNewUserApi = environment.serviceUrl + '/userApi/user/addUser';
+
+  private getListofUsersNameIds = environment.serviceUrl + '/userApi/user/getListofUsersNameIds';
+
+  private getUserAttendance = environment.serviceUrl + '/userApi/user/getUserAttendance';
+
+
   constructor(private fauth: AuthServiceService,
               private http: HttpClient, private loader: NgxUiLoaderService) { }
 
@@ -32,6 +38,16 @@ export class UserService {
     return this.http.post<IUser>(this.getUserDetailsById_api, {userId: id}, this.fauth.getHeaders());
   }
 
+  getUserName_Ids() {
+    return this.http.post<IUser>(this.getListofUsersNameIds, {}, this.fauth.getHeaders());
+  }
+
+  getUsersAttendance(data: any) {
+    return this.http.post(this.getUserAttendance, {}, this.fauth.getHeaders());
+  }
+
+
+  
 
   updateUserDetails(details: any) {
     return this.http.post<string>(this.updateUserDetails_api, details, this.fauth.getHeaders());

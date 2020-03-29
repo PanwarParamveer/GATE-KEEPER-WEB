@@ -1,1 +1,140 @@
-<p>attendace works!</p>
+<section class="content-header">
+  <h1>
+    Attendance Report
+  </h1>
+
+</section>
+
+
+
+<br>
+
+<section class="content">
+
+  <!-- Default box -->
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <form #sForm="ngForm" name="form" (ngSubmit)="sForm.form.valid && onSubmit()" novalidate>
+
+        <div class="row">
+          <div class="col col-sm-3 col-md-3 col-lg-3">
+            <div class="form-group" [ngClass]="{ 'has-error': sForm.submitted && sDate.invalid }">
+              <label>Start Date</label>
+
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+                <input type="date" #sDate="ngModel" name="sDate" [(ngModel)]="sDetails.sDate" id="sDate"
+                  class="form-control" ng-model="sDetails.sDate | date:'dd/MMM/yyyy'"
+                  [ngClass]="{ 'is-invalid': sForm.submitted && sDate.invalid }" required date>
+              </div>
+              <div *ngIf="sForm.submitted && sDate.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="sDate.errors.required">Start date required</div>
+              </div>
+              <!-- /.input group -->
+            </div>
+          </div>
+          <div class="col col-sm-3  col-md-3 col-lg-3">
+            <div class="form-group" [ngClass]="{ 'has-error': sForm.submitted && eDate.invalid }">
+              <label>End Date</label>
+
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+                <input type="date" #eDate="ngModel" name="eDate" [(ngModel)]="sDetails.eDate" id="eDate"
+                  class="form-control" ng-model="sDetails.eDate | date:'dd/MMM/yyyy'"
+                  [ngClass]="{ 'is-invalid': sForm.submitted && eDate.invalid }" required date>
+              </div>
+              <div *ngIf="sForm.submitted && eDate.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="eDate.errors.required">End date required</div>
+              </div>
+              <!-- /.input group -->
+            </div>
+          </div>
+
+          <div class="col col-sm-3  col-md-3 col-lg-3">
+            <div class="form-group" >
+              <label>User Name</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-genderless" aria-hidden="true"></i>
+                </div>
+                <select  #userName="ngModel" name="userName" [(ngModel)]="sDetails.userName" 
+                  id="userName" class="form-control select2" style="width: 100%;"
+                  tabindex="-1" aria-hidden="true">
+                  
+
+                  <option value="ALL" selected="selected">ALL</option>
+                  <option value={{user.id}} *ngFor="let user of drpDetails">{{user.name}}</option>    
+                </select>
+              </div>
+              <!-- <div *ngIf="sForm.submitted && userName.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="userName.errors.required">User name required</div>
+              </div> -->
+              <!-- /.input group -->
+            </div>
+          </div>
+
+
+          <div style="text-align: center;" class="col col-sm-3  col-md-3 col-lg-3">
+           
+            <button style="width: 60%;margin-top: 25px; " class="btn btn-primary button_Style" type="submit"> Get Report </button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="box-body">
+
+      <div class="card">
+
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>User id</th>
+                <th>Full Name</th>
+                <th>Department</th>
+                <th class="hidden-xs hidden-sm">Status</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr role="row" *ngFor="let attendance of attendanceDtl">
+                <td class="sorting_1">{{attendance.log_date_time}}</td>
+                <td class="sorting_1">{{attendance.log_date_time}}</td>
+                <td class="sorting_1">{{attendance.log_date_time}}</td>
+                <td class="hidden-xs hidden-sm">{{attendance.log_date_time | date:'dd-MMM-yyyy'}}</td>
+                
+              </tr>
+
+
+            </tbody>
+
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+
+    </div>
+    <!-- /.box-footer-->
+  </div>
+  <!-- /.box -->
+
+</section>
