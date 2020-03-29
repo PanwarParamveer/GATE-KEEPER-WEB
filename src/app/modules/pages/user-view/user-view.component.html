@@ -24,15 +24,15 @@
           <div class="col col-sm-12 col-lg-4">
             <div class="widget-user-image text-center">
 
-              <img *ngIf="editMode==false" class="img-circle" style="width: 60%;"
-                src="https://firebasestorage.googleapis.com/v0/b/userloginaccessmanagementdev.appspot.com/o/users_profile_photo%2FdefalutProfile.png?alt=media&token=7bc776eb-9913-4436-bc5c-e9567e2cd158"
-                alt="User Avatar">
 
-              <img *ngIf="editMode==true" class="img-circle" style="width: 60%;" src="{{userDetails.profile_photo}}"
-                alt="User Avatar">
-
+              <img class="img-circle" style="width: 40%;" *ngIf="userDetails.profile_photo" alt="Profile Photo" 
+              src={{userDetails.profile_photo}}>
+              <img class="img-circle" style="width: 40%;" *ngIf="!userDetails.profile_photo"   
+              src="/assets/img/addImageDefault.png" alt="Profile Photo">
 
 
+                <br>
+                <label>Profile Photo</label>
             </div>
           </div>
 
@@ -231,7 +231,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-phone"></i>
                 </div>
-                <input [disabled]="disableInputs" required number name="secondary_contact"
+                <input [disabled]="disableInputs"  number name="secondary_contact"
                  [(ngModel)]="userDetails.secondary_contact"
                   type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>

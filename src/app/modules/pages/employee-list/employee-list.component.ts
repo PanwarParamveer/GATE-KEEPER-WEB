@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EmployeeService } from '../../services/employee.service';
-import { environment } from 'src/environments/environment';
-import { AuthServiceService } from '../../auth/auth-service.service';
+
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { HttpClient } from '@angular/common/http';
+
 import { UserService } from '../../services/userService/user.service';
 import { IUser } from '../../myInterface/Iuser';
 

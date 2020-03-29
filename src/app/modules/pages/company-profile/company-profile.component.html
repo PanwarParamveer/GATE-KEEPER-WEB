@@ -3,11 +3,12 @@
   
   <section class="content">
   
-    <form #OrgForm="ngForm" (ngSubmit)="update(OrgForm)">
+    <!-- <form #OrgForm="ngForm" (ngSubmit)="onSubmit(OrgForm)"> -->
+      <form #OrgForm="ngForm" name="form" (ngSubmit)="OrgForm.form.valid && onSubmit()" novalidate> 
 
 
 
-    <div class="box box-success">
+    <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Organization Profile</h3>
         </div>
@@ -18,47 +19,77 @@
 
           <div class="col col-sm-12 col-lg-4">
             <div class="widget-user-image text-center">
-                <img class="img-circle" style="width: 60%;" src={{cDetails.logo}} alt="User Avatar">
+                <img class="img-circle" style="width: 40%;" *ngIf="cDetails.logo" alt="Organization Logo" src={{cDetails.logo}}>
+                <img class="img-circle" style="width: 40%;" *ngIf="!cDetails.logo"  alt="Organization Logo" src="/assets/img/addImageDefault.png" alt="Organization Logo">
+                <br>
+                <label>  Organization Logo</label>
               </div>
+             
+              
         </div>
 
         
         <div class="col col-sm-12 col-lg-8">
 <div class="row">
                     <div class="col col-sm-12 col-lg-12">
-                        <div class="form-group">
+                        <div class="form-group"  [ngClass]="{ 'has-error': OrgForm.submitted && organization_name.invalid }">
                             <label>  Organizaion Name</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-shopping-cart"></i>
+                                    <i class="fa fa-bank"></i>
                                 </div>
-                                <input [disabled]="!editMode" id="organization_name" name="organization_name" [(ngModel)]="cDetails.organization_name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <input [disabled]="!editMode" id="organization_name"
+                                #organization_name="ngModel" required
+                                 name="organization_name" [(ngModel)]="cDetails.organization_name"
+                                  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                             </div>
+
+                            <div *ngIf="OrgForm.submitted && organization_name.invalid" class="invalid-feedback">
+                              <div class="text-danger" *ngIf="organization_name.errors.required">Organizaion Name required</div>
+                          </div>
                             <!-- /.input group -->
                         </div>
                     </div>
                     
                     <div class="col col-sm-12 col-lg-6">
-                        <div class="form-group">
+                        <div class="form-group"
+                         [ngClass]="{ 'has-error': OrgForm.submitted && organization_type.invalid }">
                             <label>Organizaion Type</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-shopping-cart"></i>
+                                    <i class="fa fa-bank"></i>
                                 </div>
-                                <input disabled name="organization_type"  [(ngModel)]="cDetails.organization_type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                <input disabled name="organization_type" 
+                                #organization_type="ngModel" required
+                                [(ngModel)]="cDetails.organization_type" type="text" 
+                                class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                             </div>
+
+                            <div *ngIf="OrgForm.submitted && organization_type.invalid" class="invalid-feedback">
+                              <div class="text-danger" *ngIf="organization_type.errors.required">Organizaion Type required</div>
+                          </div>
+
                             <!-- /.input group -->
                         </div>
                     </div>
                     <div class="col col-sm-12 col-lg-6">
-                      <div class="form-group">
+                      <div class="form-group" [ngClass]="{ 'has-error': OrgForm.submitted && short_name.invalid }">
                           <label>Organizaion Short Name</label>
                           <div class="input-group">
                               <div class="input-group-addon">
-                                  <i class="fa fa-shopping-cart"></i>
+                                  <i class="fa fa-bank"></i>
                               </div>
-                              <input [disabled]="!editMode" name="short_name"  [(ngModel)]="cDetails.short_name" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                              <input [disabled]="!editMode" name="short_name" 
+                              #short_name="ngModel" required
+                               [(ngModel)]="cDetails.short_name" type="text" 
+                               class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
                           </div>
+
+                          <div *ngIf="OrgForm.submitted && short_name.invalid" class="invalid-feedback">
+                            <div class="text-danger" *ngIf="short_name.errors.required">
+                              Organizaion Short Type required</div>
+                        </div>
+
                           <!-- /.input group -->
                       </div>
                   </div>
@@ -66,30 +97,44 @@
         </div>
         </div>
 
-        <div class="row"> 
+        <div class="row">
 
           <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{ 'has-error': OrgForm.submitted && email.invalid }">
               <label> Email</label>
               <div class="input-group">
                 <div class="input-group-addon">
-                  <i class="fa fa-user"></i>
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
                 </div>
-                <input [disabled]="!editMode" name="email"  [(ngModel)]="cDetails.email"   type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" required email #email="ngModel" name="email" 
+                [(ngModel)]="cDetails.email" 
+                  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
+              <div *ngIf="OrgForm.submitted && email.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="email.errors.required">Valid Eamil required</div>
+            </div>
+
               <!-- /.input group -->
             </div>
           </div>
 
           <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{ 'has-error': OrgForm.submitted && primary_contact.invalid }">
               <label> Primary Contact</label>
               <div class="input-group">
                 <div class="input-group-addon">
-                  <i class="fa fa-user"></i>
+                  <i class="fa fa-phone"></i>
                 </div>
-                <input [disabled]="!editMode" name="primary_contact"  [(ngModel)]="cDetails.primary_contact" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" required number #primary_contact="ngModel"  name="primary_contact" 
+                [(ngModel)]="cDetails.primary_contact"
+                  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
+
+
+              <div *ngIf="OrgForm.submitted && primary_contact.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="primary_contact.errors.required">Primary Contact required</div>
+            </div>
+
               <!-- /.input group -->
             </div>
           </div>
@@ -99,9 +144,11 @@
               <label> Secondary Contact</label>
               <div class="input-group">
                 <div class="input-group-addon">
-                  <i class="fa fa-user"></i>
+                  <i class="fa fa-phone"></i>
                 </div>
-                <input [disabled]="!editMode" name="secondary_contact"  [(ngModel)]="cDetails.secondary_contact" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode"  #secondary_contact="ngModel" number name="secondary_contact"
+                 [(ngModel)]="cDetails.secondary_contact"
+                  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
               <!-- /.input group -->
             </div>
@@ -109,55 +156,86 @@
 
 
           <div class="col col-sm-12 col-lg-12">
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{ 'has-error': OrgForm.submitted && address.invalid }">
               <label>Address</label>
               <div class="input-group">
                 <div class="input-group-addon">
-                  <i class="fa fa-shopping-cart"></i>
+                  <i class="fa fa-address-book"></i>
                 </div>
-                <input [disabled]="!editMode" name="address"  [(ngModel)]="cDetails.address" type="text"  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                <input [disabled]="!editMode" name="address" required #address="ngModel" 
+                [(ngModel)]="cDetails.address" type="text"
+                  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
               </div>
-              <!-- /.input group -->
+
+              <div *ngIf="OrgForm.submitted && address.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="address.errors.required">Address required</div>
             </div>
-          </div>
-          <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
-              <label>City</label>
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <input [disabled]="!editMode" name="city"  [(ngModel)]="cDetails.city"  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
-              </div>
-              <!-- /.input group -->
-            </div>
-          </div>
-          <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
-              <label>State</label>
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <input [disabled]="!editMode" name="state"  [(ngModel)]="cDetails.state" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
-              </div>
-              <!-- /.input group -->
-            </div>
-          </div>
-          <div class="col col-sm-12 col-lg-4">
-            <div class="form-group">
-              <label>Zip Code</label>
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <input [disabled]="!editMode" name="zipcode"  [(ngModel)]="cDetails.zipcode"  type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
-              </div>
+
               <!-- /.input group -->
             </div>
           </div>
 
-      
+
+          <div class="col col-sm-12 col-lg-4">
+            <div class="form-group"  [ngClass]="{ 'has-error': OrgForm.submitted && city.invalid }">
+              <label>City</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-address-book"></i>
+                </div>
+                <input [disabled]="!editMode" required #city="ngModel" name="city"
+                 [(ngModel)]="cDetails.city" type="text"
+                  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+              </div>
+
+              <div *ngIf="OrgForm.submitted && city.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="city.errors.required">City required</div>
+            </div>
+              <!-- /.input group -->
+            </div>
+          </div>
+
+
+          <div class="col col-sm-12 col-lg-4">
+            <div class="form-group" [ngClass]="{ 'has-error': OrgForm.submitted && state.invalid }">
+              <label>State</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-address-book"></i>
+                </div>
+                <input [disabled]="!editMode" required #state="ngModel" name="state"
+                 [(ngModel)]="cDetails.state" type="text"
+                  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+              </div>
+
+              <div *ngIf="OrgForm.submitted && state.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="state.errors.required">State required</div>
+            </div>
+
+              <!-- /.input group -->
+            </div>
+          </div>
+
+
+          <div class="col col-sm-12 col-lg-4">
+            <div class="form-group"  [ngClass]="{ 'has-error': OrgForm.submitted && zip_code.invalid }">
+              <label>Zip Code</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-address-book"></i>
+                </div>
+                <input [disabled]="!editMode" required #zip_code="ngModel" name="zip_code"
+                 [(ngModel)]="cDetails.zip_code" type="text"
+                  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+              </div>
+
+              <div *ngIf="OrgForm.submitted && zip_code.invalid" class="invalid-feedback">
+                <div class="text-danger" *ngIf="zip_code.errors.required">Zip code required</div>
+            </div>
+
+              <!-- /.input group -->
+            </div>
+          </div>
 
 
         </div>

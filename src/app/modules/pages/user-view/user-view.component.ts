@@ -70,6 +70,7 @@ export class UserViewComponent implements OnInit {
       this.userDetails.user_sys_id = this.userId;
       this.userService.updateUserDetails(this.userDetails).subscribe((d) => {
         this.toastr.success(d, 'Success');
+        this.disableInputs = true;
         this.loader.stop();
       }, (e) => {
         this.toastr.error(e.message, 'Error');
