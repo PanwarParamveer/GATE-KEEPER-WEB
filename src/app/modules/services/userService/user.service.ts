@@ -43,7 +43,7 @@ export class UserService {
   }
 
   getUsersAttendance(data: any) {
-    return this.http.post(this.getUserAttendance, {}, this.fauth.getHeaders());
+    return this.http.post(this.getUserAttendance,data, this.fauth.getHeaders());
   }
 
 

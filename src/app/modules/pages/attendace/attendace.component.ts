@@ -21,7 +21,11 @@ export class AttendaceComponent implements OnInit {
 
     this.userService.getUserName_Ids().subscribe((s) => {
       this.drpDetails = s;
-      $('.select2').select2();
+      $('#userName').select2();
+      setTimeout(function() {
+        $('#userName').val('ALL').trigger('change');
+      }, 200);
+
     }, e => {
       this.toastr.warning('Some thing went wrong while fatching user data', 'Warning');
     });
@@ -30,22 +34,30 @@ export class AttendaceComponent implements OnInit {
       this.attendanceDtl = s;
       setTimeout(() => {
         $('#example1').DataTable({
+          
           responsive: true,
           autoWidth: false,
         });
-      }, 300);
+      }, 100);
       this.loader.stop();
 
     }, e => {
-      this.toastr.warning('Some thing went wrong while fatching user data', 'Warning');
+      this.toastr.warning(e.error, 'Error');
       this.loader.stop();
     });
 
 
   }
   onSubmit() {
-    this.sDetails.userName = $('#userName').val();
-    alert( this.sDetails);
 
+    this.sDetails.userName = $('#userName option:selected').val();
+    this.loader.start();
+    this.userService.getUsersAttendance(this.sDetails).subscribe((data) => {
+      this.attendanceDtl = data;    
+      this.loader.stop();
+    }, e => {
+      this.toastr.warning(e.error, 'Error');
+      this.loader.stop();
+    });
   }
 }

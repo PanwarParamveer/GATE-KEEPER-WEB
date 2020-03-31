@@ -17,7 +17,7 @@
       <form #sForm="ngForm" name="form" (ngSubmit)="sForm.form.valid && onSubmit()" novalidate>
 
         <div class="row">
-          <div class="col col-sm-3 col-md-3 col-lg-3">
+          <div class="col col-sm-6 col-md-6 col-lg-3">
             <div class="form-group" [ngClass]="{ 'has-error': sForm.submitted && sDate.invalid }">
               <label>Start Date</label>
 
@@ -35,7 +35,7 @@
               <!-- /.input group -->
             </div>
           </div>
-          <div class="col col-sm-3  col-md-3 col-lg-3">
+          <div class="col col-sm-6  col-md-6 col-lg-3">
             <div class="form-group" [ngClass]="{ 'has-error': sForm.submitted && eDate.invalid }">
               <label>End Date</label>
 
@@ -54,7 +54,9 @@
             </div>
           </div>
 
-          <div class="col col-sm-3  col-md-3 col-lg-3">
+    
+
+          <div class="col col-sm-8  col-md-8 col-lg-4">
             <div class="form-group" >
               <label>User Name</label>
               <div class="input-group">
@@ -66,7 +68,7 @@
                   tabindex="-1" aria-hidden="true">
                   
 
-                  <option value="ALL" selected="selected">ALL</option>
+                  <option value="ALL" selected >ALL</option>
                   <option value={{user.id}} *ngFor="let user of drpDetails">{{user.name}}</option>    
                 </select>
               </div>
@@ -78,9 +80,9 @@
           </div>
 
 
-          <div style="text-align: center;" class="col col-sm-3  col-md-3 col-lg-3">
+          <div style="text-align: center;" class="col col-sm-4  col-md-4 col-lg-2">
            
-            <button style="width: 60%;margin-top: 25px; " class="btn btn-primary button_Style" type="submit"> Get Report </button>
+            <button style="width:80%;margin-top: 25px; " class="btn btn-primary button_Style" type="submit"> Get Report </button>
 
           </div>
         </div>
@@ -115,8 +117,8 @@
                 <td class="sorting_1">{{attendance.name}}</td>
                 <td class="sorting_1">{{attendance.department}}</td>
                 <td class="sorting_1">{{attendance.shift_time}}</td>
-                <td class="sorting_1">{{attendance.login_time | date:'hh:mm a'}}</td>
-                <td class="sorting_1">{{attendance.logout_time | date:'hh:mm a'}}</td>
+                <td class="sorting_1">{{attendance.login_time | date:'hh:mm:ss a'}}</td>
+                <td class="sorting_1">{{attendance.logout_time | date:'hh:mm:ss a'}}</td>
                 <td class="sorting_1">{{attendance.working_hours}}</td>
                 <td class="hidden-xs hidden-sm">{{attendance.log_date_time | date:'dd-MMM-yyyy'}}</td>
                 

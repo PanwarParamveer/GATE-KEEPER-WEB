@@ -109,7 +109,7 @@
             </div>
              
             <div class="row">
-              <div class="col col-sm-4 col-lg-4">
+              <div class="col col-sm-12 col-lg-4">
                 <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && dob.invalid }">
                   <label>DOB</label>
 
@@ -120,8 +120,7 @@
                     <input [disabled]="disableInputs" type="date"  #dob="ngModel" name="dob"
                       [(ngModel)]="userDetails.dob"  id="dob" class="form-control"
                       ng-model="userDetails.dob | date:'dd/MMM/yyyy'"
-                      [ngClass]="{ 'is-invalid': userForm.submitted && dob.invalid }" required date
-                      >
+                      [ngClass]="{ 'is-invalid': userForm.submitted && dob.invalid }" required date>
                   </div>
                   <div *ngIf="userForm.submitted && dob.invalid" class="invalid-feedback">
                     <div class="text-danger" *ngIf="dob.errors.required" >Date of birth required</div>
@@ -131,7 +130,7 @@
               </div>
 
 
-              <div class="col col-sm-4 col-lg-4">
+              <div class="col col-sm-12 col-lg-4">
                 <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && gender.invalid }" >
                   <label>Gender</label>
 
@@ -139,9 +138,9 @@
                     <div class="input-group-addon">
                       <i class="fa fa-genderless" aria-hidden="true"></i>
                     </div>
-                    <select [disabled]="disableInputs" ngModel #gender="ngModel" name="gender"
+                    <select [disabled]="disableInputs"  #gender="ngModel" name="gender"
                       [(ngModel)]="userDetails.gender" required id="gender"
-                      class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1"
+                      class="form-control" style="width: 100%;" tabindex="-1"
                       aria-hidden="true">
                       <option>Male</option>
                       <option>Female</option>
@@ -156,7 +155,7 @@
               </div>
 
 
-              <div class="col col-sm-4 col-lg-4">
+              <div class="col col-sm-12 col-lg-4">
                 <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && status.invalid }">
                   <label>Status</label>
 
@@ -165,11 +164,10 @@
                       <i class="fa fa-check-circle" aria-hidden="true"></i>
                     </div>
                     <select [disabled]="disableInputs"   #status="ngModel" [(ngModel)]="userDetails.status"
-                      name="status" required id="status" class="form-control select2 select2-hidden-accessible" 
+                      name="status" required id="status" class="form-control" 
                       style="width: 100%;" tabindex="-1" aria-hidden="true">
                       <option value="true">Active</option>
                       <option value="false">In-Active</option>
-
                     </select>
                   </div>
                   <div *ngIf="userForm.submitted && status.invalid" class="invalid-feedback">
@@ -178,7 +176,79 @@
                   <!-- /.input group -->
                 </div>
               </div>
+
+
             </div>
+
+
+<div class="row">
+
+  <div class="col col-sm-12 col-lg-4">
+    <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && user_id.invalid }">
+      <label>User id</label>
+
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+        <input [disabled]="disableInputs" type="text"  #user_id="ngModel" name="user_id"
+          [(ngModel)]="userDetails.user_id"  id="user_id" class="form-control"
+          ng-model="userDetails.user_id"
+          [ngClass]="{ 'is-invalid': userForm.submitted && user_id.invalid }" required>
+
+
+      </div>
+      <div *ngIf="userForm.submitted && user_id.invalid" class="invalid-feedback">
+        <div class="text-danger" *ngIf="user_id.errors.required" >User id required</div>
+    </div>
+      <!-- /.input group -->
+    </div>
+  </div>
+
+  <div class="col col-sm-12 col-lg-4">
+    <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && department.invalid }">
+      <label>Department</label>
+
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-box" aria-hidden="true"></i>
+        </div>
+        <select [disabled]="disableInputs" type="text"  #department="ngModel" name="department"
+          [(ngModel)]="userDetails.department"  id="department" class="form-control"
+          ng-model="userDetails.department"
+          [ngClass]="{ 'is-invalid': userForm.submitted && department.invalid }" required>
+          <option>Select</option>
+        </select>
+
+      </div>
+      <div *ngIf="userForm.submitted && department.invalid" class="invalid-feedback">
+        <div class="text-danger" *ngIf="department.errors.required" >Department required</div>
+    </div>
+      <!-- /.input group -->
+    </div>
+  </div>
+
+  <div class="col col-sm-12 col-lg-4">
+    <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && login_time.invalid }">
+      <label>Login Time</label>
+
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-clock" aria-hidden="true"></i>
+        </div>
+        <input [disabled]="disableInputs" type="time"  #login_time="ngModel" name="login_time"
+          [(ngModel)]="userDetails.login_time"  id="login_time" class="form-control"
+          ng-model="userDetails.login_time | date:'hh:mm:ss a'"
+          [ngClass]="{ 'is-invalid': userForm.submitted && login_time.invalid }" required>
+      </div>
+      <div *ngIf="userForm.submitted && login_time.invalid" class="invalid-feedback">
+        <div class="text-danger" *ngIf="login_time.errors.required" >Login time required</div>
+    </div>
+      <!-- /.input group -->
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
 
