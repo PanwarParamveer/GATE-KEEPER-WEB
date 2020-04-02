@@ -25,7 +25,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-calendar" aria-hidden="true"></i>
                 </div>
-                <input type="date" #sDate="ngModel" name="sDate" [(ngModel)]="sDetails.sDate" id="sDate"
+                <input type="date"  #sDate="ngModel" name="sDate" [(ngModel)]="sDetails.sDate" id="sDate"
                   class="form-control" ng-model="sDetails.sDate | date:'dd/MMM/yyyy'"
                   [ngClass]="{ 'is-invalid': sForm.submitted && sDate.invalid }" required date>
               </div>
@@ -116,7 +116,7 @@
                 <td class="sorting_1">{{attendance.user_id}}</td>
                 <td class="sorting_1">{{attendance.name}}</td>
                 <td class="sorting_1">{{attendance.department}}</td>
-                <td class="sorting_1">{{attendance.shift_time}}</td>
+                <td class="sorting_1">{{attendance.shift_time | date:'hh:mm'}}</td>
                 <td class="sorting_1">{{attendance.login_time | date:'hh:mm:ss a'}}</td>
                 <td class="sorting_1">{{attendance.logout_time | date:'hh:mm:ss a'}}</td>
                 <td class="sorting_1">{{attendance.working_hours}}</td>

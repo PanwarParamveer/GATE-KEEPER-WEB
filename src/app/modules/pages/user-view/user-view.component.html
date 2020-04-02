@@ -229,20 +229,20 @@
   </div>
 
   <div class="col col-sm-12 col-lg-4">
-    <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && login_time.invalid }">
-      <label>Login Time</label>
+    <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && shift_time.invalid }">
+      <label>Shift Time</label>
 
       <div class="input-group">
         <div class="input-group-addon">
           <i class="fa fa-clock" aria-hidden="true"></i>
         </div>
-        <input [disabled]="disableInputs" type="time"  #login_time="ngModel" name="login_time"
-          [(ngModel)]="userDetails.login_time"  id="login_time" class="form-control"
-          ng-model="userDetails.login_time | date:'hh:mm:ss a'"
-          [ngClass]="{ 'is-invalid': userForm.submitted && login_time.invalid }" required>
+        <input [disabled]="disableInputs" type="time"  #shift_time="ngModel" name="shift_time"
+          [(ngModel)]="userDetails.shift_time"  id="login_time" class="form-control"
+          ng-model="userDetails.shift_time | date:'hh:mm:ss a'"
+          [ngClass]="{ 'is-invalid': userForm.submitted && shift_time.invalid }" required>
       </div>
-      <div *ngIf="userForm.submitted && login_time.invalid" class="invalid-feedback">
-        <div class="text-danger" *ngIf="login_time.errors.required" >Login time required</div>
+      <div *ngIf="userForm.submitted && shift_time.invalid" class="invalid-feedback">
+        <div class="text-danger" *ngIf="shift_time.errors.required" >Shift time required</div>
     </div>
       <!-- /.input group -->
     </div>
