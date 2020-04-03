@@ -5,11 +5,11 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img alt="User Image" class="img-circle" src={{cDetails.logo}}>
+        <img alt="User Image" class="img-circle" src={{photo}}>
       </div>
       <div class="pull-left info">
-        <p>{{cDetails.organization_name}}</p>
-        <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
+        <p>{{display_name}}</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> {{myRole}}</a> 
       </div>
     </div>
     <!-- search form -->
@@ -45,12 +45,15 @@
       <li><a [routerLink]="'/members/attendance'"><i class="fa fa-book"></i> <span>
         Attendance Report
       </span></a></li>
-     
+      
       <li><a [routerLink]="'/members/users'"><i class="fa fa-group"></i> <span>
        Users
       </span></a></li>
 
  
+      <li><a [routerLink]="'/members/user_device_access'"><i class="fa fa-lock"></i> <span>
+        User Device Access
+      </span></a></li>
 
       <li class="treeview">
         <a href="#">

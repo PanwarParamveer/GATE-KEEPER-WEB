@@ -61,7 +61,7 @@
               <label>User Name</label>
               <div class="input-group">
                 <div class="input-group-addon">
-                  <i class="fa fa-genderless" aria-hidden="true"></i>
+                  <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
                 <select  #userName="ngModel" name="userName" [(ngModel)]="sDetails.userName" 
                   id="userName" class="form-control select2" style="width: 100%;"
@@ -97,30 +97,30 @@
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Date</th>
+                <th>  Date  </th>
                 <th>User id</th>
                 <th>Full Name</th>
-                <th>Department</th>
+                <th class="hidden-xs hidden-sm">Department</th>
                 <th>Shift Time</th>
                 <th>Login Time</th>
                 <th>Logout Time</th>
-                <th>Total Working Hours</th>
-                <th class="hidden-xs hidden-sm">Status</th>
+                <th class="hidden-xs hidden-sm">Total Working Hours</th>
+                <!-- <th class="hidden-xs hidden-sm">Status</th> -->
                
               </tr>
             </thead>
             <tbody>
 
               <tr role="row" *ngFor="let attendance of attendanceDtl">
-                <td class="sorting_1">{{attendance.date}}</td>
+                <td class="sorting_1">{{attendance.date | date: 'dd-MMM-yy'}}</td>
                 <td class="sorting_1">{{attendance.user_id}}</td>
                 <td class="sorting_1">{{attendance.name}}</td>
-                <td class="sorting_1">{{attendance.department}}</td>
-                <td class="sorting_1">{{attendance.shift_time | date:'hh:mm'}}</td>
+                <td class="sorting_1 hidden-xs hidden-sm">{{attendance.department}}</td>
+                <td class="sorting_1">{{attendance.shift_time | amFromUtc: 'hh:mm' | amLocal |amDateFormat: 'h:mm A' }}</td>
                 <td class="sorting_1">{{attendance.login_time | date:'hh:mm:ss a'}}</td>
                 <td class="sorting_1">{{attendance.logout_time | date:'hh:mm:ss a'}}</td>
-                <td class="sorting_1">{{attendance.working_hours}}</td>
-                <td class="hidden-xs hidden-sm">{{attendance.log_date_time | date:'dd-MMM-yyyy'}}</td>
+                <td class="sorting_1 hidden-xs hidden-sm">{{attendance.working_hours}}</td>
+                <!-- <td class="hidden-xs hidden-sm">{{attendance.log_date_time | date:'dd-MMM-yyyy'}}</td> -->
                 
               </tr>
 

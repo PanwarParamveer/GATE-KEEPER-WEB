@@ -11,14 +11,16 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 import { AttendaceComponent } from './attendace/attendace.component';
 import { UserViewComponent } from './user-view/user-view.component';
-
+import { MomentModule } from 'ngx-moment';
+import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
     LayoutModule,
-    FormsModule
+    FormsModule,
+    MomentModule
   ]
 })
 export class PagesModule {

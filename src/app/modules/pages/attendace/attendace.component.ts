@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/userService/user.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
-import * as moment from 'moment'
+import { MomentModule } from 'ngx-moment';
+import * as moment from 'moment';
 declare var $;
 @Component({
   selector: 'app-attendace',
@@ -16,9 +17,7 @@ export class AttendaceComponent implements OnInit {
   };
   drpDetails: any = {};
   attendanceDtl: any = {};
-  constructor(private userService: UserService,
-    private loader: NgxUiLoaderService,
-    private toastr: ToastrService
+  constructor(private userService: UserService, private loader: NgxUiLoaderService, private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -30,13 +29,25 @@ export class AttendaceComponent implements OnInit {
         $('#userName').val('ALL').trigger('change');
       }, 100);
 
+      // tslint:disable-next-line:prefer-const
 
       this.loader.start();
-      this.userService.getUsersAttendance(this.sDetails).subscribe((s) => {
-        this.attendanceDtl = s;
+
+      // tslint:disable-next-line:variable-name
+      const _sDate = new Date(this.sDetails.sDate);
+
+      // tslint:disable-next-line:variable-name
+      const _eDate = new Date(this.sDetails.eDate);
+      _eDate.setHours(23, 59, 59);
+
+      this.userService.getUsersAttendance({
+        sDate: _sDate.toISOString(),
+        eDate: _eDate.toISOString(),
+        user_sys_id: 'ALL'
+      }).subscribe((S) => {
+        this.attendanceDtl = S;
         setTimeout(() => {
           $('#example1').DataTable({
-
             responsive: true,
             autoWidth: false,
           });
@@ -60,10 +71,28 @@ export class AttendaceComponent implements OnInit {
   }
   onSubmit() {
 
-    this.sDetails.userName = $('#userName option:selected').val();
+    this.sDetails.user_sys_id = $('#userName option:selected').val();
+
+
+    // tslint:disable-next-line:variable-name
+    const _sDate = new Date(this.sDetails.sDate);
+
+    // tslint:disable-next-line:variable-name
+    const _eDate = new Date(this.sDetails.eDate);
+    _eDate.setHours(23, 59, 59);
+
     this.loader.start();
-    this.userService.getUsersAttendance(this.sDetails).subscribe((data) => {
+    // tslint:disable-next-line:max-line-length
+    this.userService.getUsersAttendance({ sDate: _sDate.toISOString(),
+       eDate: _eDate.toISOString(), user_sys_id: this.sDetails.user_sys_id }).subscribe((data) => {
+      $('#example1').DataTable().destroy();
       this.attendanceDtl = data;
+      setTimeout(() => {
+        $('#example1').DataTable({
+          responsive: true,
+          autoWidth: false,
+        });
+      }, 100);
       this.loader.stop();
     }, e => {
       this.toastr.warning(e.error, 'Error');

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 
 import { AngularFireAuth } from '@angular/fire/auth';
+import { CompanyService } from '../../services/companyService/company.service';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  cDetails: any = {};
    public display_name: string;
    public photo: string;
    public lastLogin:string;
    public email: string;
    public myRole: any;
    
-  constructor( private authS: AngularFireAuth) {
+  constructor( private authS: AngularFireAuth, private companyService: CompanyService) {
   }
 
   ngOnInit() {
@@ -30,6 +31,11 @@ export class HeaderComponent implements OnInit {
         this.myRole = t.claims.role;
       }
     );
+
+
+    this.companyService.getCompanyDetails().subscribe((data) => {
+      this.cDetails = data;
+    });
 
   }
 

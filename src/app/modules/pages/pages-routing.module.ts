@@ -7,8 +7,9 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 import { AttendaceComponent } from './attendace/attendace.component';
-import { AngularFireAuthGuard, hasCustomClaim, loggedIn, redirectUnauthorizedTo, redirectLoggedInTo  } from "@angular/fire/auth-guard";
+import { AngularFireAuthGuard, hasCustomClaim, loggedIn, redirectUnauthorizedTo, redirectLoggedInTo  } from '@angular/fire/auth-guard';
 import { UserViewComponent } from './user-view/user-view.component';
+import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
 
 // const adminOnly = () => hasCustomClaim('admin');
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -35,7 +36,10 @@ const routes: Routes = [
     },
       {path: 'attendance', component: AttendaceComponent, canActivate: [AngularFireAuthGuard],
       data: { authGuardPipe: redirectUnauthorizedToLogin }
-    }
+    },
+    {path: 'user_device_access', component: UserDeviceAccessComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
+  }
     ]
   }
 ];

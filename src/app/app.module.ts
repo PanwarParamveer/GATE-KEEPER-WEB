@@ -16,6 +16,7 @@ import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -33,11 +34,12 @@ import { ToastrModule } from 'ngx-toastr';
     NgxUiLoaderModule,
     NgxUiLoaderRouterModule,
     BrowserAnimationsModule,
+  MomentModule,
     ToastrModule.forRoot(
       {
         timeOut: 5000,
-        positionClass: 'toast-top-center',        
-        enableHtml: true,      
+        positionClass: 'toast-top-center',
+        enableHtml: true,
         preventDuplicates: true,
         closeButton: true
       }

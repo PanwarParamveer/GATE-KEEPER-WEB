@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../../auth/auth-service.service';
 import { HttpClient } from '@angular/common/http';
 import { CompanyService } from '../../services/companyService/company.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 declare var $;
@@ -13,9 +14,12 @@ declare var $;
 })
 export class SideNavComponent implements OnInit {
 
-  cDetails: any = {};
 
-  constructor(private http: HttpClient, private fauth: AuthServiceService, private companyService: CompanyService) {
+  // tslint:disable-next-line:variable-name
+  public display_name: string;
+  public photo: string;
+  public myRole: any;
+  constructor( private authS: AngularFireAuth) {
 
   }
 
@@ -25,11 +29,15 @@ export class SideNavComponent implements OnInit {
     });
 
 
-    this.companyService.getCompanyDetails().subscribe((data) => {
-      this.cDetails = data;
-    });
+    this.display_name = this.authS.auth.currentUser.displayName;
+    this.photo = this.authS.auth.currentUser.photoURL;
+    this.authS.auth.currentUser.getIdTokenResult().then(
+       (t) => {
+        this.myRole = t.claims.role;
+      }
+    );
 
-  }
+}
 
 
 
