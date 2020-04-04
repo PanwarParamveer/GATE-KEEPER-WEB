@@ -3,6 +3,14 @@
       Users Device Access Control
     </h1>
   
+    <span style="margin-top: -25px;" class="pull-right">
+      <a style="border-radius: 30px; " [routerLink]="['/members/userDeviceAccessView','add']"  
+     
+       class="btn btn-block btn-social btn-dropbox button_Style">
+        <i class="fa fa-plus"></i> Create New Access
+      </a>
+   
+    </span>
   </section>
   
   
@@ -14,7 +22,7 @@
     <!-- Default box -->
     <div class="box box-primary">
       <div class="box-header with-border">
-        <form #sForm="ngForm" name="form">
+        <form #sForm="ngForm" name="form" (ngSubmit)="onSubmit()"  >
   
           <div class="row">
             
@@ -24,13 +32,12 @@
                   <label>Device</label>
                   <div class="input-group">
                     <div class="input-group-addon">
-                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="fa fa-gears" aria-hidden="true"></i>
                     </div>
-                    <select  #device="ngModel" name="device" [(ngModel)]="sDetails.device" 
-                      id="device" class="form-control select2" style="width: 100%;"
+                    <select id="drpDeviceList" class="form-control select2" style="width: 100%;"
                       tabindex="-1" aria-hidden="true">      
                       <option value="ALL" selected >ALL</option>
-                      <option value={{device.id}} *ngFor="let device of drpDeviceList">{{device.name}}</option>    
+                      <option value={{device.device_id}} *ngFor="let device of DeviceList">{{device.device_name}}</option>    
                     </select>
                   </div>              
                 </div>
@@ -43,11 +50,11 @@
                   <div class="input-group-addon">
                     <i class="fa fa-user" aria-hidden="true"></i>
                   </div>
-                  <select  #userName="ngModel" name="userName" [(ngModel)]="sDetails.userName" 
-                    id="userName" class="form-control select2" style="width: 100%;"
-                    tabindex="-1" aria-hidden="true">      
+                  <select  
+                    id="drpUserList" class="form-control select2" style="width: 100%;"
+                    aria-hidden="true">      
                     <option value="ALL" selected >ALL</option>
-                    <option value={{user.id}} *ngFor="let user of drpUserList">{{user.name}}</option>    
+                    <option value={{user.id}} *ngFor="let user of UserList">{{user.name}}</option>    
                   </select>
                 </div>              
               </div>
@@ -57,7 +64,7 @@
   
             <div style="text-align: center;" class="col col-sm-12  col-md-2 col-lg-2">
              
-              <button style="width:80%;margin-top: 25px; " class="btn btn-primary button_Style" type="submit"> Search </button>
+              <button style="width:100%;margin-top: 25px; " class="btn btn-primary button_Style" type="submit"> Search </button>
   
             </div>
           </div>
@@ -72,31 +79,28 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>  Date  </th>
-                  <th>User id</th>
-                  <th>Full Name</th>
-                  <th class="hidden-xs hidden-sm">Department</th>
-                  <th>Shift Time</th>
-                  <th>Login Time</th>
-                  <th>Logout Time</th>
-                  <th class="hidden-xs hidden-sm">Total Working Hours</th>
-                  <!-- <th class="hidden-xs hidden-sm">Status</th> -->
-                 
+                  <th>USER ID</th>
+                  <th>USER NAME</th>
+                  <th>STATUS</th>
+                  <th>DEVICE</th>
+                  <th>DEVICE TYPE</th>
+                  <th>USER DEVICE ID</th>                  
+                  <th>VIEW/EDIT</th>                 
                 </tr>
               </thead>
               <tbody>
   
-                <tr role="row" *ngFor="let attendance of attendanceDtl">
-                  <td class="sorting_1">{{attendance.date | date: 'dd-MMM-yy'}}</td>
-                  <td class="sorting_1">{{attendance.user_id}}</td>
-                  <td class="sorting_1">{{attendance.name}}</td>
-                  <td class="sorting_1 hidden-xs hidden-sm">{{attendance.department}}</td>
-                  <td class="sorting_1">{{attendance.shift_time | amFromUtc: 'hh:mm' | amLocal |amDateFormat: 'h:mm A' }}</td>
-                  <td class="sorting_1">{{attendance.login_time | date:'hh:mm:ss a'}}</td>
-                  <td class="sorting_1">{{attendance.logout_time | date:'hh:mm:ss a'}}</td>
-                  <td class="sorting_1 hidden-xs hidden-sm">{{attendance.working_hours}}</td>
-                  <!-- <td class="hidden-xs hidden-sm">{{attendance.log_date_time | date:'dd-MMM-yyyy'}}</td> -->
-                  
+                <tr role="row" *ngFor="let data of userDeviceAccessList">
+                  <td class="sorting_1">{{data.user_id}}</td>
+                  <td class="sorting_1">{{data.user_name}}</td>
+                  <td class="sorting_1">{{data.user_status}}</td>
+                  <td class="sorting_1">{{data.device_id}}</td>     
+                  <td class="sorting_1">{{data.device_type}}</td>
+                  <td class="sorting_1">{{data.user_device_id}}</td>
+                  <td style="text-align: center;">
+                    <button [routerLink]="['/members/userDeviceAccessView',data.doc_id]"   
+                    style="width: 50%;border-radius: 25px;"
+                    CLASS="btn btn-sm btn-primary button_Style">View/Edit</button></td>          
                 </tr>
   
   

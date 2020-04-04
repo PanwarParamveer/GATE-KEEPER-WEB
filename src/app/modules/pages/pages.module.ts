@@ -14,6 +14,7 @@ import { UserViewComponent } from './user-view/user-view.component';
 import { MomentModule } from 'ngx-moment';
 import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
 @NgModule({
+  // tslint:disable-next-line:max-line-length
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent],
   imports: [
     CommonModule,
