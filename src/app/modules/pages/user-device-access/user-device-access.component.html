@@ -4,10 +4,10 @@
     </h1>
   
     <span style="margin-top: -25px;" class="pull-right">
-      <a style="border-radius: 30px; " [routerLink]="['/members/userDeviceAccessView','add']"  
+      <a style="border-radius: 30px; " [routerLink]="['/members/user_device_access_view','NEW']"  
      
        class="btn btn-block btn-social btn-dropbox button_Style">
-        <i class="fa fa-plus"></i> Create New Access
+        <i class="fa fa-plus"></i> Create Access
       </a>
    
     </span>
@@ -64,7 +64,7 @@
   
             <div style="text-align: center;" class="col col-sm-12  col-md-2 col-lg-2">
              
-              <button style="width:100%;margin-top: 25px; " class="btn btn-primary button_Style" type="submit"> Search </button>
+              <button style="width:80%;margin-top: 25px; " class="btn btn-primary button_Style" type="submit"> Search </button>
   
             </div>
           </div>
@@ -80,11 +80,11 @@
               <thead>
                 <tr>
                   <th>USER ID</th>
-                  <th>USER NAME</th>
-                  <th>STATUS</th>
-                  <th>DEVICE</th>
+                  <th>USER NAME</th>  
+                  <th>USER DEVICE ID</th> 
+                  <th>DEVICE NAME</th>
                   <th>DEVICE TYPE</th>
-                  <th>USER DEVICE ID</th>                  
+                  <th>STATUS</th>                                   
                   <th>VIEW/EDIT</th>                 
                 </tr>
               </thead>
@@ -92,14 +92,14 @@
   
                 <tr role="row" *ngFor="let data of userDeviceAccessList">
                   <td class="sorting_1">{{data.user_id}}</td>
-                  <td class="sorting_1">{{data.user_name}}</td>
+                  <td class="sorting_1">{{data.user_name}}</td>  
+                  <td class="sorting_1">{{data.user_device_id}}</td>                
+                  <td class="sorting_1">{{data.device_name}}</td>     
+                  <td class="sorting_1">{{data.device_type}}</td>                  
                   <td class="sorting_1">{{data.user_status}}</td>
-                  <td class="sorting_1">{{data.device_id}}</td>     
-                  <td class="sorting_1">{{data.device_type}}</td>
-                  <td class="sorting_1">{{data.user_device_id}}</td>
                   <td style="text-align: center;">
-                    <button [routerLink]="['/members/userDeviceAccessView',data.doc_id]"   
-                    style="width: 50%;border-radius: 25px;"
+                    <button [routerLink]="['/members/user_device_access_view',data.doc_id]"   
+                    style="border-radius: 25px;"
                     CLASS="btn btn-sm btn-primary button_Style">View/Edit</button></td>          
                 </tr>
   

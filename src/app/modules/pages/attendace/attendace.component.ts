@@ -49,7 +49,9 @@ export class AttendaceComponent implements OnInit {
         setTimeout(() => {
           $('#example1').DataTable({
             responsive: true,
-            autoWidth: false,
+            autoWidth: false, buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ]
           });
         }, 100);
         this.loader.stop();
@@ -91,6 +93,9 @@ export class AttendaceComponent implements OnInit {
         $('#example1').DataTable({
           responsive: true,
           autoWidth: false,
+          buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
         });
       }, 100);
       this.loader.stop();

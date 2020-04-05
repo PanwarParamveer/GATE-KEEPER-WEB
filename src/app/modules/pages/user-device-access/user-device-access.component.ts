@@ -14,16 +14,15 @@ export class UserDeviceAccessComponent implements OnInit {
   UserList: any = {};
   DeviceList: any = {};
   userDeviceAccessList: any = {};
-  constructor(private userService: UserService,
-              private loader: NgxUiLoaderService, private deviceService: DeviceService,
-              private toastr: ToastrService) { }
+  constructor(private userService: UserService, private loader: NgxUiLoaderService, private deviceService: DeviceService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
 
     this.userService.getUserName_Ids().subscribe((s) => {
       this.UserList = s;
-      $('#userName').select2();
       setTimeout(() => {
+        $('#drpUserList').select2();
         $('#drpUserList').val('ALL').trigger('change');
       }, 100);
     });
@@ -31,26 +30,13 @@ export class UserDeviceAccessComponent implements OnInit {
 
     this.deviceService.getListOfDevice().subscribe((s) => {
       this.DeviceList = s;
-      $('#device').select2();
       setTimeout(() => {
+        $('#drpDeviceList').select2();
         $('#drpDeviceList').val('ALL').trigger('change');
       }, 100);
     }, (e) => {
       this.toastr.success(e.message, 'Eror');
     });
-
-    // this.loader.start();
-    // this.sDetails.device_id = this.sDetails.user_sys_id = $('#drpDeviceList option:selected').val();
-    // this.sDetails.user_sys_id = this.sDetails.user_sys_id = $('#drpUserList option:selected').val();
-    // this.deviceService.getDeviceAccess(this.sDetails).subscribe((s) => {
-    //   this.userDeviceAccessList = s;
-    //   this.loader.stop();
-
-    // }, (e) => {
-    //   this.toastr.success(e.message, 'Eror');
-    //   this.loader.stop();
-    // });
-
 
   }
 

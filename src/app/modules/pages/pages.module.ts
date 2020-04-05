@@ -13,9 +13,10 @@ import { AttendaceComponent } from './attendace/attendace.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { MomentModule } from 'ngx-moment';
 import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
+import { UserDeviceAccessViewComponent } from './user-device-access-view/user-device-access-view.component';
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
