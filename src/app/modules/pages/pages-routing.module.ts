@@ -11,6 +11,7 @@ import { AngularFireAuthGuard, hasCustomClaim, loggedIn, redirectUnauthorizedTo,
 import { UserViewComponent } from './user-view/user-view.component';
 import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
 import { UserDeviceAccessViewComponent } from './user-device-access-view/user-device-access-view.component';
+import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 
 // const adminOnly = () => hasCustomClaim('admin');
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -52,6 +53,10 @@ const routes: Routes = [
       },
       {
         path: 'user_device_access_view/:id', component: UserDeviceAccessViewComponent, canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin }
+      },
+      {
+        path: 'newDeviceAccess', component: NewDeviceAccessComponent, canActivate: [AngularFireAuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin }
       },
       {

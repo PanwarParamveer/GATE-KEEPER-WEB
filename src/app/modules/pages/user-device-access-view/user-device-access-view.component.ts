@@ -11,6 +11,11 @@ import { DeviceService } from '../../services/deviceService/device.service';
   styleUrls: ['./user-device-access-view.component.scss']
 })
 export class UserDeviceAccessViewComponent implements OnInit {
+  private editMode: any;
+  private disableInputs = false;
+  private docID: any;
+  private userAccessDetails: any = {};
+  private pageHeader = 'User Device Access';
 
   constructor(private router: Router,
               private routerParams: ActivatedRoute,
@@ -18,7 +23,17 @@ export class UserDeviceAccessViewComponent implements OnInit {
               private loader: NgxUiLoaderService,
               private toastr: ToastrService
   ) { }
+
   ngOnInit() {
+
+    this.docID = this.routerParams.snapshot.paramMap.get('id');
+
+    if (this.docID === 'NEW') {
+      this.disableInputs = false;
+    } else {
+      this.disableInputs = false;
   }
+
+}
 
 }

@@ -14,15 +14,18 @@ import { UserViewComponent } from './user-view/user-view.component';
 import { MomentModule } from 'ngx-moment';
 import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
 import { UserDeviceAccessViewComponent } from './user-device-access-view/user-device-access-view.component';
+import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
+
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent, NewDeviceAccessComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
     LayoutModule,
     FormsModule,
     MomentModule
+    
   ]
 })
 export class PagesModule {

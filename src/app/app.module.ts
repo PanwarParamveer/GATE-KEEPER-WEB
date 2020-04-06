@@ -17,7 +17,7 @@ import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MomentModule } from 'ngx-moment';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     AppComponent
@@ -34,6 +34,7 @@ import { MomentModule } from 'ngx-moment';
     NgxUiLoaderModule,
     NgxUiLoaderRouterModule,
     BrowserAnimationsModule,
+    NgSelectModule,
   MomentModule,
     ToastrModule.forRoot(
       {

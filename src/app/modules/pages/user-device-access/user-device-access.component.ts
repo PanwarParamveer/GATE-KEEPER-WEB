@@ -10,32 +10,29 @@ declare var $;
   styleUrls: ['./user-device-access.component.scss']
 })
 export class UserDeviceAccessComponent implements OnInit {
-  sDetails: any = {};
-  UserList: any = {};
-  DeviceList: any = {};
+  sDetails: any ;
+  UserList: any ;
+  DeviceList: any;
   userDeviceAccessList: any = {};
   constructor(private userService: UserService, private loader: NgxUiLoaderService, private deviceService: DeviceService,
-    private toastr: ToastrService) { }
+              private toastr: ToastrService) { }
 
   ngOnInit() {
 
-    this.userService.getUserName_Ids().subscribe((s) => {
-      this.UserList = s;
-      setTimeout(() => {
-        $('#drpUserList').select2();
-        $('#drpUserList').val('ALL').trigger('change');
-      }, 100);
-    });
-
-
-    this.deviceService.getListOfDevice().subscribe((s) => {
-      this.DeviceList = s;
+    this.deviceService.getdrpUserDeviceList().subscribe((data) => {
+      this.DeviceList = data.deviceList;
+      this.UserList =  data.userList;
+  
       setTimeout(() => {
         $('#drpDeviceList').select2();
         $('#drpDeviceList').val('ALL').trigger('change');
+
+        $('#drpUserList').select2();
+        $('#drpUserList').val('ALL').trigger('change');
+
       }, 100);
     }, (e) => {
-      this.toastr.success(e.message, 'Eror');
+      this.toastr.success(e.error, 'Eror');
     });
 
   }

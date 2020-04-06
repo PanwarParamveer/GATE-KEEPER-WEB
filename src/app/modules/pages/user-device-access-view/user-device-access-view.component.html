@@ -1,1 +1,310 @@
-<p>user-device-access-view works!</p>
+
+<section class="content-header">
+    <h1>
+      {{pageHeader}}
+    </h1>
+  </section>
+  
+  
+  <!-- Main content -->
+  <section class="content">
+  
+    <form #userForm="ngForm" name="form" (ngSubmit)="userForm.form.valid && onSubmit()" novalidate> 
+  
+  
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">User Form</h3>
+        </div>
+        <div class="box-body">
+        
+        
+        
+          <div class="row">
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && dob.invalid }">
+                <label>User Name</label>
+        
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  </div>
+                  <input [disabled]="disableInputs" type="date"  name="userName" [(ngModel)]="userDetails.userName" id="dob"
+                    class="form-control" ng-model="userDetails.dob | date:'dd/MMM/yyyy'"
+                    [ngClass]="{ 'is-invalid': userForm.submitted && dob.invalid }" required date>
+                </div>
+                <div *ngIf="userForm.submitted && dob.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="dob.errors.required">Date of birth required</div>
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && gender.invalid }">
+                <label>Gender</label>
+        
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-genderless" aria-hidden="true"></i>
+                  </div>
+                  <select [disabled]="disableInputs" #gender="ngModel" name="gender" [(ngModel)]="userDetails.gender" required
+                    id="gender" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div *ngIf="userForm.submitted && gender.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="gender.errors.required">Gender required</div>
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && status.invalid }">
+                <label>Status</label>
+        
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                  </div>
+                  <select [disabled]="disableInputs" #status="ngModel" [(ngModel)]="userDetails.status" name="status" required
+                    id="status" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                    <option value="true">Active</option>
+                    <option value="false">In-Active</option>
+                  </select>
+                </div>
+                <div *ngIf="userForm.submitted && status.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="status.errors.required">Status required</div>
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+        
+          </div>
+        
+        
+          <div class="row">
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && user_id.invalid }">
+                <label>User id</label>
+        
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </div>
+                  <input [disabled]="disableInputs" type="text" #user_id="ngModel" name="user_id"
+                    [(ngModel)]="userDetails.user_id" id="user_id" class="form-control" ng-model="userDetails.user_id"
+                    [ngClass]="{ 'is-invalid': userForm.submitted && user_id.invalid }" required>
+        
+        
+                </div>
+                <div *ngIf="userForm.submitted && user_id.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="user_id.errors.required">User id required</div>
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && department.invalid }">
+                <label>Department</label>
+        
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-box" aria-hidden="true"></i>
+                  </div>
+                  <select [disabled]="disableInputs" type="text" #department="ngModel" name="department"
+                    [(ngModel)]="userDetails.department" id="department" class="form-control" ng-model="userDetails.department"
+                    [ngClass]="{ 'is-invalid': userForm.submitted && department.invalid }" required>
+                    <option>Select</option>
+                  </select>
+        
+                </div>
+                <div *ngIf="userForm.submitted && department.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="department.errors.required">Department required</div>
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && shift_time.invalid }">
+                <label>Shift Time</label>
+        
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                  </div>
+                  <input [disabled]="disableInputs" type="time" #shift_time="ngModel" name="shift_time"
+                    [(ngModel)]="userDetails.shift_time" id="login_time" class="form-control"
+                    ng-model="userDetails.shift_time | date:'hh:mm:ss a'"
+                    [ngClass]="{ 'is-invalid': userForm.submitted && shift_time.invalid }" required>
+                </div>
+                <div *ngIf="userForm.submitted && shift_time.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="shift_time.errors.required">Shift time required</div>
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+          </div>
+                
+          <div class="row">
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && email.invalid }">
+                <label> Email</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                  </div>
+                  <input [disabled]="disableInputs" required email #email="ngModel" name="email" [(ngModel)]="userDetails.email"
+                    class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                </div>
+                <div *ngIf="userForm.submitted && email.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="email.errors.required">Valid Eamil required</div>
+                </div>
+        
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && primary_contact.invalid }">
+                <label> Primary Contact</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <input [disabled]="disableInputs" required number #primary_contact="ngModel" name="primary_contact"
+                    [(ngModel)]="userDetails.primary_contact" type="text"
+                    class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                </div>
+        
+        
+                <div *ngIf="userForm.submitted && primary_contact.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="primary_contact.errors.required">Primary Contact required</div>
+                </div>
+        
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group">
+                <label> Secondary Contact</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <input [disabled]="disableInputs" number name="secondary_contact" [(ngModel)]="userDetails.secondary_contact"
+                    type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+        
+            <div class="col col-sm-12 col-lg-12">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && address.invalid }">
+                <label>Address</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-address-book"></i>
+                  </div>
+                  <input [disabled]="disableInputs" name="address" required #address="ngModel" [(ngModel)]="userDetails.address"
+                    type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                </div>
+        
+                <div *ngIf="userForm.submitted && address.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="address.errors.required">Address required</div>
+                </div>
+        
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && city.invalid }">
+                <label>City</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-address-book"></i>
+                  </div>
+                  <input [disabled]="disableInputs" required #city="ngModel" name="city" [(ngModel)]="userDetails.city"
+                    type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                </div>
+        
+                <div *ngIf="userForm.submitted && city.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="city.errors.required">City required</div>
+                </div>
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && state.invalid }">
+                <label>State</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-address-book"></i>
+                  </div>
+                  <input [disabled]="disableInputs" required #state="ngModel" name="state" [(ngModel)]="userDetails.state"
+                    type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                </div>
+        
+                <div *ngIf="userForm.submitted && state.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="state.errors.required">State required</div>
+                </div>
+        
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+        
+            <div class="col col-sm-12 col-lg-4">
+              <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && zip_code.invalid }">
+                <label>Zip Code</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-address-book"></i>
+                  </div>
+                  <input [disabled]="disableInputs" required #zip_code="ngModel" name="zip_code"
+                    [(ngModel)]="userDetails.zip_code" type="text"
+                    class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                </div>
+        
+                <div *ngIf="userForm.submitted && zip_code.invalid" class="invalid-feedback">
+                  <div class="text-danger" *ngIf="zip_code.errors.required">Zip code required</div>
+                </div>
+        
+                <!-- /.input group -->
+              </div>
+            </div>
+        
+        
+          </div>
+
+
+          <!-- /input-group -->
+        </div>
+        <div class="box-footer text-center">
+          <button *ngIf="userId=='add'"  type="submit"  class="btn btn-success button_Style">Add New User</button>
+          <button *ngIf="userId!='add' && editMode==true" type="submit" class="btn btn-success button_Style">Update Details</button>     
+          <button *ngIf="userId!='add' && editMode!=true" (click)="editMode_click()" type="button" class="btn btn-danger button_Style">Edit Details</button>
+          <button *ngIf="userId!='add'  && editMode==true" (click)="cancel_click()" type="button" class="btn btn-danger button_Style">Cancel Edit</button>
+        </div>
+       <br>
+        <!-- /.box-body -->
+      </div>
+    </form>
+  </section>
+  <!-- /.content -->

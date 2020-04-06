@@ -4,7 +4,7 @@
     </h1>
   
     <span style="margin-top: -25px;" class="pull-right">
-      <a style="border-radius: 30px; " [routerLink]="['/members/user_device_access_view','NEW']"  
+      <a style="border-radius: 30px; " [routerLink]="['/members/newDeviceAccess']"  
      
        class="btn btn-block btn-social btn-dropbox button_Style">
         <i class="fa fa-plus"></i> Create Access
@@ -54,7 +54,7 @@
                     id="drpUserList" class="form-control select2" style="width: 100%;"
                     aria-hidden="true">      
                     <option value="ALL" selected >ALL</option>
-                    <option value={{user.id}} *ngFor="let user of UserList">{{user.name}}</option>    
+                    <option value={{user.user_sys_id}} *ngFor="let user of UserList">{{user.user_name}}</option>    
                   </select>
                 </div>              
               </div>
