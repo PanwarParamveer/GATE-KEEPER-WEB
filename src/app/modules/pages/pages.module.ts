@@ -15,7 +15,7 @@ import { MomentModule } from 'ngx-moment';
 import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
 import { UserDeviceAccessViewComponent } from './user-device-access-view/user-device-access-view.component';
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   // tslint:disable-next-line:max-line-length
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent, NewDeviceAccessComponent],
@@ -24,8 +24,8 @@ import { NewDeviceAccessComponent } from './new-device-access/new-device-access.
     PagesRoutingModule,
     LayoutModule,
     FormsModule,
-    MomentModule
-    
+    MomentModule,
+    NgSelectModule
   ]
 })
 export class PagesModule {

@@ -1,118 +1,114 @@
-
 <section class="content-header">
-    <h1>
+  <h1>
     New Device Access
-    </h1>
-  </section>
-  
-  
-  <!-- Main content -->
-  <section class="content">
-  
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title"></h3>
-        </div>
-        <div style="padding:8%;" class="box-body">
-        <div>
-            <div class="row">
-              <ng-select [items]="DeviceList"
-              bindLabel="device_name"
-              placeholder="Select item"
-              appendTo="body"
-              multiple="true"
-              [(ngModel)]="selected">
-   </ng-select>
+  </h1>
+</section>
 
-                <div class="col col-sm-12  col-md-6 col-lg-6">
-                    <div class="form-group" >
-                      <label>Device</label>
-                      <div class="input-group">
-                        <div class="input-group-addon">
-                          <i class="fa fa-gears" aria-hidden="true"></i>
-                        </div>
-                        <select id="drpDeviceList"  (change)="deviceChange()"  class="form-control select2" style="width: 100%;"
-                          tabindex="-1" aria-hidden="true">  
-                          <option value={{device.device_id}} *ngFor="let device of DeviceList">{{device.device_name}}</option>    
-                        </select>
-                      </div>              
-                    </div>
-                  </div>
-    
-                <div class="col col-sm-12  col-md-6 col-lg-6">
-                  <div class="form-group" >
-                    <label>User Name</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                      </div>
-                      <select  
-                        id="drpUserList" class="form-control select2" style="width: 100%;"
-                        aria-hidden="true"> 
-                        <option value={{user.user_sys_id}} *ngFor="let user of UserList">{{user.user_name}}</option>    
-                      </select>
-                    </div>              
-                  </div>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"></h3>
+    </div>
+    <div style="padding:8%;" class="box-body">
+
+      <div class="row">
+
+
+          <div class="col col-sm-12  col-md-6 col-lg-6">
+            <div class="form-group">
+              <label>Device</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-gears" aria-hidden="true"></i>
                 </div>
-      
-    
-            </div>
-            </div>
 
-            <div class="row">
-            
+                <ng-select [items]="DeviceList" bindValue="device_id"  bindLabel="device_name" 
+                placeholder="Select item" (change)="onDeviceSelection()"
+                [(ngModel)]="selectedDevice">
+               </ng-select>
 
-                <div class="col col-sm-12  col-md-4 col-lg-4">
-                    <div class="form-group" >
-                      <label>DEVICE ID TYPE</label>
-                      <div class="input-group">
-                        <div class="input-group-addon">
-                          <i class="fa fa-industry" aria-hidden="true"></i>
-                        </div>
-                        <select id="drpDeviceIdType" class="form-control select2" style="width: 100%;"
-                          tabindex="-1" aria-hidden="true">  
-                          <option value={{device.device_type}} *ngFor="let device of validIdTypeList">{{device.device_type}}</option>    
-                        </select>
-                      </div>              
-                    </div>
-                  </div>
-    
-                <div class="col col-sm-12  col-md-4 col-lg-4">
-                  <div class="form-group" >
-                    <label>DEVICE ID</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-indent" aria-hidden="true"></i>
-                      </div>
-                      <input type="text"       class="form-control" required   id="userdeviceId"   aria-hidden="true">                        
-                     
-                    </div>              
-                  </div>
-                </div>
-      
-                <div class="col col-sm-12 col-md-4 col-lg-4">
-                    <div class="form-group">
-                      <label>Expiry Date</label>        
-                      <div class="input-group">
-                        <div class="input-group-addon">
-                          <i class="fa fa-calendar" aria-hidden="true"></i>
-                        </div>
-                        <input type="date"   id="expiryDate" class="form-control"   date>
-                      </div>
-                     
-                      <!-- /.input group -->
-                    </div>
-                  </div>
-      
               </div>
-        
-        </div>
-        <div class="box-footer text-center">
-          <button  type="button" (click)="creataAccount()"   class="btn btn-success button_Style">Create Access</button>
-        </div>
-       <br>
-        <!-- /.box-body -->
+            </div>
+          </div>
+
+          <div class="col col-sm-12  col-md-6 col-lg-6">
+            <div class="form-group">
+              <label>User Name</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <ng-select [items]="UserList" bindValue="user_sys_id"  bindLabel="user_name" 
+                placeholder="Select item" 
+                [(ngModel)]="selectedUser">
+               </ng-select>
+               
+              </div>
+            </div>
+          </div>
+
+
       </div>
 
-  </section>
-  <!-- /.content -->
+      <div class="row">
+
+
+        <div class="col col-sm-12  col-md-4 col-lg-4">
+          <div class="form-group">
+            <label>DEVICE ID TYPE</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-industry" aria-hidden="true"></i>
+              </div>
+              <select id="drpDeviceIdType" class="form-control select2" style="width: 100%;" tabindex="-1"
+                aria-hidden="true">
+                <option value={{device.device_type}} *ngFor="let device of validIdTypeList">{{device.device_type}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-sm-12  col-md-4 col-lg-4">
+          <div class="form-group">
+            <label>DEVICE ID</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-indent" aria-hidden="true"></i>
+              </div>
+              <input type="text" class="form-control" required id="userdeviceId" aria-hidden="true">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-sm-12 col-md-4 col-lg-4">
+          <div class="form-group">
+            <label>Expiry Date</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+              </div>
+              <input type="date" id="expiryDate" class="form-control" date>
+            </div>
+
+            <!-- /.input group -->
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+      <br>
+      <div class="box-footer text-center">
+        <button type="button" (click)="creataAccount()" class="btn btn-success button_Style">Create Access</button>
+      </div>
+   
+      <!-- /.box-body -->
+    </div>
+  </div>
+</section>
+<!-- /.content -->

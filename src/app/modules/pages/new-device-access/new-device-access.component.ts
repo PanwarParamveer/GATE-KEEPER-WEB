@@ -10,55 +10,57 @@ declare var $;
   styleUrls: ['./new-device-access.component.scss']
 })
 export class NewDeviceAccessComponent implements OnInit {
+
+
+
+
+  private items: any = [];
+  private selectedUser: any ;
+  private selectedDevice: any ;
   private UserList: any = [];
   private DeviceList: any = [];
   private validIdTypeList: any;
-constructor(private deviceService: DeviceService,
-            private loader: NgxUiLoaderService,
-            private toastr: ToastrService,
-            private userService: UserService
-            ) { }
+  constructor(private deviceService: DeviceService,
+    private loader: NgxUiLoaderService,
+    private toastr: ToastrService,
+    private userService: UserService
+  ) { }
 
-ngOnInit() {
-  
-  this.deviceService.getdrpUserDeviceList().subscribe((data) => {
-    this.DeviceList = data.deviceList;
-    this.UserList =  data.userList;
+  ngOnInit() {
 
-    setTimeout(() => {
-      $('#drpDeviceList').select2();
+    this.deviceService.getdrpUserDeviceList().subscribe((data) => {
+      this.DeviceList = data.deviceList;
+      this.UserList = data.userList;
 
-      $('#drpUserList').select2();
+    }, (e) => {
+      this.toastr.success(e.error, 'Eror');
+    });
 
-    }, 100);
-  }, (e) => {
-    this.toastr.success(e.error, 'Eror');
-  });
-}
+  }
 
 
-deviceChange() {
-  this.validIdTypeList =  this.DeviceList.find(x => x.device_id === $('#drpDeviceList option:selected').val())[0].valid_id_type;
+  onDeviceSelection() {
+    alert(this.selectedDevice);
+    this.validIdTypeList = this.DeviceList.find(x => x.device_id === this.selectedDevice)[0].valid_id_type; 
+    }
 
-}
+  creataAccount() {
 
-creataAccount() {
+    this.loader.start();
+    this.deviceService.createNewDeviceAccess(
+      $('#drpUserList option:selected').val(),
+      $('#userdeviceId').val(),
+      $('#drpDeviceList option:selected').val(),
+      $('#drpDeviceIdType option:selected').val(),
+      $('#expiryDate').val()
+    ).subscribe((data) => {
+      this.toastr.error(data.message, 'Success');
+    }, e => {
+      this.toastr.error(e.message, 'Error');
+      this.loader.stop();
+    });
 
-  this.loader.start();
-  this.deviceService.createNewDeviceAccess(
-    $('#drpUserList option:selected').val(),
-    $('#userdeviceId').val(),
-    $('#drpDeviceList option:selected').val(),
-    $('#drpDeviceIdType option:selected').val(),
-    $('#expiryDate').val()
-  ).subscribe((data) => {
-    this.toastr.error(data.message, 'Success');
-  }, e => {
-    this.toastr.error(e.message, 'Error');
-    this.loader.stop();
-  });
-
-}
+  }
 }
 
 
