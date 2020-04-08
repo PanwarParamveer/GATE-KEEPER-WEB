@@ -3,6 +3,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
 import { DeviceService } from '../../services/deviceService/device.service';
 import { UserService } from '../../services/userService/user.service';
+import { NgOption } from '@ng-select/ng-select';
 declare var $;
 @Component({
   selector: 'app-new-device-access',
@@ -13,18 +14,20 @@ export class NewDeviceAccessComponent implements OnInit {
 
 
 
+  selectedUser: any = {};
+  selectedDevice: any = {};
+  selectedIDType: any = {};
+  expiryDate: string;
+  userdeviceId: string;
+  UserList: any = {};
+  DeviceList: any = {};
 
-  private items: any = [];
-  private selectedUser: any ;
-  private selectedDevice: any ;
-  private UserList: any = [];
-  private DeviceList: any = [];
-  private validIdTypeList: any;
   constructor(private deviceService: DeviceService,
     private loader: NgxUiLoaderService,
     private toastr: ToastrService,
     private userService: UserService
   ) { }
+
 
   ngOnInit() {
 
@@ -39,25 +42,26 @@ export class NewDeviceAccessComponent implements OnInit {
   }
 
 
-  onDeviceSelection() {
-    alert(this.selectedDevice);
-    this.validIdTypeList = this.DeviceList.find(x => x.device_id === this.selectedDevice)[0].valid_id_type; 
-    }
-
   creataAccount() {
 
     this.loader.start();
     this.deviceService.createNewDeviceAccess(
-      $('#drpUserList option:selected').val(),
-      $('#userdeviceId').val(),
-      $('#drpDeviceList option:selected').val(),
-      $('#drpDeviceIdType option:selected').val(),
-      $('#expiryDate').val()
+      this.selectedUser,
+      this.userdeviceId,
+      this.selectedDevice.device_id,
+      this.selectedIDType,
+      this.expiryDate
     ).subscribe((data) => {
-      this.toastr.error(data.message, 'Success');
-    }, e => {
-      this.toastr.error(e.message, 'Error');
       this.loader.stop();
+      this.toastr.success(data.message, 'Success');
+      this.selectedUser = {};
+      this.selectedDevice = {};
+      this.selectedIDType = {};
+      this.expiryDate = '';
+      this.userdeviceId = '';
+    }, e => {
+      this.loader.stop();
+      this.toastr.error(e.error, 'Error');
     });
 
   }

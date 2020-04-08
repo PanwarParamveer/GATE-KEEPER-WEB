@@ -14,35 +14,36 @@
     </div>
     <div style="padding:8%;" class="box-body">
 
-      <div class="row">
 
+
+      <div class="row">
 
           <div class="col col-sm-12  col-md-6 col-lg-6">
             <div class="form-group">
-              <label>Device</label>
+              <label>DEVICE</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-gears" aria-hidden="true"></i>
                 </div>
 
-                <ng-select [items]="DeviceList" bindValue="device_id"  bindLabel="device_name" 
-                placeholder="Select item" (change)="onDeviceSelection()"
+                <ng-select [items]="DeviceList"   bindLabel="device_name" 
+                placeholder="Select Device" 
                 [(ngModel)]="selectedDevice">
                </ng-select>
 
               </div>
             </div>
           </div>
-
+        
           <div class="col col-sm-12  col-md-6 col-lg-6">
             <div class="form-group">
-              <label>User Name</label>
+              <label>USER</label>
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
                 <ng-select [items]="UserList" bindValue="user_sys_id"  bindLabel="user_name" 
-                placeholder="Select item" 
+                placeholder="Select user" 
                 [(ngModel)]="selectedUser">
                </ng-select>
                
@@ -61,13 +62,13 @@
             <label>DEVICE ID TYPE</label>
             <div class="input-group">
               <div class="input-group-addon">
-                <i class="fa fa-industry" aria-hidden="true"></i>
+                <i class="fa fa-id-card" aria-hidden="true"></i>
               </div>
-              <select id="drpDeviceIdType" class="form-control select2" style="width: 100%;" tabindex="-1"
-                aria-hidden="true">
-                <option value={{device.device_type}} *ngFor="let device of validIdTypeList">{{device.device_type}}
-                </option>
-              </select>
+              <ng-select [items]="selectedDevice.valid_id_type" 
+              placeholder="Select id type" bindValue="type"  bindLabel="type"
+              [(ngModel)]="selectedIDType">
+             </ng-select>
+                         
             </div>
           </div>
         </div>
@@ -79,7 +80,7 @@
               <div class="input-group-addon">
                 <i class="fa fa-indent" aria-hidden="true"></i>
               </div>
-              <input type="text" class="form-control" required id="userdeviceId" aria-hidden="true">
+              <input type="text" class="form-control"  [(ngModel)]="userdeviceId" required id="userdeviceId" aria-hidden="true">
 
             </div>
           </div>
@@ -87,12 +88,12 @@
 
         <div class="col col-sm-12 col-md-4 col-lg-4">
           <div class="form-group">
-            <label>Expiry Date</label>
+            <label>EXPIRY DATE</label>
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="fa fa-calendar" aria-hidden="true"></i>
               </div>
-              <input type="date" id="expiryDate" class="form-control" date>
+              <input type="date" id="expiryDate" [(ngModel)]="expiryDate" class="form-control" date>
             </div>
 
             <!-- /.input group -->

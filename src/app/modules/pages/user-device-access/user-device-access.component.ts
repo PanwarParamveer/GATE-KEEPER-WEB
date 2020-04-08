@@ -3,6 +3,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { UserService } from '../../services/userService/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { DeviceService } from '../../services/deviceService/device.service';
+import { NgOption } from '@ng-select/ng-select';
 declare var $;
 @Component({
   selector: 'app-user-device-access',
@@ -10,41 +11,45 @@ declare var $;
   styleUrls: ['./user-device-access.component.scss']
 })
 export class UserDeviceAccessComponent implements OnInit {
-  sDetails: any ;
-  UserList: any ;
-  DeviceList: any;
+
+  selectedUser: any = {};
+  selectedDevice: any = {};
+
+  UserList: any = [];
+  DeviceList: any = [];
   userDeviceAccessList: any = {};
+
+
+
   constructor(private userService: UserService, private loader: NgxUiLoaderService, private deviceService: DeviceService,
-              private toastr: ToastrService) { }
+    private toastr: ToastrService) { }
 
   ngOnInit() {
 
     this.deviceService.getdrpUserDeviceList().subscribe((data) => {
+
+      this.UserList = data.userList;
+      this.UserList.unshift({ user_name: 'ALL', user_sys_id: 'ALL' });
+
+
       this.DeviceList = data.deviceList;
-      this.UserList =  data.userList;
-  
-      setTimeout(() => {
-        $('#drpDeviceList').select2();
-        $('#drpDeviceList').val('ALL').trigger('change');
+      this.DeviceList.unshift({ device_name: 'ALL', device_id: 'ALL' });
 
-        $('#drpUserList').select2();
-        $('#drpUserList').val('ALL').trigger('change');
 
-      }, 100);
+      this.selectedUser = this.UserList[0];
+      this.selectedDevice = this.DeviceList[0];
+      
     }, (e) => {
       this.toastr.success(e.error, 'Eror');
     });
-
   }
 
 
   onSubmit() {
 
     this.loader.start();
-    this.sDetails.device_id = this.sDetails.user_sys_id = $('#drpDeviceList option:selected').val();
-    this.sDetails.user_sys_id = this.sDetails.user_sys_id = $('#drpUserList option:selected').val();
     // tslint:disable-next-line:max-line-length
-    this.deviceService.getDeviceAccess(this.sDetails).subscribe((data) => {
+    this.deviceService.getDeviceAccess({ device_id: this.selectedDevice.device_id, user_sys_id: this.selectedUser.user_sys_id }).subscribe((data) => {
       $('#example1').DataTable().destroy();
       this.userDeviceAccessList = data;
       setTimeout(() => {

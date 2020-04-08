@@ -16,9 +16,10 @@ import { UserDeviceAccessComponent } from './user-device-access/user-device-acce
 import { UserDeviceAccessViewComponent } from './user-device-access-view/user-device-access-view.component';
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MyDeviceComponent } from './my-device/my-device.component';
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent, NewDeviceAccessComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent, NewDeviceAccessComponent, MyDeviceComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
