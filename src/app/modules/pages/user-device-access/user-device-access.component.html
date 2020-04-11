@@ -81,8 +81,8 @@
                   <th>USER ID</th>
                   <th>USER NAME</th>                   
                   <th>DEVICE NAME</th>
-                  <th>DEVICE ID TYPE</th>
-                  <th>USER DEVICE ID</th> 
+                  <th>DEVICE GATE NO/NAME</th>
+                 
                   <th>ACCESS EXPIRE</th>
                   <th>STATUS</th>                                   
                   <th>VIEW/EDIT</th>                 
@@ -94,9 +94,8 @@
                   <td class="sorting_1">{{data.user_id}}</td>
                   <td class="sorting_1">{{data.user_name}}</td>                              
                   <td class="sorting_1">{{data.device_name}}</td>     
-                  <td class="sorting_1">{{data.device_type}}</td>   
-                  <td class="sorting_1">{{data.user_device_id}}</td>    
-                  <td class="sorting_1">{{data.access_expiry_date}}</td>                  
+                  <td class="sorting_1">{{data.device_gate}}</td> 
+                  <td class="sorting_1">{{data.access_expiry_date | date:'dd/MMM/yyyy'}}</td>                  
                   <td class="sorting_1">{{data.user_status}}</td>
 
                   <td style="text-align: center;">

@@ -16,9 +16,7 @@ export class NewDeviceAccessComponent implements OnInit {
 
   selectedUser: any = {};
   selectedDevice: any = {};
-  selectedIDType: any = {};
-  expiryDate: string;
-  userdeviceId: string;
+  expiryDate = '';
   UserList: any = {};
   DeviceList: any = {};
 
@@ -34,7 +32,6 @@ export class NewDeviceAccessComponent implements OnInit {
     this.deviceService.getdrpUserDeviceList().subscribe((data) => {
       this.DeviceList = data.deviceList;
       this.UserList = data.userList;
-
     }, (e) => {
       this.toastr.success(e.error, 'Eror');
     });
@@ -45,20 +42,12 @@ export class NewDeviceAccessComponent implements OnInit {
   creataAccount() {
 
     this.loader.start();
-    this.deviceService.createNewDeviceAccess(
-      this.selectedUser,
-      this.userdeviceId,
-      this.selectedDevice.device_id,
-      this.selectedIDType,
-      this.expiryDate
-    ).subscribe((data) => {
+    this.deviceService.createNewDeviceAccess(this.selectedUser, this.selectedDevice.device_id, this.expiryDate).subscribe((data) => {
       this.loader.stop();
       this.toastr.success(data.message, 'Success');
       this.selectedUser = {};
       this.selectedDevice = {};
-      this.selectedIDType = {};
       this.expiryDate = '';
-      this.userdeviceId = '';
     }, e => {
       this.loader.stop();
       this.toastr.error(e.error, 'Error');

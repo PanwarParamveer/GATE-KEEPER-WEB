@@ -17,34 +17,27 @@ export class DeviceService {
 
   // tslint:disable-next-line:variable-name
   private getActiveUserAndIdList_api = environment.serviceUrl + '/deviceApi/device/getActiveUserAndIdList';
-  
+
   constructor(private fauth: AuthServiceService, private http: HttpClient, private loader: NgxUiLoaderService) { }
 
-getListOfDevice() {
-   return this.http.post(this.getRegistredDeviceList, {}, this.fauth.getHeaders());
-}
+  getListOfDevice() {
+    return this.http.post(this.getRegistredDeviceList, {}, this.fauth.getHeaders());
+  }
 
-getDeviceAccess(data)  {
-  return this.http.post(this.getUserDeviceAccess, data, this.fauth.getHeaders());
-}
+  getDeviceAccess(data) {
+    return this.http.post(this.getUserDeviceAccess, data, this.fauth.getHeaders());
+  }
 
-getdrpUserDeviceList(): any {
-  return this.http.post(this.getActiveUserAndIdList_api, {}, this.fauth.getHeaders());
-}
+  getdrpUserDeviceList(): any {
+    return this.http.post(this.getActiveUserAndIdList_api, {}, this.fauth.getHeaders());
+  }
 
 
-// tslint:disable-next-line:variable-name
-createNewDeviceAccess(_user_sys_id: string, _user_device_id: string, _device_id: string, _device_id_type: string,
-                      // tslint:disable-next-line:variable-name
-                      _expiry_date: string): any {
-  return this.http.post(this.createNewDeviceAccess_api, {
-    user_sys_id: _user_sys_id,
-    user_device_id: _user_device_id,
-    device_id: _device_id,
-    device_id_type: _device_id_type,
-    expiry_date: _expiry_date
-  }, this.fauth.getHeaders());
-}
+  // tslint:disable-next-line:variable-name
+  createNewDeviceAccess(_user_sys_id: string, _device_id: string,_expiry_date: string): any {
+    return this.http.post(this.createNewDeviceAccess_api, 
+      {user_sys_id: _user_sys_id, device_id: _device_id, expiry_date: _expiry_date}, this.fauth.getHeaders());
+  }
 
 
 

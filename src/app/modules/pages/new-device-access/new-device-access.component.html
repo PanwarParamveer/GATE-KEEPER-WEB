@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-    New Device Access
+    Device Access
   </h1>
 </section>
 
@@ -10,14 +10,15 @@
 
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title"></h3>
+      <h3 class="box-title">Create New Device Access</h3>
     </div>
-    <div style="padding:8%;" class="box-body">
+    <div style="padding:5%;" class="box-body">
 
 
 
       <div class="row">
-
+        <div class="col col-sm-12  col-md-3 col-lg-3">
+        </div>
           <div class="col col-sm-12  col-md-6 col-lg-6">
             <div class="form-group">
               <label>DEVICE</label>
@@ -34,7 +35,13 @@
               </div>
             </div>
           </div>
-        
+          <div class="col col-sm-12  col-md-3 col-lg-3">
+          </div>
+      </div>
+      
+      <div class="row">
+        <div class="col col-sm-12  col-md-3 col-lg-3">
+        </div>
           <div class="col col-sm-12  col-md-6 col-lg-6">
             <div class="form-group">
               <label>USER</label>
@@ -50,43 +57,15 @@
               </div>
             </div>
           </div>
+          <div class="col col-sm-12  col-md-3 col-lg-3">
+          </div>
+        </div>
 
-
-      </div>
 
       <div class="row">
-
-
-        <div class="col col-sm-12  col-md-4 col-lg-4">
-          <div class="form-group">
-            <label>DEVICE ID TYPE</label>
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-id-card" aria-hidden="true"></i>
-              </div>
-              <ng-select [items]="selectedDevice.valid_id_type" 
-              placeholder="Select id type" bindValue="type"  bindLabel="type"
-              [(ngModel)]="selectedIDType">
-             </ng-select>
-                         
-            </div>
-          </div>
+        <div class="col col-sm-12  col-md-3 col-lg-3">
         </div>
-
-        <div class="col col-sm-12  col-md-4 col-lg-4">
-          <div class="form-group">
-            <label>DEVICE ID</label>
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-indent" aria-hidden="true"></i>
-              </div>
-              <input type="text" class="form-control"  [(ngModel)]="userdeviceId" required id="userdeviceId" aria-hidden="true">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="col col-sm-12 col-md-4 col-lg-4">
+        <div class="col col-sm-12 col-md-6 col-lg-6">
           <div class="form-group">
             <label>EXPIRY DATE</label>
             <div class="input-group">
@@ -99,14 +78,16 @@
             <!-- /.input group -->
           </div>
         </div>
-
+        <div class="col col-sm-12  col-md-3 col-lg-3">
+        </div>
       </div>
 
       <br>
-      <br>
-      <div class="box-footer text-center">
-        <button type="button" (click)="creataAccount()" class="btn btn-success button_Style">Create Access</button>
-      </div>
+      <div class="row" style="text-align: center;">
+      <button type="button" (click)="creataAccount()" class="btn btn-success button_Style">Create Access</button>
+    </div>
+
+     
    
       <!-- /.box-body -->
     </div>
