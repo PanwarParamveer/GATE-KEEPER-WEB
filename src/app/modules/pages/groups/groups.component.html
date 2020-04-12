@@ -1,0 +1,70 @@
+
+
+<section class="content-header">
+    <h1>
+    USER GROUPS
+    </h1>
+ 
+    <span style="margin-top: -25px;" class="pull-right">
+        <a style="border-radius: 30px; " (click)="openDialog()"  
+       
+         class="btn btn-block btn-social btn-dropbox button_Style">
+          <i class="fa fa-plus"></i> Create New Group 
+        </a>
+     
+      </span>
+  </section>
+  
+  
+  
+  <br>
+  
+  <section class="content">
+  
+    <!-- Default box -->
+    <div class="box box-primary">
+       
+        <div class="card">
+  
+          <!-- /.card-header -->
+          <div class="card-body" style="padding: 25px;">
+            <table id="tblGroups" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                 
+                  <th>Group Name</th> 
+                  <th>Total Members</th> 
+                  <th>Description</th>
+                  <th>Created By</th> 
+                  <th>Create Date</th>                           
+                  <th>Edit</th>                 
+                </tr>
+              </thead>
+              <tbody>
+  
+                <tr role="row" *ngFor="let data of myDevice">
+                                                        
+                  <td class="sorting_1">{{data.group_name}}</td>     
+                  <td class="sorting_1">{{data.total_members}}</td> 
+                  <td class="sorting_1">{{data.description}}</td> 
+                  <td class="sorting_1">{{data.created_by}}</td>                   
+                  <td class="sorting_1">{{data.created_date}}</td>
+
+                  <td style="text-align: center;">
+                    <button    
+                    style="border-radius: 25px;width: 80%;"
+                    class="btn  btn-primary button_Style">Edit</button></td>          
+                </tr>
+  
+  
+              </tbody>
+  
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+
+    </div>
+    <!-- /.box -->
+  
+  </section>

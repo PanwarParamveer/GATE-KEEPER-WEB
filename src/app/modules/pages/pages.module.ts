@@ -17,9 +17,11 @@ import { UserDeviceAccessViewComponent } from './user-device-access-view/user-de
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MyDeviceComponent } from './my-device/my-device.component';
+import { GroupsComponent } from './groups/groups.component';
+import { GroupDialogComponent } from './group-dialog/group-dialog.component';
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent, NewDeviceAccessComponent, MyDeviceComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent, NewDeviceAccessComponent, MyDeviceComponent, GroupsComponent, GroupDialogComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

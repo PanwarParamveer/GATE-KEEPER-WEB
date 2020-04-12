@@ -207,11 +207,11 @@
 
   <div class="col col-sm-12 col-lg-4">
     <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && department.invalid }">
-      <label>Department</label>
+      <label>Department/Region/Group</label>
 
       <div class="input-group">
         <div class="input-group-addon">
-          <i class="fa fa-box" aria-hidden="true"></i>
+          <i class="fa fa-group" aria-hidden="true"></i>
         </div>
         <select [disabled]="disableInputs" type="text"  #department="ngModel" name="department"
           [(ngModel)]="userDetails.department"  id="department" class="form-control"
@@ -219,7 +219,9 @@
           [ngClass]="{ 'is-invalid': userForm.submitted && department.invalid }" required>
           <option>Select</option>
         </select>
-
+        <div class="input-group-addon">
+          <i class="fa fa-plus-square" aria-hidden="true"></i>
+        </div>
       </div>
       <div *ngIf="userForm.submitted && department.invalid" class="invalid-feedback">
         <div class="text-danger" *ngIf="department.errors.required" >Department required</div>
@@ -230,11 +232,11 @@
 
   <div class="col col-sm-12 col-lg-4">
     <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && shift_time.invalid }">
-      <label>Shift Time</label>
+      <label>Shift Time/Login Time</label>
 
       <div class="input-group">
         <div class="input-group-addon">
-          <i class="fa fa-clock" aria-hidden="true"></i>
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
         </div>
         <input [disabled]="disableInputs" type="time"  #shift_time="ngModel" name="shift_time"
           [(ngModel)]="userDetails.shift_time"  id="login_time" class="form-control"

@@ -13,6 +13,7 @@ import { UserDeviceAccessComponent } from './user-device-access/user-device-acce
 import { UserDeviceAccessViewComponent } from './user-device-access-view/user-device-access-view.component';
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 import { MyDeviceComponent } from './my-device/my-device.component';
+import { GroupsComponent } from './groups/groups.component';
 
 // const adminOnly = () => hasCustomClaim('admin');
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -66,6 +67,11 @@ const routes: Routes = [
       },
       {
         path: 'dashboard', component: DashBoardComponent, canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin }
+      },
+
+      {
+        path: 'groups', component: GroupsComponent, canActivate: [AngularFireAuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin }
       }
       
