@@ -19,6 +19,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MyDeviceComponent } from './my-device/my-device.component';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupDialogComponent } from './group-dialog/group-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   // tslint:disable-next-line:max-line-length
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent, NewDeviceAccessComponent, MyDeviceComponent, GroupsComponent, GroupDialogComponent],
@@ -28,7 +33,12 @@ import { GroupDialogComponent } from './group-dialog/group-dialog.component';
     LayoutModule,
     FormsModule,
     MomentModule,
-    NgSelectModule
+    NgSelectModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class PagesModule {

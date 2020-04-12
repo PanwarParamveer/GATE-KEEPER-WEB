@@ -18,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MomentModule } from 'ngx-moment';
 import { NgSelectModule } from '@ng-select/ng-select';
-import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     NgxUiLoaderRouterModule,
     BrowserAnimationsModule,
     NgSelectModule,
-    MatDialogModule,
+    
+    
+    
   MomentModule,
     ToastrModule.forRoot(
       {
