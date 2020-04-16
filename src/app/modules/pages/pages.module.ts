@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
+
 import {CommonModule} from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import {PagesRoutingModule} from './pages-routing.module';
 import {PagesComponent} from './pages/pages.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
@@ -17,16 +18,14 @@ import { UserDeviceAccessViewComponent } from './user-device-access-view/user-de
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MyDeviceComponent } from './my-device/my-device.component';
-import { GroupsComponent } from './groups/groups.component';
-import { GroupDialogComponent } from './group-dialog/group-dialog.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+
+
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent, CompanyProfileComponent, EmployeeListComponent, AttendaceComponent, UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent, NewDeviceAccessComponent, MyDeviceComponent, GroupsComponent, GroupDialogComponent],
+  declarations: [PagesComponent, DashBoardComponent, MyProfileComponent,
+     CompanyProfileComponent, EmployeeListComponent, AttendaceComponent,
+      UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent,
+       NewDeviceAccessComponent, MyDeviceComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -34,11 +33,11 @@ import {MatInputModule} from '@angular/material/input';
     FormsModule,
     MomentModule,
     NgSelectModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatFormFieldModule,
-    MatInputModule
+        ReactiveFormsModule
+    
+    
+    
+  
   ]
 })
 export class PagesModule {

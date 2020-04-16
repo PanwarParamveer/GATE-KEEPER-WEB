@@ -1,7 +1,7 @@
 
 <section class="content-header">
   <h1>
-    Users Details
+    USER DETAILS
   </h1>
 </section>
 
@@ -183,13 +183,13 @@
 
 <div class="row">
 
-  <div class="col col-sm-12 col-lg-4">
+  <div class="col col-sm-12 col-lg-8">
     <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && user_id.invalid }">
       <label>User id</label>
 
       <div class="input-group">
         <div class="input-group-addon">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
+          <i class="fa fa-id-card" aria-hidden="true"></i>
         </div>
         <input [disabled]="disableInputs" type="text"  #user_id="ngModel" name="user_id"
           [(ngModel)]="userDetails.user_id"  id="user_id" class="form-control"
@@ -205,30 +205,7 @@
     </div>
   </div>
 
-  <div class="col col-sm-12 col-lg-4">
-    <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && department.invalid }">
-      <label>Department/Region/Group</label>
 
-      <div class="input-group">
-        <div class="input-group-addon">
-          <i class="fa fa-group" aria-hidden="true"></i>
-        </div>
-        <select [disabled]="disableInputs" type="text"  #department="ngModel" name="department"
-          [(ngModel)]="userDetails.department"  id="department" class="form-control"
-          ng-model="userDetails.department"
-          [ngClass]="{ 'is-invalid': userForm.submitted && department.invalid }" required>
-          <option>Select</option>
-        </select>
-        <div class="input-group-addon">
-          <i class="fa fa-plus-square" aria-hidden="true"></i>
-        </div>
-      </div>
-      <div *ngIf="userForm.submitted && department.invalid" class="invalid-feedback">
-        <div class="text-danger" *ngIf="department.errors.required" >Department required</div>
-    </div>
-      <!-- /.input group -->
-    </div>
-  </div>
 
   <div class="col col-sm-12 col-lg-4">
     <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && shift_time.invalid }">

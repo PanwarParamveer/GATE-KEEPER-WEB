@@ -42,7 +42,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
   MomentModule,
     ToastrModule.forRoot(
       {
-        timeOut: 5000,
+        timeOut: 8000,
         positionClass: 'toast-top-center',
         enableHtml: true,
         preventDuplicates: true,

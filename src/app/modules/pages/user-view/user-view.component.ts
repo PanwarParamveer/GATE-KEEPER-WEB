@@ -65,7 +65,7 @@ export class UserViewComponent implements OnInit {
         this.router.navigate(['/members/users']);
         this.loader.stop();
       }, (e) => {
-        this.toastr.error(e.message, 'Error');
+        this.toastr.error(e.error, 'Error');
         this.loader.stop();
       });
     } else {
@@ -76,7 +76,8 @@ export class UserViewComponent implements OnInit {
         this.disableInputs = true;
         this.loader.stop();
       }, (e) => {
-        this.toastr.error(e.message, 'Error');
+
+        this.toastr.error(e.error, 'Error');
         this.loader.stop();
       });
     }

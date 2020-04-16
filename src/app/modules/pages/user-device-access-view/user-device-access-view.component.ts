@@ -25,7 +25,6 @@ export class UserDeviceAccessViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.docID = this.routerParams.snapshot.paramMap.get('id');
 
     if (this.docID === 'NEW') {
