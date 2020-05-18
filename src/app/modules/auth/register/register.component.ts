@@ -75,16 +75,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (frm.value.organization_name == 'Organization type') {
-      this.authError = { message: 'Please select valid organization type' };
-      return;
-    }
+    // if (frm.value.organization_name == 'Organization type') {
+    //   this.authError = { message: 'Please select valid organization type' };
+    //   return;
+    // }
     
 
-    if (frm.value.organization_type == '') {
-      this.authError = { message: 'Please select valid organization type' };
-      return;
-    }
+    // if (frm.value.organization_type == '') {
+    //   this.authError = { message: 'Please select valid organization type' };
+    //   return;
+    // }
     if (frm.value.password == '') {
       this.authError = { message: 'Enter Password' };
       return;

@@ -4,19 +4,21 @@
 
 export const environment = {
   production: false,
-  firebase : {
-    apiKey: 'AIzaSyCrcsT8yLIx5CoQ1Lq5vaK6DwfJZZYPaxk',
-  authDomain: 'userloginaccessmanagementdev.firebaseapp.com',
-  databaseURL: 'https://userloginaccessmanagementdev.firebaseio.com',
-  projectId: 'userloginaccessmanagementdev',
-  storageBucket: 'userloginaccessmanagementdev.appspot.com',
-  messagingSenderId: '1854329387',
-  appId: '1:1854329387:web:045dc8672bc049dce9906e',
-  measurementId: 'G-8KLH7F2QN0'
+  firebase :
+  {    
+    apiKey: "AIzaSyBFGspaX2k5-3KfvyMFokkRFq_Jq1qZEdo",
+    authDomain: "gate-keeper-dev.firebaseapp.com",
+    databaseURL: "https://gate-keeper-dev.firebaseio.com",
+    projectId: "gate-keeper-dev",
+    storageBucket: "gate-keeper-dev.appspot.com",
+    messagingSenderId: "209002241530",
+    appId: "1:209002241530:web:af28b8e3984bdcc0279843",
+    measurementId: "G-RVDL6P5YWW"
   },
-  serviceUrl: 'http://localhost:5001/userloginaccessmanagementdev/us-central1'
-
+  serviceUrl:'http://localhost:5001/gate-keeper-dev/us-central1'
 };
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

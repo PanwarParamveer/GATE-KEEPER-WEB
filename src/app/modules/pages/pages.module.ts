@@ -18,6 +18,8 @@ import { UserDeviceAccessViewComponent } from './user-device-access-view/user-de
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MyDeviceComponent } from './my-device/my-device.component';
+import { GK1Component } from './device/gk1/gk1.component';
+import { GK2Component } from './device/gk2/gk2.component';
 
 
 @NgModule({
@@ -25,7 +27,7 @@ import { MyDeviceComponent } from './my-device/my-device.component';
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent,
      CompanyProfileComponent, EmployeeListComponent, AttendaceComponent,
       UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent,
-       NewDeviceAccessComponent, MyDeviceComponent],
+       NewDeviceAccessComponent, MyDeviceComponent, GK1Component, GK2Component],
   imports: [
     CommonModule,
     PagesRoutingModule,

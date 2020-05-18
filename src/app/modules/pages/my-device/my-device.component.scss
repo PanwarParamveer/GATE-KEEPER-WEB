@@ -1,421 +1,235 @@
-// @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
-
-// $border-radius-size: 14px;
-// $barbarian: #EC9B3B;
-// $archer: #EE5487;
-// $giant: #F6901A;
-// $goblin: #82bb30;
-// $wizard: #4FACFF;
-
-// *, *:before, *:after {
-//   box-sizing: border-box;
-// }
-
-
-// .slide-container {
-//   margin: auto;
-//   width: 600px;
-//   text-align: center;
-// }
-
-// .wrapper {
-//   padding-top: 40px;
-//   padding-bottom: 40px;
+a:link{
+    text-decoration: none;
+  }
+  .productCardContainer{
+    padding: 5px;
+  }
+  .productCardContent{
+    position: relative;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 3px solid #2a4185;
+    background: #0050a0;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+  }
+  .productCardContent .productCardImage{
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+  .productCardContent .productCardImage img{
+    position: relative;
+    display: block;
+    min-height: 200px;
+    min-width: 100%;
+    max-width: 100%;
+    opacity: 1;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+  }
+  .productCardContent:hover .productCardImage img{
+    opacity: 0.8;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  .productCardContent .productCardImage .imageCardEffect{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 30px 10px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    text-indent: 9999px;
+  }
+  .productCardContent .productCardImage .imageCardEffect::before,
+  .productCardContent .productCardImage .imageCardEffect::after{
+      pointer-events: none;
+  }
+  .productCardContent .productCardImage .imageCardEffect::before{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.5);
+      content: '';
+      -webkit-transition: -webkit-transform 0.6s;
+      transition: transform 0.6s;
   
-//   &:focus {
-//     outline: 0;
-//   }
-// }
-
-
-
-// .clash-card {
-//   background: white;
-//   width: 300px;
-//   display: inline-block;
-//   margin: auto;
-//   border-radius: $border-radius-size + 5;
-//   position: relative;
-//   text-align: center;
-//   box-shadow: -1px 15px 30px -12px black;
-//   z-index: 9999;
-// }
-
-// .clash-card__image {
-//   position: relative;
-//   height: 230px;
-//   margin-bottom: 35px;
-//   border-top-left-radius: $border-radius-size;
-//   border-top-right-radius: $border-radius-size;
-// }
-
-// .clash-card__image--barbarian {
-//   background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian-bg.jpg');
-//   img {
-//     width: 400px;
-//     position: absolute;    
-//     top: -65px;
-//     left: -70px;
-//   }
-// }
-
-// .clash-card__image--archer {
-//   background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/archer-bg.jpg');
-//   img {
-//     width: 400px;
-//     position: absolute;    
-//     top: -34px;
-//     left: -37px;
-//   }
-// }
-
-// .clash-card__image--giant {
-//   background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/giant-bg.jpg');
-//   img {
-//     width: 340px;
-//     position: absolute;    
-//     top: -30px;
-//     left: -25px;
-//   }
-// }
-
-// .clash-card__image--goblin {
-//   background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/goblin-bg.jpg');
-//   img {
-//     width: 370px;
-//     position: absolute;    
-//     top: -21px;
-//     left: -37px;
-//   }
-// }
-
-// .clash-card__image--wizard {
-//   background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg');
-//   img {
-//     width: 345px;
-//     position: absolute;    
-//     top: -28px;
-//     left: -10px;
-//   }
-// }
-
-// .clash-card__level {
-//   text-transform: uppercase;
-//   font-size: 12px;
-//   font-weight: 700;
-//   margin-bottom: 3px;
-// }
-
-// .clash-card__level--barbarian {
-//   color: $barbarian;
-// }
-
-// .clash-card__level--archer {
-//   color: $archer;
-// }
-
-// .clash-card__level--giant {
-//   color: $giant;
-// }
-
-// .clash-card__level--goblin {
-//   color: $goblin;
-// }
-
-// .clash-card__level--wizard {
-//   color: $wizard;
-// }
-
-// .clash-card__unit-name {
-//   font-size: 26px;
-//   color: black;
-//   font-weight: 900;
-//   margin-bottom: 5px;
-// }
-
-// .clash-card__unit-description {
-//   padding: 20px;
-//   margin-bottom: 10px;  
-// }
-
-// .clash-card__unit-stats--barbarian {
-//   background: $barbarian;
+      -webkit-transform: rotate(45deg) scale(2) translate(0px, -100%);
+      -moz-transform: rotate(45deg) scale(2) translate(0px, -100%);
+      -o-transform: rotate(45deg) scale(2) translate(0px, -100%);
+      -ms-transform: rotate(45deg) scale(2) translate(0px, -100%);
+      transform: rotate(45deg) scale(2.5) translate(0px, -100%);
+  }
+  .productCardContent:hover .productCardImage .imageCardEffect::before {
+      -webkit-transform: rotate(45deg) scale(2) translate(0px, 100%);
+      -moz-transform: rotate(45deg) scale(2) translate(0px, 100%);
+      -o-transform: rotate(45deg) scale(2) translate(0px, 100%);
+      -ms-transform: rotate(45deg) scale(2) translate(0px, 100%);
+      transform: rotate(45deg) scale(2.5) translate(0px, 100%);
+  }
   
-//   .one-third {
-//      border-right: 1px solid #BD7C2F;
-//   }
-// }
-
-// .clash-card__unit-stats--archer {
-//   background: $archer;
+  /*======================== Card Details Style */
+  .productCardDetails{
+      position: relative;
+      overflow: hidden;
+      background: #FFFFFF;
+      -webkit-transition: all 300ms ease-out;
+      -moz-transition: all 300ms ease-out;
+      -o-transition: all 300ms ease-out;
+      transition: all 300ms ease-out;
+  }
+  .productCardDetails .productCardModel{
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px 20px 10px 20px;
+  }
+  .productCardDetails .productCardModel a:link, .productCardDetails .productCardModel .accessoryDesc{
+      color: #2a4185;
+      position: relative;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      display: block;
+      -webkit-transition: all 300ms ease-out;
+      -moz-transition: all 300ms ease-out;
+      -o-transition: all 300ms ease-out;
+      transition: all 300ms ease-out;
+  }
+  .productCardDetails .productCardModel a span, .productCardDetails .productCardModel .accessoryDesc span{
+      font-size: 18px;
+      display: block;
+  }
+  .productCardDetails .productCardModel a span b, .productCardDetails .productCardModel .accessoryDesc span b{
+      font-size: 12px;
+      font-weight: normal;
+  }
+  .productCardContent:hover .productCardDetails .productCardModel a, .productCardContent:hover .productCardDetails .productCardModel .accessoryDesc{
+      color: #e65059;
+  }
+  .modelCardEffect{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+  }
+  .productCardContent .productCardDetails .modelCardEffect::before{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #2a4185;
+      content: '';
+      -webkit-transition: -webkit-transform 0.6s;
+      transition: transform 0.6s;
   
-//   .one-third {
-//      border-right: 1px solid #D04976;
-//   }
-// }
-
-// .clash-card__unit-stats--giant {
-//   background: $giant;
+      -webkit-transform: skew(40deg, 0deg) translate(-150%, 0px);
+      -moz-transform: skew(40deg, 0deg) translate(-150%, 0px);
+      -o-transform: skew(40deg, 0deg) translate(-150%, 0px);
+      -ms-transform: skew(40deg, 0deg) translate(-150%, 0px);
+      transform: skew(40deg, 0deg) translate(-150%, 0px);
+  }
+  .productCardContent:hover .productCardDetails .modelCardEffect::before {
+      -webkit-transform: skew(0deg, 0deg) translate(0%, 0px);
+      -moz-transform: skew(0deg, 0deg) translate(0%, 0px);
+      -o-transform: skew(0deg, 0deg) translate(0%, 0px);
+      -ms-transform: skew(0deg, 0deg) translate(0%, 0px);
+      transform: skew(0deg, 0deg) translate(0%, 0px);
+  }
+  .productCardContent .productCardDetails .productCardDetailsList {
+      position: relative;
+      height: 150px;
+  }
+  .productCardContent .productCardDetails .productCardDetailsList .list-group{
+      margin-bottom: 0!important;
+  }
+  .productCardContent .productCardDetails .productCardDetailsList .list-group .list-group-item{
+      color: #2a4185 !important;
+  }
+  .productCardContent .productCardDetails .productCardDetailsList .list-group .list-group-item .detailIcon{
+      position: relative;
+      width: 40px;
+      padding-left: 10px;
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 25px;
+  }
+  .productCardContent .productCardDetails .productCardDetailsList .list-group .list-group-item .detailInfo{
+      display: table-cell;
+      vertical-align: middle;
+  }
+  .productCardContent .productCardDetails .accessoryCardDetailsList {
+      position: relative;
+      height: 50px;
+  }
+  .productCardContent .productCardDetails .accessoryCardDetailsList .list-group{
+      margin-bottom: 0!important;
+  }
+  .productCardContent .productCardDetails .accessoryCardDetailsList .list-group .list-group-item{
+      color: #2a4185 !important;
+  }
+  .productCardContent .productCardDetails .accessoryCardDetailsList .list-group .list-group-item .detailIcon{
+      position: relative;
+      width: 40px;
+      padding-left: 10px;
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 25px;
+  }
+  .productCardContent .productCardDetails .accessoryCardDetailsList .list-group .list-group-item .detailInfo{
+      display: table-cell;
+      vertical-align: middle;
+  }
   
-//   .one-third {
-//      border-right: 1px solid darken($giant, 8%);
-//   }
-// }
-
-// .clash-card__unit-stats--goblin {
-//   background: $goblin;
-  
-//   .one-third {
-//      border-right: 1px solid darken($goblin, 6%);
-//   }
-// }
-
-// .clash-card__unit-stats--wizard {
-//   background: $wizard;
-  
-//   .one-third {
-//      border-right: 1px solid darken($wizard, 6%);
-//   }
-// }
-
-// .clash-card__unit-stats {
-  
-//   color: white;
-//   font-weight: 700;
-//   border-bottom-left-radius: $border-radius-size;
-//   border-bottom-right-radius: $border-radius-size;
-  
-//   .one-third {
-//     width: 33%;
-//     float: left;
-//     padding: 20px 15px;
-//   }
-  
-//   sup {
-//     position: absolute;
-//     bottom: 4px; 
-//     font-size: 45%;
-//     margin-left: 2px;
-//   }
-  
-//   .stat {
-//     position: relative;
-//     font-size: 24px;
-//     margin-bottom: 10px;
-//   }
-  
-//   .stat-value {
-//     text-transform: uppercase;
-//     font-weight: 400;
-//     font-size: 12px;
-//   }
-
-//   .no-border {
-//     border-right: none;
-//   }
-// }
-
-// .clearfix:after {
-// 	visibility: hidden;
-// 	display: block;
-// 	font-size: 0;
-// 	content: " ";
-// 	clear: both;
-// 	height: 0;
-// }
-
-// .slick-prev {
-//   left: 100px;
-//   z-index: 999;
-// }
-
-// .slick-next {
-//   right: 100px;
-//   z-index: 999;
-// }
-
-
-
-
-
-
-
-
-
-
-// <div class="row">
-// <div class="col col-sm-12 col-md-4 col-lg-4">
-
-
-
-// <div class="wrapper">
-//   <div class="clash-card barbarian">
-//     <div class="clash-card__image clash-card__image--barbarian">
-//       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian.png" alt="barbarian" />
-//     </div>
-//     <div class="clash-card__level clash-card__level--barbarian">Level 4</div>
-//     <div class="clash-card__unit-name">The Barbarian</div>
-//     <div class="clash-card__unit-description">
-//       The Barbarian is a kilt-clad Scottish warrior with an angry, battle-ready expression, hungry for destruction. He has Killer yellow horseshoe mustache.
-//     </div>
-
-//     <div class="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">
-//       <div class="one-third">
-//         <div class="stat">20<sup>S</sup></div>
-//         <div class="stat-value">Training</div>
-//       </div>
-
-//       <div class="one-third">
-//         <div class="stat">16</div>
-//         <div class="stat-value">Speed</div>
-//       </div>
-
-//       <div class="one-third no-border">
-//         <div class="stat">150</div>
-//         <div class="stat-value">Cost</div>
-//       </div>
-
-//     </div>
-
-//   </div> <!-- end clash-card barbarian-->
-// </div> <!-- end wrapper -->
-// </div>
-
-// <div class="col col-sm-12 col-md-4 col-lg-4">
-// <div class="wrapper">
-//   <div class="clash-card archer">
-//     <div class="clash-card__image clash-card__image--archer">
-//       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/archer.png" alt="archer" />
-//     </div>
-//     <div class="clash-card__level clash-card__level--archer">Level 5</div>
-//     <div class="clash-card__unit-name">The Archer</div>
-//     <div class="clash-card__unit-description">
-//       The Archer is a female warrior with sharp eyes. She wears a short, light green dress, a hooded cape, a leather belt and an attached small pouch.
-//     </div>
-
-//     <div class="clash-card__unit-stats clash-card__unit-stats--archer clearfix">
-//       <div class="one-third">
-//         <div class="stat">25<sup>S</sup></div>
-//         <div class="stat-value">Training</div>
-//       </div>
-
-//       <div class="one-third">
-//         <div class="stat">24</div>
-//         <div class="stat-value">Speed</div>
-//       </div>
-
-//       <div class="one-third no-border">
-//         <div class="stat">300</div>
-//         <div class="stat-value">Cost</div>
-//       </div>
-
-//     </div>
-
-//   </div> <!-- end clash-card archer-->
-// </div> <!-- end wrapper -->
-// </div>
-
-// <div class="col col-sm-12 col-md-4 col-lg-4">
-// <div class="wrapper">
-//   <div class="clash-card giant">
-//     <div class="clash-card__image clash-card__image--giant">
-//       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/giant.png" alt="giant" />
-//     </div>
-//     <div class="clash-card__level clash-card__level--giant">Level 5</div>
-//     <div class="clash-card__unit-name">The Giant</div>
-//     <div class="clash-card__unit-description">
-//       Slow, steady and powerful, Giants are massive warriors that soak up huge amounts of damage. Show them a turret or cannon and you'll see their fury unleashed!
-//     </div>
-
-//     <div class="clash-card__unit-stats clash-card__unit-stats--giant clearfix">
-//       <div class="one-third">
-//         <div class="stat">2<sup>M</sup></div>
-//         <div class="stat-value">Training</div>
-//       </div>
-
-//       <div class="one-third">
-//         <div class="stat">12</div>
-//         <div class="stat-value">Speed</div>
-//       </div>
-
-//       <div class="one-third no-border">
-//         <div class="stat">2250</div>
-//         <div class="stat-value">Cost</div>
-//       </div>
-
-//     </div>
-
-//   </div> <!-- end clash-card giant-->
-// </div> <!-- end wrapper -->
-// </div> 
-
-// <div class="col col-sm-12 col-md-4 col-lg-4">
-//  <div class="wrapper">
-//   <div class="clash-card goblin">
-//     <div class="clash-card__image clash-card__image--goblin">
-//       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/goblin.png" alt="goblin" />
-//     </div>
-//     <div class="clash-card__level clash-card__level--goblin">Level 5</div>
-//     <div class="clash-card__unit-name">The Goblin</div>
-//     <div class="clash-card__unit-description">
-//       These pesky little creatures only have eyes for one thing: LOOT! They are faster than a Spring Trap, and their hunger for resources is limitless.
-//     </div>
-
-//     <div class="clash-card__unit-stats clash-card__unit-stats--goblin clearfix">
-//       <div class="one-third">
-//         <div class="stat">30<sup>S</sup></div>
-//         <div class="stat-value">Training</div>
-//       </div>
-
-//       <div class="one-third">
-//         <div class="stat">32</div>
-//         <div class="stat-value">Speed</div>
-//       </div>
-
-//       <div class="one-third no-border">
-//         <div class="stat">100</div>
-//         <div class="stat-value">Cost</div>
-//       </div>
-
-//     </div>
-
-//   </div> <!-- end clash-card goblin-->
-// </div> <!-- end wrapper -->
-// </div>
-
-
-// <div class="col col-sm-12 col-md-4 col-lg-4">
-// <div class="wrapper">
-//   <div class="clash-card wizard">
-//     <div class="clash-card__image clash-card__image--wizard">
-//       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard.png" alt="wizard" />
-//     </div>
-//     <div class="clash-card__level clash-card__level--wizard">Level 6</div>
-//     <div class="clash-card__unit-name">The Wizard</div>
-//     <div class="clash-card__unit-description">
-//       The Wizard is a terrifying presence on the battlefield. Pair him up with some of his fellows and cast concentrated blasts of destruction on anything, land or sky!
-//     </div>
-
-//     <div class="clash-card__unit-stats clash-card__unit-stats--wizard clearfix">
-//       <div class="one-third">
-//         <div class="stat">5<sup>M</sup></div>
-//         <div class="stat-value">Training</div>
-//       </div>
-
-//       <div class="one-third">
-//         <div class="stat">16</div>
-//         <div class="stat-value">Speed</div>
-//       </div>
-
-//       <div class="one-third no-border">
-//         <div class="stat">4000</div>
-//         <div class="stat-value">Cost</div>
-//       </div>
-
-//     </div>
-
-//   </div> <!-- end clash-card wizard-->
-// </div> <!-- end wrapper -->
-// </div>
-
-// </div>
+  .productCardContent .productCardPrice{
+      position: relative;
+      text-align: center;
+  }
+  .productCardContent .productCardPrice a, .productCardContent .productCardPrice button{
+      border: none !important;
+      width: 40%;
+      margin: 4% !important;
+      padding: 0 !important;
+      text-align: center;
+      line-height: 35px;
+      background: transparent;
+      color: #2a4185;
+      -webkit-transition: all 100ms ease-out;
+      -moz-transition: all 100ms ease-out;
+      -o-transition: all 100ms ease-out;
+      transition: all 100ms ease-out;
+  }
+  .productCardContent:hover .productCardPrice a, .productCardContent:hover .productCardPrice button {
+      background: #2a4185;
+      color: #e65059;
+  }
+  .productCardPrice a:hover, .productCardPrice a:focus, .productCardPrice a:hover, .productCardPrice button:focus{
+      background: #e65059;
+      color: #2a4185;
+  }
+  .productCardContent .productCardPrice .inCart, .productCardPrice .inCart:focus{
+      color: #2a4185 !important;
+      background: #81c868 !important;
+  }
+  .accessoryAdminCard{
+      background: #FFFFFF;
+      padding: 10px;
+  }

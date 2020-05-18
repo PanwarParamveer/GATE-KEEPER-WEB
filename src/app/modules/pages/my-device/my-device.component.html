@@ -19,52 +19,47 @@
   
   <br>
   
+
+  
+
+  
+
+
   <section class="content">
   
-    <!-- Default box -->
-    <div class="box box-primary">
-       
-        <div class="card">
-  
-          <!-- /.card-header -->
-          <div class="card-body" style="padding: 25px;">
-            <table id="tblMyDevice" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                 
-                  <th>DEVICE NAME</th>                   
-                  <th>GATE NO/NAME</th> 
-                  <th>IN/OUT TYPE</th> 
-                  <th>TOT ACCESS GRANTED</th>                 
-                  <th>STATUS</th>                                                  
-                  <th>VIEW/EDIT</th>                 
-                </tr>
-              </thead>
-              <tbody>
-  
-                <tr role="row" *ngFor="let data of myDevice">
-                                                        
-                  <td class="sorting_1">{{data.device_name}}</td>     
-                  <td class="sorting_1">{{data.gate_no_name}}</td> 
-                  <td class="sorting_1">{{data.in_out_type}}</td> 
-                  <td class="sorting_1">{{data.total_access_granted}}</td>                   
-                  <td class="sorting_1">{{data.is_active}}</td>
 
-                  <td style="text-align: center;">
-                    <button [routerLink]="['/members/user_device_access_view',data.doc_id]"   
-                    style="border-radius: 25px;width: 80%;"
-                    class="btn btn-sm btn-primary button_Style">View/Edit</button></td>          
-                </tr>
-  
-  
-              </tbody>
-  
-            </table>
+    <div class="container">
+      <div class="row">
+      
+        
+        <div  *ngFor="let data of myDevice" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="productCardContainer">
+            <div class="productCardContent">
+              <div class="productCardImage">
+                <img src="https://pbs.twimg.com/profile_images/777547960850718720/uLB18LXG.jpg" alt="" />
+                <a href="" class="imageCardEffect">Product</a>
+              </div>
+              <div class="productCardDetails">
+                <div class="productCardModel">
+                  <span class="modelCardEffect"></span>
+                  <a href="">
+                    Model: {{data.device_name}}
+                    <span>Price: {{data.gate_no_name}}</span>
+                  </a>
+                </div>
+               
+                <div class="productCardPrice">             
+                  <button class="btn addToCart">
+                    <i class="fa fa-shopping-cart"></i> Configuration
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- /.card-body -->
         </div>
-
+        
+      </div>
     </div>
-    <!-- /.box -->
+
   
   </section>
