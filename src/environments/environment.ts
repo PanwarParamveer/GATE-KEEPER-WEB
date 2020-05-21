@@ -15,7 +15,7 @@ export const environment = {
     appId: "1:209002241530:web:af28b8e3984bdcc0279843",
     measurementId: "G-RVDL6P5YWW"
   },
-  serviceUrl:'http://localhost:5001/gate-keeper-dev/us-central1'
+  serviceUrl: 'https://us-central1-gate-keeper-dev.cloudfunctions.net'
 };
 
 
@@ -28,7 +28,8 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
- //                 serviceUrl:http://localhost:5001/userloginaccessmanagementdev/us-central1
+ //                 serviceUrl:http://localhost:5001/gate-keeper-dev/us-central1
 
 
- //        serviceUrl: 'https://us-central1-userloginaccessmanagementdev.cloudfunctions.net'
+ //serviceUrl: 'https://us-central1-gate-keeper-dev.cloudfunctions.net'
+

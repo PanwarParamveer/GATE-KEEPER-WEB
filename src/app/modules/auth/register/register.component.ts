@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.authError = data;
     });
 
-
+    
 
     // tslint:disable-next-line:variable-name
     const url_ = environment.serviceUrl + '/publicApi/public/typeOfOrganization';
@@ -51,6 +51,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     $('body').removeClass('hold-transition login-page');
   }
+
+  signUpByGoogle() {
+    this.auth.signUpByGoogle();
+  }
+
 
   createUser(frm) {
 

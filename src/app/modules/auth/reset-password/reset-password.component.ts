@@ -1,28 +1,24 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 
 declare var $;
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
-
+export class ResetPasswordComponent implements OnInit {
 
   authError: any;
 
   constructor(private auth: AuthServiceService) { }
 
-  login(frm) {
-    this.auth.login(frm.value.email, frm.value.password);
+  resetPassword(frm) {
+    this.auth.resetPassword(frm.value.email);
   }
 
 
-  loginWithGoogle(){
-    this.auth.loginWithGoogle();
-  }
+
 
   ngOnInit() {
     this.authError = '';

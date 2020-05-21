@@ -13,6 +13,18 @@ import { auth } from 'firebase';
   providedIn: 'root'
 })
 export class AuthServiceService {
+  
+  resetPassword(email: any) {
+    this.ngxService.start();
+    this.afAuth.auth.sendPasswordResetEmail(email).then(d=>{ 
+      this.ngxService.stop();
+      this.toastr.success(' <br>A passwrod reset link has been sent to your email id.',"Email sent",{ timeOut: 60000});     
+      this.router.navigate(['/login']);    
+    }).catch(e=>{
+      this.toastr.error(e.message);
+      this.ngxService.stop();
+    });
+  }
 
   public myToken;
   private eventAuthError = new BehaviorSubject<string>('test');
@@ -27,23 +39,32 @@ export class AuthServiceService {
     private ngxService: NgxUiLoaderService,
     private toastr: ToastrService
   ) {
-
-
-
-    this.afAuth.authState.subscribe((user) => {
+   
+    this.afAuth.auth.onAuthStateChanged((user) => {
+     
       if (user) {
+        this.ngxService.stop();
         user.getIdToken().then(token => {
           localStorage.setItem('token', token.toString());
+          this.toastr.info('Welcome ' + this.afAuth.auth.currentUser.displayName, 'Welcome');
+          this.router.navigate(['/members']);
         }).catch((e) => {
+          this.ngxService.stop();
+          localStorage.setItem('token', null);
           this.router.navigate(['/login']);
         });
       } else {
+        this.ngxService.stop();
         localStorage.setItem('token', null);
         this.router.navigate(['/login']);
       }
-    })
+    });
 
   }
+
+
+
+
 
   login(email: string, password: string) {
     this.ngxService.start();
@@ -51,63 +72,46 @@ export class AuthServiceService {
       .catch(error => {
         this.ngxService.stop();
         this.eventAuthError.next(error);
-      })
-      .then(userCredential => {
-        this.ngxService.stop();
-        if (userCredential) {
-
-
-          userCredential.user.getIdToken(true).then(token => {
-            localStorage.setItem('token', token.toString());
-            this.toastr.info('Welcome ' + this.afAuth.auth.currentUser.displayName, 'Welcome');
-            this.router.navigate(['/members']);
-          }).catch((e) => {
-            this.router.navigate(['/login']);
-          });
-
-
-
-        }
       });
+      
   }
 
-  createUser(user) {
+  loginWithGoogle() {    
+    var provider = new auth.GoogleAuthProvider();
+    this.afAuth.auth.signInWithPopup(provider).catch(error => {
+      this.ngxService.stop();
+      this.eventAuthError.next(error);
+    });
+  }
+
+
+
+  signUpByGoogle() {
     this.ngxService.start();
     const provider = new auth.GoogleAuthProvider();
-      this.afAuth.auth.signInWithPopup(provider).then(d=>{
-  console.log(d);
-    }).catch(c=>{
-      console.log(c);
+      this.afAuth.auth.signInWithPopup(provider).then(userCredential=>{
+        this.ngxService.stop();
+    }).catch(error=>{
+      this.ngxService.stop();
+      this.eventAuthError.next(error);
     });
-    // return this.updateUserData(credential.user);
-    //  this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
-    //   .then(userCredential => {
+  }
 
-    //     userCredential.user.getIdToken().then(token => {
 
-    //       const httpOptions = {
-    //         headers: new HttpHeaders({
-    //           'Content-Type': 'application/json',
-    //           authorization: 'Bearer ' + token.toString()
-    //         })
-    //       };
 
-    //       this.http.post(environment.serviceUrl + '/companyApi/company/createAccount', user, httpOptions)
-    //         .subscribe(res => {
-    //           this.ngxService.stop();
-    //           this.afAuth.auth.signOut();
-    //         });
 
-    //     }).catch(error => {
-    //       this.ngxService.stop();
-    //       this.eventAuthError.next(error);
-    //     });
-
-    //   })
-    //   .catch(error => {
-    //     this.ngxService.stop();
-    //     this.eventAuthError.next(error);
-    //   });
+  createUser(user) {
+   
+     this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(userAuth => {
+      userAuth.user.updateProfile({
+        displayName:user.first_name+ " "+ user.last_name,
+        photoURL :"userDefaultPhoto"
+      })
+     })
+     .catch(error => {
+          this.ngxService.stop();
+          this.eventAuthError.next(error);
+        });      
   }
 
   logout() {

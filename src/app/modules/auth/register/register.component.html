@@ -1,13 +1,12 @@
-<div class="register-box">
-  <div class="register-logo">
-    <a href="../../index2.html"><b>Params</b>Automation</a>
-  </div>
 
+
+<div class="register-box box box-primary">
+    
   <div class="register-box-body">
-    <div style="text-align: center;">
-      <img width="30%" src="/assets/dist/img/logo.png">
+    <div class="register-logo">
+      <a href="../../index2.html"><b>Gate</b>Keeper</a>
     </div>
-    <h4 style="margin-top:10px ;" class="login-box-msg">Create Account</h4>
+    <h4 style="margin-top:10px;" class="login-box-msg">Create New Account</h4>
      
     <div class="row" *ngIf="authError">
       <div class="col-12" style="color: red;margin-bottom: 15px; text-align: center; ">
@@ -17,15 +16,24 @@
 
     <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
 
-      <div class="form-group has-feedback">
-        <input ngModel  #first_name="ngModel" name="first_name" required id="first_name" class="form-control" placeholder="First name" type="text">
-        <span class="fa fa-bank form-control-feedback"></span>
-      </div>
 
-      <div class="form-group has-feedback">
-        <input ngModel  #last_name="ngModel" name="last_name" required id="last_name" class="form-control" placeholder="Last name" type="text">
-        <span class="fa fa-bank form-control-feedback"></span>
+      <div class="row">
+<div class="col-sm-12 col-lg-6">
+  <div class="form-group has-feedback">
+    <input ngModel  #first_name="ngModel" name="first_name" required id="first_name" class="form-control" placeholder="First name" type="text">
+    <span class="fa fa-user form-control-feedback"></span>
+  </div>
+</div>
+<div class="col-sm-12 col-lg-6">
+  <div class="form-group has-feedback">
+    <input ngModel  #last_name="ngModel" name="last_name" required id="last_name" class="form-control" placeholder="Last name" type="text">
+    <span class="fa fa-user form-control-feedback"></span>
+  </div>
+</div>
       </div>
+   
+
+     
 
 
       <div class="form-group has-feedback">
@@ -33,19 +41,7 @@
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
 
-    
       
-
-      <div class="form-group has-feedback">
-        <input ngModel  #organization_name="ngModel" name="organization_name" required id="organization_name" class="form-control" placeholder="Organization name" type="text">
-        <span class="fa fa-bank form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <select  ngModel  #organization_type="ngModel" name="organization_type" required id="organization_type"   class="form-control select2 select2-hidden-accessible"  required style="width: 100%;"  tabindex="-1" aria-hidden="true">
-          <option>Organization type</option>
-          <option *ngFor="let type of Otype">{{type}}</option>        
-        </select>
-      </div>
       <div class="form-group has-feedback">
         <input  ngModel #password="ngModel" required name="password" id="password" class="form-control" placeholder="Password" type="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -61,15 +57,25 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button class="btn btn-primary btn-block btn-flat" type="submit">Create</button>
+          <button class="btn btn-primary btn-block btn-flat" type="submit">Register</button>
         </div>
         <!-- /.col -->
       </div>
-    </form>
 
+   
+
+
+
+    </form>
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>     
+      <a (click)="signUpByGoogle()" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
+        Google</a>
+    </div>
     
-    <a [routerLink]="'/login/'" class="text-center">I already have a membership</a>
+    <a [routerLink]="'/login/'" class="text-center"> <b>I already have a membership</b></a>
   </div>
   <!-- /.form-box -->
 </div>
 <!-- /.register-box -->
+
