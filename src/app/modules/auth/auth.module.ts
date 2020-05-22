@@ -6,10 +6,11 @@ import {AuthComponent} from './auth/auth.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent, RegisterComponent, ResetPasswordComponent],
+  declarations: [AuthComponent, LoginComponent, RegisterComponent, ResetPasswordComponent, TermsConditionComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

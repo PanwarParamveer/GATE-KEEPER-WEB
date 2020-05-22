@@ -9,7 +9,7 @@
     <h4 style="margin-top:10px;" class="login-box-msg">Create New Account</h4>
      
     <div class="row" *ngIf="authError">
-      <div class="col-12" style="color: red;margin-bottom: 15px; text-align: center; ">
+      <div class="col-12" style="color: red;margin-bottom: 15px; text-align: center;font-size: 16px;font-weight: 600; ">
         {{ authError?.message }}
       </div>
     </div>
@@ -37,27 +37,30 @@
 
 
       <div class="form-group has-feedback">
-        <input ngModel  #email="ngModel" name="email" required id="email" class="form-control" placeholder="Email" type="text">
+        <input ngModel  #email="ngModel" name="email" required id="email" 
+        class="form-control" placeholder="Email" type="text">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
 
       
       <div class="form-group has-feedback">
-        <input  ngModel #password="ngModel" required name="password" id="password" class="form-control" placeholder="Password" type="password">
+        <input  ngModel #password="ngModel" required name="password" id="password"
+         class="form-control" placeholder="Password" type="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       
       <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-9">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> I agree to the <a href="#">terms</a>
+              <input ngModel #term="ngModel" id="term"  required name="term" type="checkbox"> I agree to the 
+              <a [routerLink]="'/login/termsAndConditions'">terms & conditions</a>
             </label>
           </div>
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
-          <button class="btn btn-primary btn-block btn-flat" type="submit">Register</button>
+        <div class="col-xs-3">
+          <button class="btn btn-primary btn-flat" style="margin-left: -15px;" type="submit">Register</button>
         </div>
         <!-- /.col -->
       </div>

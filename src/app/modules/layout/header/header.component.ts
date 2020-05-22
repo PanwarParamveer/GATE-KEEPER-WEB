@@ -25,27 +25,18 @@ export class HeaderComponent implements OnInit {
     this.photo = this.authS.auth.currentUser.photoURL;
     this.email = this.authS.auth.currentUser.email;
     this.lastLogin = this.authS.auth.currentUser.metadata.lastSignInTime;
-
+   
     this.authS.auth.currentUser.getIdTokenResult().then(
        (t)=> {  
         this.myRole = t.claims.role;
       }
     );
 
-
-    this.companyService.getCompanyDetails().subscribe((data) => {
-      this.cDetails = data;
-    });
-
   }
 
   logout() {
     this.authS.auth.signOut();
   }
-
-
-  
-  
  
   
 

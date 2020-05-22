@@ -10,7 +10,8 @@
     <form #loginForm="ngForm" novalidate action="" (ngSubmit)="login(loginForm)">   
       <h3 style="margin-top:10px ;" class="login-box-msg">Login</h3>
       <div class="row" *ngIf="authError">
-        <div style="color: red;margin-bottom: 15px; text-align: center; " class="col-12">{{ authError?.message }}</div>
+        <div style="color: red;margin-bottom: 15px; text-align: center;font-size: 16px;font-weight: 600;  " 
+        class="col-12">{{ authError?.message }}</div>
       </div>
 
       <div class="form-group has-feedback">

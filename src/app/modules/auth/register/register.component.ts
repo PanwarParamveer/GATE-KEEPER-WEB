@@ -35,15 +35,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.auth.eventAuthError$.subscribe(data => {
       this.authError = data;
-    });
+    });  
 
-    
-
-    // tslint:disable-next-line:variable-name
-    const url_ = environment.serviceUrl + '/publicApi/public/typeOfOrganization';
-    this.http.get(url_).subscribe(data => {
-      this.Otype = data;
-    });
 
 
   }
@@ -74,27 +67,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.authError = { message: 'Invalid email' };
       return;
     }
-
-    if (frm.value.organization_name == '') {
-      this.authError = { message: 'Please enter organization name' };
-      return;
-    }
-
-    // if (frm.value.organization_name == 'Organization type') {
-    //   this.authError = { message: 'Please select valid organization type' };
-    //   return;
-    // }
     
-
-    // if (frm.value.organization_type == '') {
-    //   this.authError = { message: 'Please select valid organization type' };
-    //   return;
-    // }
     if (frm.value.password == '') {
       this.authError = { message: 'Enter Password' };
       return;
     }
-
+    if ($("#term").prop("checked")=== false) {
+      this.authError = { message: 'For accessing our services you must agree with our term and condition' };
+      return;
+    }
     this.auth.createUser(frm.value);
   }
 

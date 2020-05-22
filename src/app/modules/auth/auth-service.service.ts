@@ -14,6 +14,8 @@ import { auth } from 'firebase';
 })
 export class AuthServiceService {
   
+newRegistration: boolean;
+
   resetPassword(email: any) {
     this.ngxService.start();
     this.afAuth.auth.sendPasswordResetEmail(email).then(d=>{ 
@@ -41,10 +43,16 @@ export class AuthServiceService {
   ) {
    
     this.afAuth.auth.onAuthStateChanged((user) => {
-     
+      if(this.newRegistration){   
+        this.newRegistration =false;    
+        setTimeout(function() {
+          location.reload();
+        }, 5000);      
+        return;
+      }
       if (user) {
         this.ngxService.stop();
-        user.getIdToken().then(token => {
+        user.getIdToken(true).then(token => {
           localStorage.setItem('token', token.toString());
           this.toastr.info('Welcome ' + this.afAuth.auth.currentUser.displayName, 'Welcome');
           this.router.navigate(['/members']);
@@ -85,12 +93,13 @@ export class AuthServiceService {
   }
 
 
-
   signUpByGoogle() {
     this.ngxService.start();
     const provider = new auth.GoogleAuthProvider();
-      this.afAuth.auth.signInWithPopup(provider).then(userCredential=>{
-        this.ngxService.stop();
+      this.afAuth.auth.signInWithPopup(provider).then(userCredential=>{    
+        this.newRegistration=true;
+          
+      
     }).catch(error=>{
       this.ngxService.stop();
       this.eventAuthError.next(error);
@@ -101,12 +110,12 @@ export class AuthServiceService {
 
 
   createUser(user) {
-   
+    this.ngxService.start();
      this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(userAuth => {
+      this.newRegistration=true;
       userAuth.user.updateProfile({
-        displayName:user.first_name+ " "+ user.last_name,
-        photoURL :"userDefaultPhoto"
-      })
+        displayName:user.first_name+ " "+ user.last_name        
+      });
      })
      .catch(error => {
           this.ngxService.stop();
