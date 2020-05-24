@@ -30,15 +30,17 @@ export class UserViewComponent implements OnInit {
   public userId: any;
   // public userDetails: any = {};
   userDetails: any = {};
+  statusType :any =["ACTIVE","IN-ACTIVE"];
   ngOnInit() {
     // tslint:disable-next-line:no-unused-expression
     // tslint:disable-next-line:no-debugger
 
     this.userId = this.routerParams.snapshot.paramMap.get('id');
 
-    if (this.userId === 'add') {
-      this.disableInputs = false;
+    if (this.userId === 'add') { 
       this.userDetails = {};
+      this.userDetails.status="ACTIVE";
+      this.disableInputs = false;
     } else {
       this.disableInputs = true;
       this.loader.start();

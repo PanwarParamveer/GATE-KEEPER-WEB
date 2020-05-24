@@ -15,7 +15,7 @@ export class UserDeviceAccessViewComponent implements OnInit {
   private disableInputs = false;
   private docID: any;
   private userAccessDetails: any = {};
-  private pageHeader = 'User Device Access';
+  private pageHeader = 'User Gate Access';
 
   constructor(private router: Router,
               private routerParams: ActivatedRoute,

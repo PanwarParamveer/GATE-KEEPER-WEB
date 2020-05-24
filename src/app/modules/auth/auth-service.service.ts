@@ -55,7 +55,7 @@ newRegistration: boolean;
         user.getIdToken(true).then(token => {
           localStorage.setItem('token', token.toString());
           this.toastr.info('Welcome ' + this.afAuth.auth.currentUser.displayName, 'Welcome');
-          this.router.navigate(['/members']);
+          this.router.navigate(['/dashboard']);
         }).catch((e) => {
           this.ngxService.stop();
           localStorage.setItem('token', null);

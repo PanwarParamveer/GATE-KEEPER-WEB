@@ -20,6 +20,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MyDeviceComponent } from './my-device/my-device.component';
 import { GK1Component } from './device/gk1/gk1.component';
 import { GK2Component } from './device/gk2/gk2.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { GK2Component } from './device/gk2/gk2.component';
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent,
      CompanyProfileComponent, EmployeeListComponent, AttendaceComponent,
       UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent,
-       NewDeviceAccessComponent, MyDeviceComponent, GK1Component, GK2Component],
+       NewDeviceAccessComponent, MyDeviceComponent, GK1Component, GK2Component, SubscriptionComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

@@ -29,8 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/bower_components/font-awesome/css/font-awesome.min.css",
+              "src/assets/bower_components/bootstrap/dist/css/bootstrap.min.css",            
               "src/assets/bower_components/Ionicons/css/ionicons.min.css",
               "src/assets/dist/css/AdminLTE.min.css",
               "src/assets/dist/css/skins/_all-skins.css",

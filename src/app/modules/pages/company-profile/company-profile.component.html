@@ -8,9 +8,7 @@
   <section class="content">
   
     <!-- <form #OrgForm="ngForm" (ngSubmit)="onSubmit(OrgForm)"> -->
-      <form #OrgForm="ngForm" name="form" (ngSubmit)="OrgForm.form.valid && onSubmit()" novalidate> 
-
-
+      <form #OrgForm="ngForm" name="form" (ngSubmit)="OrgForm.form.valid && onSubmit(OrgForm)" novalidate> 
 
     <div class="box box-primary">
       
@@ -54,17 +52,29 @@
                     </div>
                     
                     <div class="col col-sm-12 col-lg-6">
-                        <div class="form-group"
+
+                      <div class="form-group"
                          [ngClass]="{ 'has-error': OrgForm.submitted && organization_type.invalid }">
                             <label>Organizaion Type</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-bank"></i>
                                 </div>
-                                <input disabled name="organization_type" 
+                                <!-- <input disabled name="organization_type" 
                                 #organization_type="ngModel" required
                                 [(ngModel)]="cDetails.organization_type" type="text" 
-                                class="form-control ng-pristine ng-untouched ng-valid ng-not-empty">
+                                class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"> -->
+
+
+                                <ng-select [disabled]="!editMode" name="organization_type" 
+                                #organization_type="ngModel" required
+                                [items]="cDetails.orgType" 
+                                  bindLabel="org_name" 
+                                placeholder="Organization Type" 
+                                [(ngModel)]="cDetails.organization_type">
+                               </ng-select>
+
+
                             </div>
 
                             <div *ngIf="OrgForm.submitted && organization_type.invalid" class="invalid-feedback">

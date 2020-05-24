@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AuthServiceService } from '../../auth/auth-service.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-
+import { NgOption } from '@ng-select/ng-select';
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
@@ -47,7 +47,7 @@ export class CompanyProfileComponent implements OnInit {
     this.editMode = false;
   }
 
-  update(frm) {
+  onSubmit(frm) {
     this.loader.start();
     // tslint:disable-next-line:variable-name
     const url_ = environment.serviceUrl + '/companyApi/company/update';

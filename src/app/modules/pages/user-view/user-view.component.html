@@ -163,12 +163,25 @@
                     <div class="input-group-addon">
                       <i class="fa fa-check-circle" aria-hidden="true"></i>
                     </div>
-                    <select [disabled]="disableInputs"   #status="ngModel" [(ngModel)]="userDetails.status"
+                    <!-- <select [disabled]="disableInputs"   #status="ngModel" [(ngModel)]="userDetails.status"
                       name="status" required id="status" class="form-control" 
                       style="width: 100%;" tabindex="-1" aria-hidden="true">
-                      <option value="true">Active</option>
+                      <option  value="true">Active</option>
                       <option value="false">In-Active</option>
-                    </select>
+                    </select> -->
+
+
+                    <ng-select [disabled]="disableInputs" name="status" 
+                    #status="ngModel" [(ngModel)]="userDetails.status"
+                    #organization_type="ngModel"  name="status" required id="status"
+                    [items]="statusType" 
+                    bindLabel="status" 
+                    placeholder="User Status" 
+                  >
+                   </ng-select>
+
+
+
                   </div>
                   <div *ngIf="userForm.submitted && status.invalid" class="invalid-feedback">
                     <div class="text-danger" *ngIf="status.errors.required">Status required</div>
