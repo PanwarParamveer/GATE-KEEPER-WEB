@@ -4,7 +4,7 @@
     </h1>
   
     <span style="margin-top: -25px;" class="pull-right">
-      <a style="border-radius: 30px; " [routerLink]="['/members/newDeviceAccess']"  
+      <a style="border-radius: 30px; " [routerLink]="['/newDeviceAccess']"  
      
        class="btn btn-block btn-social btn-dropbox button_Style">
         <i class="fa fa-plus"></i> Create Gate Access
@@ -99,7 +99,7 @@
                   <td class="sorting_1">{{data.user_status}}</td>
 
                   <td style="text-align: center;">
-                    <button [routerLink]="['/members/user_device_access_view',data.doc_id]"   
+                    <button [routerLink]="['/user_device_access_view',data.doc_id]"   
                     style="border-radius: 25px;"
                     CLASS="btn btn-sm btn-primary button_Style">View/Edit</button></td>          
                 </tr>

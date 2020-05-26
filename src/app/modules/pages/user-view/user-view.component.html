@@ -22,18 +22,23 @@
         <div class="row">
 
           <div class="col col-sm-12 col-lg-4">
-            <div class="widget-user-image text-center">
 
+            <div class="avatar-upload">
+              <div class="avatar-edit">
+                  <input type='button'  (click)="uploadImage()" id="imageUpload"  />
+                  <label for="imageUpload"></label>
+              </div>
+              <div class="avatar-preview">
+                  <div id="imagePreview"  *ngIf="userDetails.profile_photo" style="background-image: url({{userDetails.profile_photo}});">
+                  </div>
+                  <div id="imagePreview"  *ngIf="!userDetails.profile_photo" 
+                  style="background-image: url('/assets/img/addImageDefault.png');">
+                  </div>
 
-              <img class="img-circle" style="width: 40%;" *ngIf="userDetails.profile_photo" alt="Profile Photo" 
-              src={{userDetails.profile_photo}}>
-              <img class="img-circle" style="width: 40%;" *ngIf="!userDetails.profile_photo"   
-              src="/assets/img/addImageDefault.png" alt="Profile Photo">
+              </div>
+          </div>
 
-
-                <br>
-                <label>Profile Photo</label>
-            </div>
+          
           </div>
 
 

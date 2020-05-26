@@ -64,7 +64,7 @@ export class UserViewComponent implements OnInit {
     if (this.userId === 'add') {
       this.userService.createNewUser(tempData).subscribe((d) => {
         this.toastr.success(d, 'Success');
-        this.router.navigate(['/members/users']);
+        this.router.navigate(['/users']);
         this.loader.stop();
       }, (e) => {
         this.toastr.error(e.error, 'Error');
@@ -74,7 +74,7 @@ export class UserViewComponent implements OnInit {
       this.userDetails.user_sys_id = this.userId;
       this.userService.updateUserDetails(tempData).subscribe((d) => {
         this.toastr.success(d, 'Success');
-        this.router.navigate(['/members/users']);
+        this.router.navigate(['/users']);
         this.disableInputs = true;
         this.loader.stop();
       }, (e) => {

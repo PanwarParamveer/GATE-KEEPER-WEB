@@ -1,11 +1,11 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {CommonModule} from '@angular/common';
-import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
-import {PagesRoutingModule} from './pages-routing.module';
-import {PagesComponent} from './pages/pages.component';
-import {DashBoardComponent} from './dash-board/dash-board.component';
-import {LayoutModule} from '../layout/layout.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagesRoutingModule } from './pages-routing.module';
+import { PagesComponent } from './pages/pages.component';
+import { DashBoardComponent } from './dash-board/dash-board.component';
+import { LayoutModule } from '../layout/layout.module';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
@@ -18,17 +18,14 @@ import { UserDeviceAccessViewComponent } from './user-device-access-view/user-de
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MyDeviceComponent } from './my-device/my-device.component';
-import { GK1Component } from './device/gk1/gk1.component';
-import { GK2Component } from './device/gk2/gk2.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
-
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent,
-     CompanyProfileComponent, EmployeeListComponent, AttendaceComponent,
-      UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent,
-       NewDeviceAccessComponent, MyDeviceComponent, GK1Component, GK2Component, SubscriptionComponent],
+    CompanyProfileComponent, EmployeeListComponent, AttendaceComponent,
+    UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent,
+    NewDeviceAccessComponent, MyDeviceComponent, SubscriptionComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -36,11 +33,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     FormsModule,
     MomentModule,
     NgSelectModule,
-        ReactiveFormsModule
+    ReactiveFormsModule
     
-    
-    
-  
   ]
 })
 export class PagesModule {

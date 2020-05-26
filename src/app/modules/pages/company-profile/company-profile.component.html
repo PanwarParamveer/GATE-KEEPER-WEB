@@ -19,10 +19,27 @@
 
           <div class="col col-sm-12 col-lg-4">
             <div class="widget-user-image text-center">
-                <img class="img-circle" style="width: 40%;" *ngIf="cDetails.logo" alt="Organization Logo" src={{cDetails.logo}}>
-                <img class="img-circle" style="width: 40%;" *ngIf="!cDetails.logo"  alt="Organization Logo" src="/assets/img/addImageDefault.png" alt="Organization Logo">
+                <!-- <img class="img-circle" style="height:150px" *ngIf="cDetails.logo" alt="Organization Logo" src={{cDetails.logo}}>
+                <img class="img-circle" style="height:150px" *ngIf="!cDetails.logo"  alt="Organization Logo" src="/assets/img/addImageDefault.png" alt="Organization Logo">
                 <br>
-                <label>  Organization Logo</label>
+                 -->
+              
+
+
+                <div class="avatar-upload">
+                  <div class="avatar-edit">
+                     
+                      <input (change)="ImageSelected($event)" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                     
+                      <label for="imageUpload"></label>
+                  </div>
+                  <div class="avatar-preview">
+                      <div id="imagePreview"  style="background-image: url({{cDetails.logo}});">
+                      </div>
+                      
+                  </div>
+              </div>
+              <button (click)="updateLogo()" type="button"  class="btn btn-success button_Style">Update Details</button>
               </div>
              
               
