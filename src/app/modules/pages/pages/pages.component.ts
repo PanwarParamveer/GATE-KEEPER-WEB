@@ -14,7 +14,7 @@ export class PagesComponent implements OnInit {
 
   ngOnInit() {
     window.dispatchEvent(new Event('resize'));
-    $('body').addClass('hold-transition skin-blue sidebar-mini');
+    $('body').addClass('hold-transition fixed skin-blue sidebar-mini');
   }
 
 }

@@ -8,11 +8,14 @@ import { IUser } from '../../myInterface/Iuser';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import * as moment from 'moment';
+
+declare var $;
 @Component({
   selector: 'app-user-view',
   templateUrl: './user-view.component.html',
   styleUrls: ['./user-view.component.scss']
 })
+
 
 
 
@@ -28,6 +31,7 @@ export class UserViewComponent implements OnInit {
   ) { }
 
   public userId: any;
+  isImageSelected=false;
   // public userDetails: any = {};
   userDetails: any = {};
   statusType :any =["ACTIVE","IN-ACTIVE"];
@@ -93,5 +97,30 @@ export class UserViewComponent implements OnInit {
     this.editMode = false;
   }
 
+
+  ImageSelected($event) {
+    if ($event.target.files && $event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        this.isImageSelected=true;
+        reader.readAsDataURL($event.target.files[0]);
+    }
+}
+
+updateProfile(){
+  this.loader.start();
+  var file = $('#imageUpload')[0].files[0];
+  this.userService.updateProfilePhoto(file,this.userId).then(s=>{
+    this.toastr.success(s, 'Updated');
+    this.loader.stop();
+  }).catch(err=>{
+    this.toastr.error(err.message, 'Error');
+      this.loader.stop();
+  });
+}
 
 }

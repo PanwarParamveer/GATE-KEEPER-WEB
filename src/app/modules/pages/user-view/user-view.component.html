@@ -23,6 +23,36 @@
 
           <div class="col col-sm-12 col-lg-4">
 
+
+
+
+              <div class="avatar-upload">
+                <div *ngIf="!disableInputs && userId !== 'add'" class="avatar-edit">
+                   
+                    <input (change)="ImageSelected($event)" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                   
+                    <label for="imageUpload"></label>
+                </div>
+                <div class="avatar-preview">
+                                       
+                    <div id="imagePreview"  *ngIf="userDetails.profile_photo" style="background-image: url({{userDetails.profile_photo}});">
+                    </div>
+                    <div id="imagePreview"  *ngIf="!userDetails.profile_photo" 
+                    style="background-image: url('/assets/img/addImageDefault.png');">
+                    </div>
+
+                </div>
+            </div>
+         <br>
+         <center>
+            <a (click)="updateProfile()" id="btnUpdateLogo"  
+            *ngIf="!disableInputs && isImageSelected" class="btn btn-primary btn-flat btn-xs button_Style">
+            Update Profile Picture</a>
+          
+          </center>
+
+
+<!--             
             <div class="avatar-upload">
               <div class="avatar-edit">
                   <input type='button'  (click)="uploadImage()" id="imageUpload"  />
@@ -36,7 +66,7 @@
                   </div>
 
               </div>
-          </div>
+          </div> -->
 
           
           </div>

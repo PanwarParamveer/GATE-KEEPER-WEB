@@ -27,7 +27,7 @@
 
 
                 <div class="avatar-upload">
-                  <div class="avatar-edit">
+                  <div *ngIf="editMode" class="avatar-edit">
                      
                       <input (change)="ImageSelected($event)" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
                      
@@ -39,8 +39,9 @@
                       
                   </div>
               </div>
-              <button (click)="updateLogo()" type="button"  class="btn btn-success button_Style">Update Details</button>
-              </div>
+           <br>
+              <a (click)="updateLogo()" id="btnUpdateLogo"  *ngIf="editMode && isImageSelected" class="btn btn-primary btn-flat btn-xs button_Style">Update Logo</a>
+            </div>
              
               
         </div>

@@ -20,7 +20,7 @@ declare var $;
 export class CompanyProfileComponent implements OnInit {
   public cDetails: any = {};
   public editMode = false;
-
+ isImageSelected=false;
   constructor(
     private fauth: AuthServiceService,
     private http: HttpClient, private loader: NgxUiLoaderService,
@@ -40,9 +40,10 @@ export class CompanyProfileComponent implements OnInit {
             $('#imagePreview').css('background-image', 'url('+e.target.result +')');
             $('#imagePreview').hide();
             $('#imagePreview').fadeIn(650);
-
+            
 
         }
+        this.isImageSelected=true;
         reader.readAsDataURL($event.target.files[0]);
     }
 }

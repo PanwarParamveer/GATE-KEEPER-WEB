@@ -27,13 +27,44 @@
 
   <section class="content">
   
-
-    <div class="container">
       <div class="row">
       
         
-        <div  *ngFor="let data of myDevice" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-          <div class="productCardContainer">
+        
+        <div  *ngFor="let data of myDevice" class="col-xs-12 col-sm-6 col-md-2 col-lg-2" style="text-align: center;margin:5px">
+            <div class="clash-card wizard" style="zoom: 0.8;">
+              <div class="clash-card__image clash-card__image--wizard">
+                <!-- <img src="" alt="goblin" /> -->
+              </div>
+              <div class="clash-card__level clash-card__level--wizard">Level 5</div>
+              <div class="clash-card__unit-name">The Goblin</div>
+              <div class="clash-card__unit-description">
+                <button class="btnConfig" >Configuration</button>
+              </div>
+        
+              <div class="clash-card__unit-stats clash-card__unit-stats--wizard clearfix">
+                <div class="one-third">
+                  <div class="stat">30</div>
+                  <div class="stat-value">Training</div>
+                </div>
+        
+                <div class="one-third">
+                  <div class="stat">32</div>
+                  <div class="stat-value">Speed</div>
+                </div>
+        
+                <div class="one-third no-border">
+                  <div class="stat">100</div>
+                  <div class="stat-value">Cost</div>
+                </div>
+        
+              </div>
+        
+            </div> <!-- end clash-card goblin-->
+    
+     
+    
+          <!-- <div class="productCardContainer">
             <div class="productCardContent">
               <div class="productCardImage">
                 <img src="https://pbs.twimg.com/profile_images/777547960850718720/uLB18LXG.jpg" alt="" />
@@ -55,11 +86,11 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         
       </div>
-    </div>
+
 
   
   </section>

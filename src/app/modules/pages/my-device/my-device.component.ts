@@ -10,18 +10,17 @@ declare var $;
 })
 export class MyDeviceComponent implements OnInit {
 
-  myDevice: any = {};
+  myDevice: any = [1,2,3,4,5,6,7,8,9,10,11];
   constructor(private loader: NgxUiLoaderService, private deviceService: DeviceService,private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
 
-
     this.loader.start();
     // tslint:disable-next-line:max-line-length
     this.deviceService.getListOfDevice().subscribe((data) => {
       $('#tblMyDevice').DataTable().destroy();
-      this.myDevice = data;
+      // this.myDevice = data;
       setTimeout(() => {
         $('#tblMyDevice').DataTable({
           responsive: true,
