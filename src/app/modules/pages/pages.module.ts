@@ -14,18 +14,19 @@ import { AttendaceComponent } from './attendace/attendace.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { MomentModule } from 'ngx-moment';
 import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
-import { UserDeviceAccessViewComponent } from './user-device-access-view/user-device-access-view.component';
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MyDeviceComponent } from './my-device/my-device.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { GatesListComponent } from './gates/gates-list/gates-list.component';
+import { GateListViewComponent } from './gates/gate-list-view/gate-list-view.component';
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent,
     CompanyProfileComponent, EmployeeListComponent, AttendaceComponent,
-    UserViewComponent, UserDeviceAccessComponent, UserDeviceAccessViewComponent,
-    NewDeviceAccessComponent, MyDeviceComponent, SubscriptionComponent],
+    UserViewComponent, UserDeviceAccessComponent,
+    NewDeviceAccessComponent, MyDeviceComponent, SubscriptionComponent, GatesListComponent, GateListViewComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

@@ -10,10 +10,11 @@ import { AttendaceComponent } from './attendace/attendace.component';
 import { AngularFireAuthGuard, hasCustomClaim, loggedIn, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { UserViewComponent } from './user-view/user-view.component';
 import { UserDeviceAccessComponent } from './user-device-access/user-device-access.component';
-import { UserDeviceAccessViewComponent } from './user-device-access-view/user-device-access-view.component';
 import { NewDeviceAccessComponent } from './new-device-access/new-device-access.component';
 import { MyDeviceComponent } from './my-device/my-device.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { GatesListComponent } from './gates/gates-list/gates-list.component';
+import { GateListViewComponent } from './gates/gate-list-view/gate-list-view.component';
 
 // const adminOnly = () => hasCustomClaim('admin');
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -52,11 +53,7 @@ const routes: Routes = [
       {
         path: 'user_device_access', component: UserDeviceAccessComponent, canActivate: [AngularFireAuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin }
-      },
-      {
-        path: 'user_device_access_view/:id', component: UserDeviceAccessViewComponent, canActivate: [AngularFireAuthGuard],
-        data: { authGuardPipe: redirectUnauthorizedToLogin }
-      },
+      },    
       {
         path: 'newDeviceAccess', component: NewDeviceAccessComponent, canActivate: [AngularFireAuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin }
@@ -69,7 +66,15 @@ const routes: Routes = [
         path: 'subscription', component: SubscriptionComponent, canActivate: [AngularFireAuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin }
       }  
-
+      ,{
+        path: 'myGates', component:GatesListComponent, canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin }
+      } ,
+      {
+        path: 'gateView/:id', component: GateListViewComponent, canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin }
+      }
+      
 
     ]
   }

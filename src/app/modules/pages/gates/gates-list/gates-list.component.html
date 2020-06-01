@@ -1,0 +1,94 @@
+<section class="content-header">
+    <h1>
+     My Gates
+    </h1>   
+
+  <span style="margin-top: -25px;" class="pull-right">
+      <a style="border-radius: 30px; " [routerLink]="['/gateView','']"  
+     
+       class="btn btn-block btn-social btn-dropbox button_Style">
+        <i class="fa fa-plus"></i> Create New Gate
+      </a>
+   
+    </span>
+
+  </section>
+  
+
+<br>
+
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="box box-primary">
+      
+      <div class="box-body">
+      
+        <div class="card">
+          
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="tblGateList" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Gate Name</th>
+                <th>Status</th>           
+                <th >Last Update</th>
+                <th >Action</th>
+        
+              </tr>
+              </thead>
+              <tbody>
+    
+    <tr role="row" *ngFor="let gate of gatesList">
+      <td>{{gate.gate_name}}</td>
+      <td >{{gate.active}}</td>
+      <td >{{gate.updated_date_time}}</td>
+      <td ><div style="font-size: 15px;text-align: center;">
+      <a [routerLink]="['/gateView',gate.id]" > <i class="fa fa-edit"></i></a> 
+      <a style="padding-left: 15px;" (click)="deleteGate(gate.id)"> <i style="color: red;" class="fa fa-trash-o"></i></a>
+      </div></td>
+    
+      
+    </tr> 
+             
+             
+              </tbody>
+              
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+    
+
+
+
+
+
+
+
+
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        
+      </div>
+      <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
+  
+  </section>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
