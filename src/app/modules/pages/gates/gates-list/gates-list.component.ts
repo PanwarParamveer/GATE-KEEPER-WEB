@@ -10,7 +10,9 @@ declare var $;
 })
 export class GatesListComponent implements OnInit {
   public gatesList: any;
-  constructor(private gateService : GateService, private loader: NgxUiLoaderService,private msgBox: ToastrService) { }
+  constructor(private gateService : GateService, 
+    private loader: NgxUiLoaderService,
+    private msgBox: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -21,11 +23,12 @@ export class GatesListComponent implements OnInit {
     }, error => {
       this.msgBox.error(error.message);
       this.loader.stop();
+      
     }, () => {
       setTimeout(() => {
         $('#tblGateList').DataTable({
           responsive: true,
-          autoWidth: false,
+          autoWidth: true,
         });
       }, 300);
       this.loader.stop();
@@ -34,7 +37,44 @@ export class GatesListComponent implements OnInit {
   }
 
   deleteGate(gateid: string){
-alert(gateid);
+    this.loader.start();
+    this.gateService.deleteGate(gateid).subscribe(data=>{      
+      this.msgBox.info("Gate Deleted successfully.");
+      this.gatesList.forEach(el=>{
+        if (el.id == gateid) {
+          this.loader.stop();
+          this.gatesList.splice(this.gatesList.indexOf(el), 1);
+       return;
+        }
+      });
+      
+    },e=>{
+      this.msgBox.error("Something went wrong!! Unable to delete gate.");
+      this.loader.stop();
+    })  
+  }
+
+  openGateEditComponent(id){
+    this.gateService.openGateEditComponent(id).afterClosed().subscribe(cl=>{
+        
+    this.gateService.getListOfGates().subscribe(data => {
+      this.gatesList = data;
+      
+    }, error => {
+      this.msgBox.error(error.message);
+     
+    }, () => {
+      $('#tblGateList').DataTable().destroy();
+      setTimeout(() => {
+        $('#tblGateList').DataTable({
+          responsive: true,
+          autoWidth: true,
+        });
+      }, 300);
+    
+    });
+
+    });
   }
 
 }

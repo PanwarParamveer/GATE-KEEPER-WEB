@@ -1,1 +1,29 @@
-<p>gate-list-view works!</p>
+
+<h2 mat-dialog-title>{{frmName}}</h2>
+<mat-dialog-content class="mat-typography">
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Gate Name</mat-label>
+      <input matInput placeholder="Ex. Gate No 1" value="" [(ngModel)]="gateDtl.gate_name">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Gate Status</mat-label>
+      <mat-select  [(ngModel)]="gateDtl.active">     
+        <mat-option value="true">Active</mat-option>
+        <mat-option value="false">IN-ACTIVE</mat-option>      
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Gate Description</mat-label>
+      <textarea matInput placeholder="Ex. main gate..... " [(ngModel)]="gateDtl.description"></textarea>
+    </mat-form-field>
+
+   
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button at-dialog-close  (click)="close()">Cancel</button>  
+  <button mat-raised-button (click)="save()" color="primary">Submit</button>
+</mat-dialog-actions>

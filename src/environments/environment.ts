@@ -15,11 +15,9 @@ export const environment = {
     appId: "1:209002241530:web:af28b8e3984bdcc0279843",
     measurementId: "G-RVDL6P5YWW"
   },
-  serviceUrl: "https://us-central1-gate-keeper-dev.cloudfunctions.net"
+  serviceUrl: 'https://us-central1-gate-keeper-dev.cloudfunctions.net'
 
 };
-
-
 
 /*
  * For easier debugging in development mode, you can import the following file

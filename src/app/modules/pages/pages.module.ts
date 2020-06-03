@@ -9,7 +9,7 @@ import { LayoutModule } from '../layout/layout.module';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import { AttendaceComponent } from './attendace/attendace.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { MomentModule } from 'ngx-moment';
@@ -20,13 +20,21 @@ import { MyDeviceComponent } from './my-device/my-device.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { GatesListComponent } from './gates/gates-list/gates-list.component';
 import { GateListViewComponent } from './gates/gate-list-view/gate-list-view.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatButtonModule} from "@angular/material/button";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
   declarations: [PagesComponent, DashBoardComponent, MyProfileComponent,
     CompanyProfileComponent, EmployeeListComponent, AttendaceComponent,
     UserViewComponent, UserDeviceAccessComponent,
-    NewDeviceAccessComponent, MyDeviceComponent, SubscriptionComponent, GatesListComponent, GateListViewComponent],
+    NewDeviceAccessComponent, MyDeviceComponent, 
+    SubscriptionComponent, GatesListComponent,
+    GateListViewComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -34,9 +42,11 @@ import { GateListViewComponent } from './gates/gate-list-view/gate-list-view.com
     FormsModule,
     MomentModule,
     NgSelectModule,
-    ReactiveFormsModule
-    
-  ]
+    ReactiveFormsModule,
+    MatDialogModule,MatInputModule,MatSelectModule,MatButtonModule,MatAutocompleteModule,
+    MatFormFieldModule,ScrollingModule
+  ],
+  entryComponents: [GateListViewComponent]
 })
 export class PagesModule {
 }

@@ -19,6 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MomentModule } from 'ngx-moment';
 import { NgSelectModule } from '@ng-select/ng-select';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSelectModule} from "@angular/material/select";
+
 
 @NgModule({
   declarations: [
@@ -38,8 +41,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     BrowserAnimationsModule,
     NgSelectModule,
     AngularFireStorageModule,
-    
-    
+    MatDialogModule,
+    MatSelectModule,
   MomentModule,
     ToastrModule.forRoot(
       {

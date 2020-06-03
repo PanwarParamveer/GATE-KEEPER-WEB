@@ -4,8 +4,8 @@
     </h1>   
 
   <span style="margin-top: -25px;" class="pull-right">
-      <a style="border-radius: 30px; " [routerLink]="['/gateView','']"  
-     
+      <a style="border-radius: 30px; "  
+      (click)="openGateEditComponent('')"
        class="btn btn-block btn-social btn-dropbox button_Style">
         <i class="fa fa-plus"></i> Create New Gate
       </a>
@@ -32,7 +32,8 @@
               <thead>
               <tr>
                 <th>Gate Name</th>
-                <th>Status</th>           
+                <th>Status</th>    
+                <th>Description</th> 
                 <th >Last Update</th>
                 <th >Action</th>
         
@@ -43,9 +44,10 @@
     <tr role="row" *ngFor="let gate of gatesList">
       <td>{{gate.gate_name}}</td>
       <td >{{gate.active}}</td>
-      <td >{{gate.updated_date_time}}</td>
+      <td >{{gate.description}}</td>
+      <td >{{gate.updated_date_time | date:'yyyy-MMM-dd HH:mm a'}}</td>
       <td ><div style="font-size: 15px;text-align: center;">
-      <a [routerLink]="['/gateView',gate.id]" > <i class="fa fa-edit"></i></a> 
+      <a (click)="openGateEditComponent(gate)" > <i class="fa fa-edit"></i></a> 
       <a style="padding-left: 15px;" (click)="deleteGate(gate.id)"> <i style="color: red;" class="fa fa-trash-o"></i></a>
       </div></td>
     
