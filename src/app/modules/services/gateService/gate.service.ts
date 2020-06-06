@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import { GateListViewComponent } from '../../pages/gates/gate-list-view/gate-list-view.component';
+import { NewDeviceAccessComponent } from '../../pages/new-device-access/new-device-access.component';
 
 @Injectable({
   providedIn: 'root'
@@ -38,11 +39,10 @@ openGateEditComponent(gateData: any) {
   
     const dialogConfig = new MatDialogConfig();
     dialogConfig.position = {
-      'top': '5%'
-     
+      'top': '105px' 
   };
-
-
+  dialogConfig.maxWidth="100vw";
+  
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     
@@ -56,5 +56,27 @@ openGateEditComponent(gateData: any) {
    return this.dialog.open(GateListViewComponent, dialogConfig);
 
   }
+
+
+  openGateAccessViewComponent(gateAccessData: any) {
+  
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.position = {
+      'top': '105px'  
+  };
+  dialogConfig.maxWidth="100vw";
+  
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    
+    dialogConfig.data = {
+        data: gateAccessData ,
+        frmName:  gateAccessData=='' ? 'Create New Gate Access' :'Edit Gate Access Details'
+    };
+
+    return  this.dialog.open(NewDeviceAccessComponent, dialogConfig);
+  
+  }
+
 
 }

@@ -4,6 +4,7 @@ import { UserService } from '../../services/userService/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { DeviceService } from '../../services/deviceService/device.service';
 import { NgOption } from '@ng-select/ng-select';
+import { GateService } from '../../services/gateService/gate.service';
 declare var $;
 @Component({
   selector: 'app-user-device-access',
@@ -21,7 +22,7 @@ export class UserDeviceAccessComponent implements OnInit {
 
 
 
-  constructor(private userService: UserService, private loader: NgxUiLoaderService, private deviceService: DeviceService,
+  constructor(private userService: UserService,private gateService : GateService , private loader: NgxUiLoaderService, private deviceService: DeviceService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -49,7 +50,8 @@ export class UserDeviceAccessComponent implements OnInit {
 
     this.loader.start();
     // tslint:disable-next-line:max-line-length
-    this.deviceService.getDeviceAccess({ device_id: this.selectedDevice.device_id, user_sys_id: this.selectedUser.user_sys_id }).subscribe((data) => {
+    this.deviceService.getDeviceAccess({ device_id: 
+      this.selectedDevice.device_id, user_sys_id: this.selectedUser.user_sys_id }).subscribe((data) => {
       $('#example1').DataTable().destroy();
       this.userDeviceAccessList = data;
       setTimeout(() => {
@@ -64,5 +66,16 @@ export class UserDeviceAccessComponent implements OnInit {
       this.loader.stop();
     });
   }
+
+
+
+  openGateEditComponent(id){
+    this.gateService.openGateAccessViewComponent(id).afterClosed().subscribe(cl=>{
+        
+alert('Hi');
+    });
+  }
+
+
 
 }

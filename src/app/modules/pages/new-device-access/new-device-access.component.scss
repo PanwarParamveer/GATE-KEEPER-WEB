@@ -1,0 +1,29 @@
+.example-form {
+  min-width: 150px;
+  max-width: 320px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+
+.md-datepicker-calendar-pane {
+  z-index: 1200;
+}
+
+.popdatepicker {
+  z-index: 1200;
+}
+
+.mat-datepicker-content .mat-calendar {
+  z-index: 1200 !important;
+}
+
+.cdk-overlay-container{ z-index: 1200 !important; }
+
+::ng-deep .cdk-overlay-container {
+  z-index: 1200 !important;
+}

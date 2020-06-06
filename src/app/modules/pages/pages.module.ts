@@ -26,6 +26,8 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
@@ -44,9 +46,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     NgSelectModule,
     ReactiveFormsModule,
     MatDialogModule,MatInputModule,MatSelectModule,MatButtonModule,MatAutocompleteModule,
-    MatFormFieldModule,ScrollingModule
+    MatFormFieldModule,ScrollingModule,
+    MatDatepickerModule,MatNativeDateModule
   ],
-  entryComponents: [GateListViewComponent]
+  entryComponents: [GateListViewComponent,NewDeviceAccessComponent]
 })
 export class PagesModule {
 }

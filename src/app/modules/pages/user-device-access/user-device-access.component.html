@@ -4,7 +4,7 @@
     </h1>
   
     <span style="margin-top: -25px;" class="pull-right">
-      <a style="border-radius: 30px; " [routerLink]="['/newDeviceAccess']"  
+      <a style="border-radius: 30px; " (click)="openGateEditComponent('')" 
      
        class="btn btn-block btn-social btn-dropbox button_Style">
         <i class="fa fa-plus"></i> Create Gate Access
@@ -21,54 +21,7 @@
   
     <!-- Default box -->
     <div class="box box-primary">
-      <div class="box-header with-border">
-      
-          <div class="row">
-            
-
-            <div class="col col-sm-12  col-md-5 col-lg-5">
-              <div class="form-group">
-                <label>Gate</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-gears" aria-hidden="true"></i>
-                  </div>
-  
-                  <ng-select [items]="DeviceList"    bindLabel="device_name" 
-                  placeholder="Select Device" 
-                  [(ngModel)]="selectedDevice">
-                 </ng-select>
-  
-                </div>
-              </div>
-            </div>
-          
-            <div class="col col-sm-12  col-md-5 col-lg-5">
-              <div class="form-group">
-                <label>User</label>
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                  </div>
-                  <ng-select [items]="UserList"   bindLabel="user_name" 
-                  placeholder="Select user" 
-                  [(ngModel)]="selectedUser">
-                 </ng-select>
-                 
-                </div>
-              </div>
-            </div>
-  
-
-  
-            <div style="text-align: center;" class="col col-sm-12  col-md-2 col-lg-2">
-             
-              <button style="width:80%;margin-top: 25px; " (click)="onSubmit()"  class="btn btn-primary button_Style" type="button"> Search </button>
-  
-            </div>
-          </div>
-       
-      </div>
+    
       <div class="box-body">
   
         <div class="card">
@@ -99,9 +52,11 @@
                   <td class="sorting_1">{{data.user_status}}</td>
 
                   <td style="text-align: center;">
-                    <button [routerLink]="['/user_device_access_view',data.doc_id]"   
-                    style="border-radius: 25px;"
-                    CLASS="btn btn-sm btn-primary button_Style">View/Edit</button></td>          
+                      <div style="font-size: 15px;text-align: center;">
+                      <a (click)="openGateEditComponent(data)" > <i class="fa fa-edit"></i></a> 
+                      <a style="padding-left: 15px;" (click)="deleteGate(data.doc_id)"> <i style="color: red;" class="fa fa-trash-o"></i></a>
+                      </div>
+                  </td>          
                 </tr>
   
   
