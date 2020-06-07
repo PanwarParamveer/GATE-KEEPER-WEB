@@ -10,8 +10,8 @@
     <mat-form-field class="example-full-width">
       <mat-label>Gate Status</mat-label>
       <mat-select  [(ngModel)]="gateDtl.active">     
-        <mat-option value="true">Active</mat-option>
-        <mat-option value="false">IN-ACTIVE</mat-option>      
+        <mat-option [value]="true">Active</mat-option>
+        <mat-option [value]="false">IN-ACTIVE</mat-option>      
       </mat-select>
     </mat-form-field>
 
@@ -19,7 +19,6 @@
       <mat-label>Gate Description</mat-label>
       <textarea matInput placeholder="Ex. main gate..... " [(ngModel)]="gateDtl.description"></textarea>
     </mat-form-field>
-
    
 
 </mat-dialog-content>

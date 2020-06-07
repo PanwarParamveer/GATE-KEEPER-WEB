@@ -34,7 +34,7 @@
                 <th class="hidden-xs hidden-sm">User id</th>
                 <th>Full Name</th>
                 <th class="hidden-xs hidden-sm">Department</th>
-                <th class="hidden-xs hidden-sm">Status</th>
+                <th >Status</th>
                 <th>View/Edit</th>
               </tr>
               </thead>
@@ -43,8 +43,8 @@
     <tr role="row" *ngFor="let user of usersList">
       <td class=" hidden-xs hidden-sm">{{user.user_id}}</td>
       <td class="sorting_1">{{user.first_name}} {{user.last_name}}</td>
-      <td class="hidden-xs hidden-sm">{{user.department}}</td>
-      <td class="hidden-xs hidden-sm">{{user.status}}</td>
+      <td class="hidden-xs hidden-sm">{{user.department  }}</td>
+      <td >{{user.is_active?'Active':'InActive'}}</td>
       <td style="text-align: center;"><button [routerLink]="['/userView',user.id]"   style="width: 50%;border-radius: 25px;"
          CLASS="btn btn-sm btn-primary button_Style">View</button></td>
     </tr> 

@@ -66,7 +66,9 @@ this.coolDialogs.confirm('Are you sure you want to delete this gate ?')
 
   openGateEditComponent(id){
     this.gateService.openGateEditComponent(id).afterClosed().subscribe(cl=>{
-        
+        if(cl===false){
+          return;
+        }
     this.gateService.getListOfGates().subscribe(data => {
       this.gatesList = data;
       
@@ -76,10 +78,6 @@ this.coolDialogs.confirm('Are you sure you want to delete this gate ?')
     }, () => {
       $('#tblGateList').DataTable().destroy();
       setTimeout(() => {
-
-
-
-        
         $('#tblGateList').DataTable({
           responsive: true,
           autoWidth: true,

@@ -6,6 +6,7 @@ import { UserService } from '../../services/userService/user.service';
 import { NgOption } from '@ng-select/ng-select';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {FormControl} from '@angular/forms';
+import { GateService } from '../../services/gateService/gate.service';
 declare var $;
 @Component({
   selector: 'app-new-device-access',
@@ -13,22 +14,18 @@ declare var $;
   styleUrls: ['./new-device-access.component.scss']
 })
 export class NewDeviceAccessComponent implements OnInit {
-
-
-
-  selectedUser: any = {};
-  selectedDevice: any = {};
-  expiryDate = '';
-  UserList: any = {};
-  DeviceList: any = {};
-  gateAccessDtl:any;
+  selectedUser = new FormControl();
+  userList: any = {};
+  selectedGate = new FormControl();
+  gateList: any = {};
+  gateAccessDtl:any={};
   editMode:boolean;
 
-  toppings = new FormControl();
-  toppingList:any;
+  
+  
   frmName: string;
 
-  constructor(private deviceService: DeviceService,
+  constructor(private GateService: GateService,
     private loader: NgxUiLoaderService,
     private toastr: ToastrService,
     private userService: UserService,
@@ -47,30 +44,24 @@ export class NewDeviceAccessComponent implements OnInit {
 
     
 
-    this.deviceService.getdrpUserDeviceList().subscribe((data) => {
-      this.DeviceList = data.deviceList;
-      this.UserList = data.userList;
+    this.GateService.getActiveUserAndGates().subscribe((data:any) => {
+      this.gateList = data.gateList;
+      this.userList = data.userList;
     }, (e) => {
       this.toastr.success(e.error, 'Eror');
     });
 
 
 
-  this.toppingList  = ['1','2','3','4','5','6','7','1','2','3','4','5','6','7','Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Toaaaato', 'Tomato'];
-
-
   }
-
 
   creataAccount() {
 
     this.loader.start();
-    this.deviceService.createNewDeviceAccess(this.selectedUser, this.selectedDevice.device_id, this.expiryDate).subscribe((data) => {
+    this.GateService.createNewGateAccess(this.gateAccessDtl).subscribe((data: any) => {
       this.loader.stop();
-      this.toastr.success(data.message, 'Success');
-      this.selectedUser = {};
-      this.selectedDevice = {};
-      this.expiryDate = '';
+      this.toastr.success(data.message, 'Success'); 
+      this.dialogRef.close(true); 
     }, e => {
       this.loader.stop();
       this.toastr.error(e.error, 'Error');
@@ -79,7 +70,7 @@ export class NewDeviceAccessComponent implements OnInit {
   }
 
   close() {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
 }
 
 

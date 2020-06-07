@@ -43,7 +43,7 @@
     
     <tr role="row" *ngFor="let gate of gatesList">
       <td>{{gate.gate_name}}</td>
-      <td >{{gate.active}}</td>
+      <td >{{gate.active? 'Active' :'InActive'}}</td>
       <td >{{gate.description}}</td>
       <td >{{gate.updated_date_time | date:'yyyy-MMM-dd HH:mm a'}}</td>
       <td ><div style="font-size: 15px;text-align: center;">

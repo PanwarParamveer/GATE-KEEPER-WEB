@@ -53,17 +53,17 @@ newRegistration: boolean;
       if (user) {
         this.ngxService.stop();
         user.getIdToken(true).then(token => {
-          localStorage.setItem('token', token.toString());
+          sessionStorage.setItem('token', token.toString());
           this.toastr.info('Welcome ' + this.afAuth.auth.currentUser.displayName, 'Welcome');
           this.router.navigate(['/dashboard']);
         }).catch((e) => {
           this.ngxService.stop();
-          localStorage.setItem('token', null);
+          sessionStorage.setItem('token', null);
           this.router.navigate(['/login']);
         });
       } else {
         this.ngxService.stop();
-        localStorage.setItem('token', null);
+        sessionStorage.setItem('token', null);
         this.router.navigate(['/login']);
       }
     });
@@ -134,7 +134,7 @@ newRegistration: boolean;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        authorization: 'Bearer ' + localStorage.getItem('token')
+        authorization: 'Bearer ' + sessionStorage.getItem('token')
       })
     };
     return httpOptions;

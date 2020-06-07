@@ -34,7 +34,7 @@ export class UserViewComponent implements OnInit {
   isImageSelected=false;
   // public userDetails: any = {};
   userDetails: any = {};
-  statusType :any =["ACTIVE","IN-ACTIVE"];
+  statusType :any =[{status:"ACTIVE",value:true},{status : "IN-ACTIVE",value:false}];
   ngOnInit() {
     // tslint:disable-next-line:no-unused-expression
     // tslint:disable-next-line:no-debugger
@@ -43,7 +43,7 @@ export class UserViewComponent implements OnInit {
 
     if (this.userId === 'add') { 
       this.userDetails = {};
-      this.userDetails.status="ACTIVE";
+      this.userDetails.is_active=true;
       this.disableInputs = false;
     } else {
       this.disableInputs = true;

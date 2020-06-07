@@ -15,11 +15,20 @@ export class GateService {
   private newGateapi = environment.serviceUrl + '/gateApi/newGate';
   private updateGateapi = environment.serviceUrl + '/gateApi/UpdateGate';
   private deleteGateapi = environment.serviceUrl + '/gateApi/deleteGate';
+  private createNewGateAccessapi = environment.serviceUrl + '/gateApi/createNewGateAccess';
+  private getActiveUserAndGatesapi = environment.serviceUrl + '/gateApi/getActiveUserAndGates';
+  private getUserAccessListapi = environment.serviceUrl + '/gateApi/getUserAccessList';
+  
 
   constructor(private fauth: AuthServiceService,private http: HttpClient, private dialog: MatDialog) { }
 
   getListOfGates() {
     return this.http.post(this.gateListapi,{}, this.fauth.getHeaders());   
+  }
+
+
+  getActiveUserAndGates() {
+    return this.http.post(this.getActiveUserAndGatesapi,{}, this.fauth.getHeaders());   
   }
 
   
@@ -78,5 +87,14 @@ openGateEditComponent(gateData: any) {
   
   }
 
+
+  createNewGateAccess(accessData:any){
+    return this.http.post(this.createNewGateAccessapi,accessData, this.fauth.getHeaders());
+  }
+
+
+  getUserAccessList(){
+    return this.http.post(this.getUserAccessListapi,{}, this.fauth.getHeaders());
+  }
 
 }

@@ -191,7 +191,7 @@
 
 
               <div class="col col-sm-12 col-lg-4">
-                <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && status.invalid }">
+                <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && is_active.invalid }">
                   <label>Status</label>
 
                   <div class="input-group">
@@ -206,11 +206,12 @@
                     </select> -->
 
 
-                    <ng-select [disabled]="disableInputs" name="status" 
-                    #status="ngModel" [(ngModel)]="userDetails.status"
-                    #organization_type="ngModel"  name="status" required id="status"
+                    <ng-select [disabled]="disableInputs" name="is_active" 
+                    #is_active="ngModel" [(ngModel)]="userDetails.is_active"
+                    #is_active="ngModel"  name="is_active" required id="is_active"
                     [items]="statusType" 
                     bindLabel="status" 
+                    bindValue="value" 
                     placeholder="User Status" 
                   >
                    </ng-select>
@@ -218,8 +219,8 @@
 
 
                   </div>
-                  <div *ngIf="userForm.submitted && status.invalid" class="invalid-feedback">
-                    <div class="text-danger" *ngIf="status.errors.required">Status required</div>
+                  <div *ngIf="userForm.submitted && is_active.invalid" class="invalid-feedback">
+                    <div class="text-danger" *ngIf="is_active.errors.required">Status required</div>
                 </div>
                   <!-- /.input group -->
                 </div>

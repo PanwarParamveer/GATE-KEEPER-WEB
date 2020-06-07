@@ -13,47 +13,22 @@ declare var $;
 })
 export class UserDeviceAccessComponent implements OnInit {
 
-  selectedUser: any = {};
-  selectedDevice: any = {};
-
-  UserList: any = [];
-  DeviceList: any = [];
-  userDeviceAccessList: any = {};
+  userGateAccessList: any = {};
 
 
 
-  constructor(private userService: UserService,private gateService : GateService , private loader: NgxUiLoaderService, private deviceService: DeviceService,
+  constructor(private userService: UserService, private gateService: GateService, private loader: NgxUiLoaderService, private deviceService: DeviceService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
 
-    this.deviceService.getdrpUserDeviceList().subscribe((data) => {
 
-      this.UserList = data.userList;
-      this.UserList.unshift({ user_name: 'ALL', user_sys_id: 'ALL' });
-
-
-      this.DeviceList = data.deviceList;
-      this.DeviceList.unshift({ device_name: 'ALL', device_id: 'ALL' });
-
-
-      this.selectedUser = this.UserList[0];
-      this.selectedDevice = this.DeviceList[0];
-      
-    }, (e) => {
-      this.toastr.success(e.error, 'Eror');
-    });
-  }
-
-
-  onSubmit() {
 
     this.loader.start();
     // tslint:disable-next-line:max-line-length
-    this.deviceService.getDeviceAccess({ device_id: 
-      this.selectedDevice.device_id, user_sys_id: this.selectedUser.user_sys_id }).subscribe((data) => {
+    this.gateService.getUserAccessList().subscribe((data) => {
       $('#example1').DataTable().destroy();
-      this.userDeviceAccessList = data;
+      this.userGateAccessList = data;
       setTimeout(() => {
         $('#example1').DataTable({
           responsive: true,
@@ -65,14 +40,34 @@ export class UserDeviceAccessComponent implements OnInit {
       this.toastr.warning(e.error, 'Error');
       this.loader.stop();
     });
+
   }
 
 
 
-  openGateEditComponent(id){
-    this.gateService.openGateAccessViewComponent(id).afterClosed().subscribe(cl=>{
-        
-alert('Hi');
+
+
+  openGateAccessEditComponent(id) {
+    this.gateService.openGateAccessViewComponent(id).afterClosed().subscribe(cl => {
+
+      if (cl === false) {
+        return;
+      }
+
+      this.gateService.getUserAccessList().subscribe((data) => {
+        $('#example1').DataTable().destroy();
+        this.userGateAccessList = data;
+        setTimeout(() => {
+          $('#example1').DataTable({
+            responsive: true,
+            autoWidth: false,
+          });
+        }, 100);
+        this.loader.stop();
+      }, e => {
+        this.toastr.warning(e.error, 'Error');
+        this.loader.stop();
+      });
     });
   }
 

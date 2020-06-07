@@ -44,7 +44,7 @@ export class GateListViewComponent implements OnInit {
     this.gateService.createNewGate(this.gateDtl).subscribe(data=>{      
       this.msgBox.info("Gate created successfully.");
       this.loader.stop();      
-      this.dialogRef.close();
+      this.dialogRef.close(true);
     },e=>{
       this.msgBox.error(e.error);
       this.loader.stop();
@@ -56,7 +56,7 @@ export class GateListViewComponent implements OnInit {
       this.gateService.updateGateDetails(this.gateDtl).subscribe(data=>{      
         this.msgBox.info("Gate details updated successfully.");
         this.loader.stop();      
-        this.dialogRef.close();
+        this.dialogRef.close(true);
       },e=>{
         this.msgBox.error(e.error);
         this.loader.stop();
@@ -66,7 +66,7 @@ export class GateListViewComponent implements OnInit {
 }
 
 close() {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
 }
 
 
