@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DeviceService {
-  private getRegistredDeviceList = environment.serviceUrl + '/deviceApi/device/getRegistredDeviceList';
+  private getDeviceList = environment.serviceUrl + '/deviceApi/device/getDeviceList';
+  private getListOfDeviceWithAccessCountApi = environment.serviceUrl + '/deviceApi/device/getListOfDeviceWithAccessCount';
   private getUserDeviceAccess = environment.serviceUrl + '/deviceApi/device/getUserDeviceAccess';
   // tslint:disable-next-line:variable-name
   private createNewDeviceAccess_api = environment.serviceUrl + '/deviceApi/device/createNewDeviceAccess';
@@ -20,8 +21,12 @@ export class DeviceService {
 
   constructor(private fauth: AuthServiceService, private http: HttpClient, private loader: NgxUiLoaderService) { }
 
-  getListOfDevice() {
-    return this.http.post(this.getRegistredDeviceList, {}, this.fauth.getHeaders());
+  getShortListOfDevice() {
+    return this.http.post(this.getDeviceList, {}, this.fauth.getHeaders());
+  }
+
+  getListOfDeviceWithAccessCount() {
+    return this.http.post(this.getListOfDeviceWithAccessCountApi, {}, this.fauth.getHeaders());
   }
 
   getDeviceAccess(data) {

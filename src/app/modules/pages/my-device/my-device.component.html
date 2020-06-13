@@ -27,70 +27,29 @@
 
   <section class="content">
   
-      <div class="row">
+    <div class="row">
       
-        
-        
-        <div  *ngFor="let data of myDevice" class="col-xs-12 col-sm-6 col-md-2 col-lg-2" style="text-align: center;margin:5px">
-            <div class="clash-card wizard" style="zoom: 0.8;">
-              <div class="clash-card__image clash-card__image--wizard">
-                <!-- <img src="" alt="goblin" /> -->
-              </div>
-              <div class="clash-card__level clash-card__level--wizard">Level 5</div>
-              <div class="clash-card__unit-name">The Goblin</div>
-              <div class="clash-card__unit-description">
-                <button class="btnConfig" >Configuration</button>
-              </div>
-        
-              <div class="clash-card__unit-stats clash-card__unit-stats--wizard clearfix">
-                <div class="one-third">
-                  <div class="stat">30</div>
-                  <div class="stat-value">Training</div>
-                </div>
-        
-                <div class="one-third">
-                  <div class="stat">32</div>
-                  <div class="stat-value">Speed</div>
-                </div>
-        
-                <div class="one-third no-border">
-                  <div class="stat">100</div>
-                  <div class="stat-value">Cost</div>
-                </div>
-        
-              </div>
-        
-            </div> <!-- end clash-card goblin-->
-    
-     
-    
-          <!-- <div class="productCardContainer">
-            <div class="productCardContent">
-              <div class="productCardImage">
-                <img src="https://pbs.twimg.com/profile_images/777547960850718720/uLB18LXG.jpg" alt="" />
-                <a href="" class="imageCardEffect">Product</a>
-              </div>
-              <div class="productCardDetails">
-                <div class="productCardModel">
-                  <span class="modelCardEffect"></span>
-                  <a href="">
-                    Model: {{data.device_name}}
-                    <span>Price: {{data.gate_no_name}}</span>
-                  </a>
-                </div>
-               
-                <div class="productCardPrice">             
-                  <button class="btn addToCart">
-                    <i class="fa fa-shopping-cart"></i> Configuration
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
-        
-      </div>
+      <div *ngFor="let data of myDevice" class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div  [ngClass]="(data.is_active)?'small-box bg-green':'small-box bg-red'" >
+         
+          <div class="inner">
+            <h3>{{data.access_count}} <sup style="font-size: 13px">(User Access)</sup></h3>
 
+            <p>{{data.name}}</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa-fingerprint"></i>
+          </div>
+          <a href="#" class="small-box-footer">Configuration <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+    
+    </div>
+
+
+
+  
 
   
   </section>

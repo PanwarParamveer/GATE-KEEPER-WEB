@@ -29,5 +29,5 @@ export const environment = {
  //                 serviceUrl:'http://localhost:5001/gate-keeper-dev/us-central1'
 
 
- //serviceUrl: 'https://us-central1-gate-keeper-dev.cloudfunctions.net'
+ //  serviceUrl: 'https://us-central1-gate-keeper-dev.cloudfunctions.net'
 

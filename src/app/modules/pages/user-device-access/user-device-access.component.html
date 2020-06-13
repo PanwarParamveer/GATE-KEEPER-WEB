@@ -45,13 +45,13 @@
                   <td class="sorting_1">{{data.user_id}}</td>
                   <td class="sorting_1">{{data.user_name}}</td>                              
                   <td class="sorting_1">{{data.gate_name}}</td> 
-                  <td class="sorting_1">{{data.access_expire | date:'dd/MMM/yyyy'}}</td>                  
+<td class="sorting_1"> {{ (data.access_expire == "Never Expire") ?  data.access_expire: (data.access_expire | date:'dd/MMM/yyyy')  }} </td>                  
                   <td class="sorting_1">{{data.created_date_time | date:'dd/MMM/yyyy'}}</td>                  
                  
                   <td style="text-align: center;">
                       <div style="font-size: 15px;text-align: center;">
                       <a (click)="openGateAccessEditComponent(data)" > <i class="fa fa-edit"></i></a> 
-                      <a style="padding-left: 15px;" (click)="deleteGate(data.doc_id)"> <i style="color: red;" class="fa fa-trash-o"></i></a>
+                      <a style="padding-left: 15px;" (click)="deleteGateAccess(data.access_sys_id)"> <i style="color: red;" class="fa fa-trash-o"></i></a>
                       </div>
                   </td>          
                 </tr>

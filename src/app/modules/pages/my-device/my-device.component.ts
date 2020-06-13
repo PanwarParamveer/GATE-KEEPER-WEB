@@ -10,7 +10,7 @@ declare var $;
 })
 export class MyDeviceComponent implements OnInit {
 
-  myDevice: any = [1,2,3,4,5,6,7,8,9,10,11];
+  myDevice: any = {};
   constructor(private loader: NgxUiLoaderService, private deviceService: DeviceService,private toastr: ToastrService) { }
 
 
@@ -18,17 +18,12 @@ export class MyDeviceComponent implements OnInit {
 
     this.loader.start();
     // tslint:disable-next-line:max-line-length
-    this.deviceService.getListOfDevice().subscribe((data) => {
-      $('#tblMyDevice').DataTable().destroy();
-      // this.myDevice = data;
-      setTimeout(() => {
-        $('#tblMyDevice').DataTable({
-          responsive: true,
-          autoWidth: false,
-        });
-      }, 100);
+
+    this.deviceService.getListOfDeviceWithAccessCount().subscribe((data) => {
+      this.myDevice=data;
       this.loader.stop();
     }, e => {
+      this.loader.stop();
       this.toastr.warning(e.error, 'Error');
       this.loader.stop();
     });

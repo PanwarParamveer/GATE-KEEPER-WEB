@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DeviceService } from '../../services/deviceService/device.service';
 import { NgOption } from '@ng-select/ng-select';
 import { GateService } from '../../services/gateService/gate.service';
+import { NgxCoolDialogsService } from 'ngx-cool-dialogs';
 declare var $;
 @Component({
   selector: 'app-user-device-access',
@@ -17,13 +18,14 @@ export class UserDeviceAccessComponent implements OnInit {
 
 
 
-  constructor(private userService: UserService, private gateService: GateService, private loader: NgxUiLoaderService, private deviceService: DeviceService,
-    private toastr: ToastrService) { }
+  constructor(private userService: UserService, 
+    private gateService: GateService,
+    private coolDialogs: NgxCoolDialogsService,
+    private loader: NgxUiLoaderService, 
+    private deviceService: DeviceService,
+    private msgBox: ToastrService) { }
 
   ngOnInit() {
-
-
-
     this.loader.start();
     // tslint:disable-next-line:max-line-length
     this.gateService.getUserAccessList().subscribe((data) => {
@@ -37,12 +39,40 @@ export class UserDeviceAccessComponent implements OnInit {
       }, 100);
       this.loader.stop();
     }, e => {
-      this.toastr.warning(e.error, 'Error');
+      this.msgBox.warning(e.error, 'Error');
       this.loader.stop();
     });
 
   }
 
+
+
+  deleteGateAccess(gateAccessid: string) {
+
+    // Confirm
+    this.coolDialogs.confirm('Are you sure you want to delete this User Access ?')
+      .subscribe(res => {
+        if (res) {
+
+          this.loader.start();
+          this.gateService.deleteGateAccess(gateAccessid).subscribe(data => {
+            this.msgBox.info("Access Deleted successfully.");
+            this.userGateAccessList.forEach(el => {
+              if (el.access_sys_id == gateAccessid) {
+                this.loader.stop();
+                this.userGateAccessList.splice(this.userGateAccessList.indexOf(el), 1);
+                return;
+              }
+            });
+
+          }, e => {
+            this.msgBox.error("Something went wrong while deleting gate.");
+            this.loader.stop();
+          })
+
+        }
+      });
+  }
 
 
 
@@ -65,7 +95,7 @@ export class UserDeviceAccessComponent implements OnInit {
         }, 100);
         this.loader.stop();
       }, e => {
-        this.toastr.warning(e.error, 'Error');
+        this.msgBox.warning(e.error, 'Error');
         this.loader.stop();
       });
     });

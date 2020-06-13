@@ -64,8 +64,10 @@ this.coolDialogs.confirm('Are you sure you want to delete this gate ?')
 });
   }
 
-  openGateEditComponent(id){
-    this.gateService.openGateEditComponent(id).afterClosed().subscribe(cl=>{
+  openGateEditComponent(gateDtl){
+    var dataToModify= Object.assign({}, gateDtl);
+    
+    this.gateService.openGateEditComponent(dataToModify).afterClosed().subscribe(cl=>{
         if(cl===false){
           return;
         }

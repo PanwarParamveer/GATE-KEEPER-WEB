@@ -19,6 +19,10 @@
 
   <section class="content">
 
+
+
+
+    
     <!-- Default box -->
     <div class="box box-primary">
       
@@ -32,7 +36,9 @@
               <thead>
               <tr>
                 <th>Gate Name</th>
-                <th>Status</th>    
+                <th>Status</th>  
+                <th>User Access Count</th>  
+                <th>Device</th>   
                 <th>Description</th> 
                 <th >Last Update</th>
                 <th >Action</th>
@@ -44,6 +50,8 @@
     <tr role="row" *ngFor="let gate of gatesList">
       <td>{{gate.gate_name}}</td>
       <td >{{gate.active? 'Active' :'InActive'}}</td>
+      <td>{{gate.access_count}}</td>
+      <td >{{gate.device_name}}</td>
       <td >{{gate.description}}</td>
       <td >{{gate.updated_date_time | date:'yyyy-MMM-dd HH:mm a'}}</td>
       <td ><div style="font-size: 15px;text-align: center;">

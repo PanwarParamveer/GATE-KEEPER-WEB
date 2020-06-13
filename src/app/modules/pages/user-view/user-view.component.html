@@ -232,7 +232,7 @@
 
 <div class="row">
 
-  <div class="col col-sm-12 col-lg-8">
+  <div class="col col-sm-12 col-lg-4">
     <div class="form-group"  [ngClass]="{ 'has-error': userForm.submitted && user_id.invalid }">
       <label>User id</label>
 
@@ -254,6 +254,26 @@
     </div>
   </div>
 
+  <div class="col col-sm-12 col-lg-4">
+    <div class="form-group" [ngClass]="{ 'has-error': userForm.submitted && department.invalid }">
+      <label>Department</label>
+
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-box" aria-hidden="true"></i>
+        </div>
+        <input [disabled]="disableInputs" type="text" #department="ngModel" name="department"
+          [(ngModel)]="userDetails.department" id="department" class="form-control" ng-model="userDetails.department"
+          [ngClass]="{ 'is-invalid': userForm.submitted && department.invalid }" required>
+          
+
+      </div>
+      <div *ngIf="userForm.submitted && department.invalid" class="invalid-feedback">
+        <div class="text-danger" *ngIf="department.errors.required">Department required</div>
+      </div>
+      <!-- /.input group -->
+    </div>
+  </div>
 
 
   <div class="col col-sm-12 col-lg-4">

@@ -10,7 +10,10 @@ import { NewDeviceAccessComponent } from '../../pages/new-device-access/new-devi
   providedIn: 'root'
 })
 
-export class GateService {  
+
+
+export class GateService {
+ 
   private gateListapi = environment.serviceUrl + '/gateApi/gateList';
   private newGateapi = environment.serviceUrl + '/gateApi/newGate';
   private updateGateapi = environment.serviceUrl + '/gateApi/UpdateGate';
@@ -18,6 +21,7 @@ export class GateService {
   private createNewGateAccessapi = environment.serviceUrl + '/gateApi/createNewGateAccess';
   private getActiveUserAndGatesapi = environment.serviceUrl + '/gateApi/getActiveUserAndGates';
   private getUserAccessListapi = environment.serviceUrl + '/gateApi/getUserAccessList';
+  private deleteGateAccessapi = environment.serviceUrl + '/gateApi/deleteGateAccess';
   
 
   constructor(private fauth: AuthServiceService,private http: HttpClient, private dialog: MatDialog) { }
@@ -26,11 +30,13 @@ export class GateService {
     return this.http.post(this.gateListapi,{}, this.fauth.getHeaders());   
   }
 
+  deleteGateAccess(Accessid: string) {
+    return this.http.post(this.deleteGateAccessapi,{gateAccessId:Accessid}, this.fauth.getHeaders());
+  }  
 
   getActiveUserAndGates() {
     return this.http.post(this.getActiveUserAndGatesapi,{}, this.fauth.getHeaders());   
   }
-
   
   createNewGate(data: any) {
     return this.http.post(this.newGateapi,data, this.fauth.getHeaders());   
@@ -56,8 +62,8 @@ openGateEditComponent(gateData: any) {
     dialogConfig.autoFocus = true;
     
     dialogConfig.data = {
-        data: gateData ,
-        frmName:  gateData=='' ? 'Create New Gate' :'Edit Gate Details'
+        data: ('id' in gateData) ? gateData:null ,
+        frmName:   ('id' in gateData) ? 'Edit Gate Details' : 'Create New Gate'
     };
 
     // this.dialog.open(GateListViewComponent, dialogConfig);

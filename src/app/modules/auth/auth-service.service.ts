@@ -47,6 +47,7 @@ newRegistration: boolean;
         this.newRegistration =false;    
         setTimeout(function() {
           location.reload();
+          this.router.navigate(['/organizationProfile']);
         }, 5000);      
         return;
       }
