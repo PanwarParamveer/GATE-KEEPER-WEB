@@ -69,6 +69,20 @@ export class NewDeviceAccessComponent implements OnInit {
 
   }
 
+  updateGateAccess() {
+
+    this.loader.start();
+    this.GateService.createNewGateAccess(this.gateAccessDtl).subscribe((data: any) => {
+      this.loader.stop();
+      this.toastr.success(data.message, 'Success'); 
+      this.dialogRef.close(true); 
+    }, e => {
+      this.loader.stop();
+      this.toastr.error(e.error, 'Error');
+    });
+
+  }
+
   close() {
     this.dialogRef.close(false);
 }

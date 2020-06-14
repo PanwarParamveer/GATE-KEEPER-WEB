@@ -40,13 +40,19 @@ export class GatesListComponent implements OnInit {
   deleteGate(gateid: string){
 
 // Confirm
-this.coolDialogs.confirm('Are you sure you want to delete this gate ?')
+this.coolDialogs.confirm('Are you sure you want to delete this gate ?  Note: All associated user access will be deleted immediatly.',{
+ 
+  okButtonText: 'Yes,Delete',
+  cancelButtonText: 'Cancel',
+  color: 'red',
+  title: 'Delete Gate'
+})
   .subscribe(res => {
     if (res) {
      
     this.loader.start();
     this.gateService.deleteGate(gateid).subscribe(data=>{      
-      this.msgBox.info("Gate Deleted successfully.");
+      this.msgBox.info("Gate Deleted successfully with user access.");
       this.gatesList.forEach(el=>{
         if (el.id == gateid) {
           this.loader.stop();

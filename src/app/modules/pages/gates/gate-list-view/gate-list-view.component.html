@@ -3,12 +3,12 @@
 <mat-dialog-content class="mat-typography example-form">
   
     <mat-form-field class="example-full-width">
-      <mat-label>Gate Name</mat-label>
+      <mat-label>Gate Name <b>*</b></mat-label>
       <input matInput placeholder="Ex. Gate No 1" value="" [(ngModel)]="gateDtl.gate_name">
     </mat-form-field>
 
     <mat-form-field  class="example-full-width">
-      <mat-label>Gate Status</mat-label>
+      <mat-label>Gate Status <b>*</b></mat-label>
       <mat-select  [(ngModel)]="gateDtl.active" required> 
         <mat-option [value]="true">Active</mat-option>
         <mat-option [value]="false">IN-ACTIVE</mat-option>      
@@ -16,7 +16,7 @@
     </mat-form-field>
 
     <mat-form-field  class="example-full-width">
-      <mat-label>Select Device</mat-label>    
+      <mat-label>Select Device <b>*</b></mat-label>    
       <mat-select   [(ngModel)]="gateDtl.device_id" required> 
           <mat-option>--</mat-option>  
         <mat-option *ngFor="let device of device_list" [value]="device.device_id">{{device.name}}</mat-option>
@@ -26,11 +26,9 @@
    
 
     <mat-form-field class="example-full-width">
-      <mat-label>Gate Description</mat-label>
+      <mat-label>Gate Description <b>*</b></mat-label>
       <textarea matInput placeholder="Ex. main gate..... " [(ngModel)]="gateDtl.description"></textarea>
     </mat-form-field>
-   
-
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button at-dialog-close  (click)="close()">Cancel</button>  
