@@ -14,6 +14,7 @@ import { NewDeviceAccessComponent } from './new-device-access/new-device-access.
 import { MyDeviceComponent } from './my-device/my-device.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { GatesListComponent } from './gates/gates-list/gates-list.component';
+import { DeviceConfigComponent } from './device-config/device-config.component';
 
 // const adminOnly = () => hasCustomClaim('admin');
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -68,7 +69,10 @@ const routes: Routes = [
       ,{
         path: 'myGates', component:GatesListComponent, canActivate: [AngularFireAuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin }
-      }       
+      },{
+        path: 'deviceConfig/:id', component: DeviceConfigComponent, canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin }
+      } 
 
     ]
   }

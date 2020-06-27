@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-    ATTENDANCE REPORT
+  <i class="fa fa-book"></i>  Attendance Report
   </h1>
 
 </section>
@@ -117,8 +117,8 @@
                 <td class="sorting_1">{{attendance.name}}</td>
                 <td class="sorting_1 hidden-xs hidden-sm">{{attendance.department}}</td>
                 <td class="sorting_1">{{attendance.shift_time | amFromUtc: 'hh:mm' | amLocal |amDateFormat: 'h:mm A' }}</td>
-                <td class="sorting_1">{{attendance.login_time | date:'hh:mm:ss a'}}</td>
-                <td class="sorting_1">{{attendance.logout_time | date:'hh:mm:ss a'}}</td>
+                <td class="sorting_1">{{attendance.login_timestamp | date:'hh:mm:ss a'}}</td>
+                <td class="sorting_1">{{attendance.logout_timestamp | date:'hh:mm:ss a'}}</td>
                 <td class="sorting_1 hidden-xs hidden-sm">{{attendance.working_hours}}</td>
                 <!-- <td class="hidden-xs hidden-sm">{{attendance.log_date_time | date:'dd-MMM-yyyy'}}</td> -->
                 

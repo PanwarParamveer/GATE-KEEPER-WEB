@@ -25,7 +25,7 @@ export class UserService {
 
   private getListofUsersNameIds = environment.serviceUrl + '/userApi/user/getListofUsersNameIds';
 
-  private getUserAttendance = environment.serviceUrl + '/userApi/user/getUserAttendance';
+  private getUserAttendance = environment.serviceUrl + '/attendanceApi/getAttendanceReport';
 
   private updateUserPicUrl = environment.serviceUrl + '/userApi/user/updateUserPicUrl';
 

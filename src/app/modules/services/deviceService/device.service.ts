@@ -10,7 +10,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DeviceService {
+ 
   private getDeviceList = environment.serviceUrl + '/deviceApi/device/getDeviceList';
+  private updateDeviceNameApi = environment.serviceUrl + '/deviceApi/device/updateDeviceName';
+  private getDeviceInfoapi = environment.serviceUrl + '/deviceApi/device/getDeviceInfo';
   private getListOfDeviceWithAccessCountApi = environment.serviceUrl + '/deviceApi/device/getListOfDeviceWithAccessCount';
   private getUserDeviceAccess = environment.serviceUrl + '/deviceApi/device/getUserDeviceAccess';
   // tslint:disable-next-line:variable-name
@@ -23,6 +26,14 @@ export class DeviceService {
 
   getShortListOfDevice() {
     return this.http.post(this.getDeviceList, {}, this.fauth.getHeaders());
+  }
+
+  getDeviceInfo(deviceid: string) {
+    return this.http.post(this.getDeviceInfoapi, {device_id:deviceid}, this.fauth.getHeaders());
+  }
+
+  updateDeviceName(deviceId: string, newDeviceName: string) {
+    return this.http.post(this.updateDeviceNameApi, {device_id:deviceId,device_name:newDeviceName}, this.fauth.getHeaders());
   }
 
   getListOfDeviceWithAccessCount() {

@@ -15,9 +15,9 @@ export const environment = {
     appId: "1:209002241530:web:af28b8e3984bdcc0279843",
     measurementId: "G-RVDL6P5YWW"
   },
-  serviceUrl: 'https://us-central1-gate-keeper-dev.cloudfunctions.net'
-};
+     serviceUrl:'http://localhost:5001/gate-keeper-dev/us-central1'
 
+};
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

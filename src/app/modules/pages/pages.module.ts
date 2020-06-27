@@ -24,10 +24,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DeviceConfigComponent } from './device-config/device-config.component';
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
@@ -36,7 +38,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     UserViewComponent, UserDeviceAccessComponent,
     NewDeviceAccessComponent, MyDeviceComponent, 
     SubscriptionComponent, GatesListComponent,
-    GateListViewComponent],
+    GateListViewComponent,
+    DeviceConfigComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -47,7 +50,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatDialogModule,MatInputModule,MatSelectModule,MatButtonModule,MatAutocompleteModule,
     MatFormFieldModule,ScrollingModule,
-    MatDatepickerModule,MatNativeDateModule
+    MatDatepickerModule,MatNativeDateModule,MatSlideToggleModule
   ],
   entryComponents: [GateListViewComponent,NewDeviceAccessComponent]
 })

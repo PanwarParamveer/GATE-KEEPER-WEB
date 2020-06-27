@@ -2,7 +2,7 @@
 
 <section class="content-header">
     <h1>
-    MY DEVICE
+   <i class="fab fa-accusoft"></i> My Device
     </h1>
   
     <span style="margin-top: -25px;" class="pull-right">
@@ -29,7 +29,7 @@
   
     <div class="row">
       
-      <div *ngFor="let data of myDevice" class="col-lg-3 col-xs-6">
+      <div *ngFor="let data of myDevice" class="col-lg-3 col-sm-6 col-xs-12">
         <!-- small box -->
         <div  [ngClass]="(data.is_active)?'small-box bg-green':'small-box bg-red'" >
          
@@ -41,7 +41,7 @@
           <div class="icon">
             <i class="fas fa-fingerprint"></i>
           </div>
-          <a href="#" class="small-box-footer">Configuration <i class="fa fa-arrow-circle-right"></i></a>
+          <a [routerLink]="['/deviceConfig',data.device_id]"  class="small-box-footer">Configuration <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
     

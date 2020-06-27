@@ -48,15 +48,20 @@
         </ul>
       </li>
 
-      <li><a [routerLink]="'/myDevice'"><i class="fab fa-accusoft"></i> <span>
+      <li><a [routerLink]="'/myDevice'"><i class="fab fa-accusoft"></i>
+         <span>
         My Device
-      </span></a></li>
+      </span>
+      <span class="pull-right-container">
+        <span class="label label-danger pull-right">04</span>
+      </span>
+    </a></li>
 
     
      
       <li class="header">OTHERS</li>
-      <li><a [routerLink]="'/subscription'"><i class="fa fa-circle-o text-red"></i> <span>My subscription</span></a></li>
-      <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Help/Support</span></a></li>
+      <li><a [routerLink]="'/subscription'"><i class="fas fa-file-invoice-dollar"></i> <span> My subscription</span></a></li>
+      <li><a href="#"><i class="fas fa-headset"></i> <span> Help/Support</span></a></li>
      
     </ul>
   </section>

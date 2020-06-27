@@ -1,0 +1,133 @@
+
+
+<section class="content-header">
+  <h1>
+    Device Configuration
+  </h1>
+
+</section>
+
+<section class="content">
+
+    <div class="row">
+      <div class="col-md-3">
+
+        <!-- Profile Image -->
+        <div class="box box-primary">
+          <div class="box-body box-profile">
+            <img  class="profile-user-img img-responsive img-circle" src="/assets/img/fingerprint.png" 
+            alt="User profile picture">
+            <h3 class="profile-username text-center" *ngIf="!deviceNameEditMode"> 
+              {{deviceInfo.device_name}} <a  (click)="enableDeviceEditMode(true)" 
+              style="font-size:15px" class="fa fa-edit"></a></h3>
+         
+          <div style="margin-top: 15px;margin-bottom: 10px;" *ngIf="deviceNameEditMode" class="input-group">
+            <input type="text"  [(ngModel)]="newDeviceName" name="newDeviceName" placeholder="Enter New Name..." class="form-control input-sm">
+                <span class="input-group-btn">
+                  <button  type="submit" (click)="updateDeviceName(deviceInfo.device_id)" class="btn btn-success btn-flat btn-sm">Update</button>
+                </span>
+                <span class="input-group-btn">
+                  <button (click)="enableDeviceEditMode(false)" type="submit" class="btn btn-danger btn-flat btn-sm">Cancel</button>
+                </span>
+
+          </div>
+
+
+            <p *ngIf="!deviceNameEditMode" class="text-muted text-center">{{deviceInfo.gate_name}}</p>
+
+            <ul class="list-group list-group-unbordered">
+              <li class="list-group-item">
+                <b>Total User Access</b> 
+                <span class="pull-right  badge bg-green">{{deviceInfo.total_user_access_count}}</span>
+              </li>
+              <li class="list-group-item">
+                <b>Total Finger Registred</b>
+                 <span class="pull-right  badge bg-green">{{deviceInfo.finger_registred}}</span>
+              </li>
+              <li class="list-group-item">
+                <b>Unknown Finger Print</b> 
+                <span class="pull-right  badge bg-red">{{deviceInfo.unknown_finger}}</span>
+              </li>
+              <li class="list-group-item">
+                <b>Device Modal</b> <span class="pull-right  badge bg-green">{{deviceInfo.device_model}}</span>
+              </li>
+              <li class="list-group-item">
+                <b>Firmware Version</b> <span class="pull-right  badge bg-green">{{deviceInfo.firmware_version}}</span>
+              </li>
+              <li class="list-group-item text-center">
+              <button type="button" class="btn btn-danger button_Style" title="Send Restart Command to device">
+                <i class="fa fa-spin fa-refresh"></i>&nbsp; Restart Device
+              </button>
+            </li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+      </div>
+      <!-- /.col -->
+      <div class="col-md-9">
+        <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#deviceConfig" data-toggle="tab" aria-expanded="true">Device Configuration</a></li>
+            <li class=""><a href="#mapping" data-toggle="tab" aria-expanded="false">Users finger print mapping</a></li>
+           
+          </ul>
+          <div class="tab-content">
+
+
+
+
+            <div class="tab-pane active" id="deviceConfig">
+
+
+              
+
+              
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane " id="mapping">          
+              <table id="tblMapping" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Finger Print Id</th>
+                  <th>User Name</th>  
+                  <th>Registration Date</th>  
+                  <th >Delete</th>
+          
+                </tr>
+                </thead>
+                <tbody>
+      
+      <tr role="row" *ngFor="let fData of deviceInfo.finger_mapping">
+        <td>{{fData.finger_print_id}}</td>
+        <td > 
+          {{fData.user_name}}
+        </td>     
+        <td >{{fData.created_timestamp | date:'yyyy-MMM-dd HH:mm a'}}</td>
+        <td ><div style="font-size: 15px;text-align: center;">         
+        <a style="padding-left: 15px;" (click)="deleteGate(gate.id)"> <i style="color: red;" class="fa fa-trash-o"></i></a>
+        </div></td>
+      
+        
+      </tr> 
+               
+               
+                </tbody>
+                
+              </table>
+
+
+            </div>
+           
+          </div>
+          <!-- /.tab-content -->
+        </div>
+        <!-- /.nav-tabs-custom -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+  </section>
