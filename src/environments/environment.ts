@@ -4,20 +4,20 @@
 
 export const environment = {
   production: false,
-  firebase :
-  {    
-    apiKey: "AIzaSyBFGspaX2k5-3KfvyMFokkRFq_Jq1qZEdo",
-    authDomain: "gate-keeper-dev.firebaseapp.com",
-    databaseURL: "https://gate-keeper-dev.firebaseio.com",
-    projectId: "gate-keeper-dev",
-    storageBucket: "gate-keeper-dev.appspot.com",
-    messagingSenderId: "209002241530",
-    appId: "1:209002241530:web:af28b8e3984bdcc0279843",
-    measurementId: "G-RVDL6P5YWW"
-  },
-     serviceUrl:'http://localhost:5001/gate-keeper-dev/us-central1'
-
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ firebase : {
+  apiKey: "AIzaSyAugNOrihx80doowuRHkgNFqvKzPgPhJfE",
+  authDomain: "etraining-poc.firebaseapp.com",
+  databaseURL: "https://etraining-poc.firebaseio.com",
+  projectId: "etraining-poc",
+  storageBucket: "etraining-poc.appspot.com",
+  messagingSenderId: "750194164879",
+  appId: "1:750194164879:web:a6188ca5cbb3c9a1089cfa",
+  measurementId: "G-J4NNN7MVT5"
+},
+serviceUrl:'https://us-central1-etraining-poc.cloudfunctions.net'
 };
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
@@ -26,8 +26,3 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
- //                 serviceUrl:'http://localhost:5001/gate-keeper-dev/us-central1'
-
-
- //  serviceUrl: 'https://us-central1-gate-keeper-dev.cloudfunctions.net'
-
